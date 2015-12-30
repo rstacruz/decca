@@ -10,18 +10,32 @@ import getId from './id'
  */
 
 function createRenderer (rootEl, dispatch) {
+  var states = {}
   var tree = h('noscript')
   var rootNode = createElement(tree)
   rootEl.appendChild(rootNode)
 
-  var states = {}
+  return render
 
-  return function render (el, context) {
-    var pass = buildPass(context, dispatch, states)
-    var newTree = pass.convert(el)
-    var delta = diff(tree, newTree)
-    rootNode = patch(rootNode, delta)
-    tree = newTree
+  function render (el, context) {
+    while (true) {
+      var pass = buildPass(context, dispatch, states)
+      var newTree = pass.convert(el)
+      var delta = diff(tree, newTree)
+      rootNode = patch(rootNode, delta)
+      tree = newTree
+
+      if (!propagateState(pass.stateChanges)) break
+    }
+  }
+
+  function propagateState (changes) {
+    if (!Object.keys(changes).length) return
+    Object.keys(changes).forEach((path) => {
+      if (!states[path]) states[path] = {}
+      states[path] = { ...states[path], ...changes[path] } 
+    })
+    return true
   }
 }
 
@@ -31,7 +45,7 @@ function createRenderer (rootEl, dispatch) {
 
 function buildPass (context, dispatch, states) {
   const stateChanges = {}
-  const pass = { convert, setState }
+  const pass = { convert, setState, stateChanges, states }
   return pass
 
   /*
@@ -61,6 +75,10 @@ function buildPass (context, dispatch, states) {
     return h(tag, props, children.map(convert))
   }
 
+  /*
+   * Called by widget
+   */
+
   function setState (path, state = {}) {
     if (!stateChanges[path]) stateChanges[path] = {}
     stateChanges[path] = { ...stateChanges[path], ...state }
@@ -87,6 +105,7 @@ Widget.prototype.type = 'Widget'
 
 Widget.prototype.init = function () {
   const id = this.setId(getId())
+  this.model.state = this.trigger('initialState')
 
   // Create the virtual-dom tree
   const el = this.component.render(this.model)
@@ -131,6 +150,7 @@ Widget.prototype.destroy = function (domNode) {
 Widget.prototype.setId = function (id) {
   this.model.path = id
   this.model.setState = this.pass.setState.bind(this, id)
+  this.model.state = this.pass.states[id]
   return id
 }
 

@@ -43,6 +43,10 @@ render(<App />)
 
 - `string.render()` - string rendering
 
+### What's here that's not in deku v2
+
+- `setState`
+
 [deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
 
