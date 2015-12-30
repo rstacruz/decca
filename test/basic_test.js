@@ -48,13 +48,34 @@ test('props', (t) => {
   t.end()
 })
 
+test('context', (t) => {
+  const Button = {
+    render ({ props, context }) {
+      t.equal(context, 'CTX')
+      return <button>{ props.label }</button>
+    }
+  }
+
+  const App = {
+    render ({ context }) {
+      t.equal(context, 'CTX')
+      return <div>hi. <Button label='press' /></div>
+    }
+  }
+
+  const { div } = r(<App />, 'CTX')
+  t.equal(div.innerHTML, '<div>hi. <button>press</button></div>')
+  t.end()
+})
+
+
 /*
  * Helper
  */
 
-function r (tree) {
+function r (...args) {
   const div = document.createElement('div')
   const render = dom.createRenderer(div)
-  render(tree)
+  render(...args)
   return { div, render }
 }
