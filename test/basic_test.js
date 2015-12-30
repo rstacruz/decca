@@ -17,7 +17,7 @@ test('class name', (t) => {
 })
 
 test('interpolation', (t) => {
-  const {div } = r(<div>hey {'John'}</div>)
+  const {div} = r(<div>hey {'John'}</div>)
   t.equal(div.innerHTML, '<div>hey John</div>')
   t.end()
 })
@@ -153,3 +153,19 @@ test('onCreate', (t) => {
   t.equal(div.innerHTML, '<div></div>', 'renders correctly')
   t.end()
 })
+
+test('class in component', (t) => {
+  t.plan(2)
+
+  const App = {
+    render ({ props }) {
+      t.equal(props.class, 'app', 'has class')
+      return <div class={ props.class }>hello</div>
+    }
+  }
+
+  const { div } = r(<App class='app' />)
+  t.equal(div.innerHTML, '<div class="app">hello</div>', 'renders')
+  t.end()
+})
+

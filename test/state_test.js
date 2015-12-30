@@ -63,3 +63,32 @@ test('without initialState', (t) => {
   t.equal(div.innerHTML, '<div></div>', 'rendered')
   t.end()
 })
+
+test('initialState over nested', (t) => {
+  t.plan(5)
+
+  const Button = {
+    initialState (model) {
+      t.ok(model.props, 'has model.props')
+      t.ok(model.context, 'has model.context')
+      return { created: true }
+    },
+    render ({ context, state }) {
+      t.pass('render called')
+      t.deepEqual(state, { created: true }, 'state available before render')
+      return <div>created: { state && state.created ? 'yes' : 'no' }</div>
+    }
+  }
+
+  const App = {
+    render: () => <div><Button /></div>
+  }
+
+  const { div, render } = r(<App />, 'CTX')
+  t.equal(
+    div.innerHTML,
+    '<div><div>created: yes</div></div>',
+    'picked up initialState')
+  t.end()
+})
+

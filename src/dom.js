@@ -2,6 +2,7 @@ import h from 'virtual-dom/h'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
+import fixProps from './fix_props'
 import getId from './id'
 
 /*
@@ -76,7 +77,7 @@ function buildPass (context, dispatch, states) {
         pass)
     }
 
-    return h(tag, props, children.map(convert))
+    return h(tag, fixProps(props), children.map(convert))
   }
 
   /*

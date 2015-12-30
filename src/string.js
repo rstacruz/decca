@@ -23,7 +23,7 @@ function render (el, context) {
 }
 
 /*
- * { className: 'foo', id: 'box' } => ' class="foo" id="box"'
+ * { class: 'foo', id: 'box' } => ' class="foo" id="box"'
  */
 
 function toProps (props) {
@@ -31,16 +31,12 @@ function toProps (props) {
   var result = []
 
   Object.keys(props).forEach((attr) => {
-    if (attr === 'class') return
     if (/^on[A-Za-z]/.test(attr)) return
-
     const val = props[attr]
     if (typeof val === 'undefined' || val === null) return
-
-    if (attr === 'className') attr = 'class'
-
     result.push(`${ attr }=${ JSON.stringify(val) }`)
   })
+
   return result.length ? ' ' + result.join(' ') : ''
 }
 
