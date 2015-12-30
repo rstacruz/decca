@@ -38,8 +38,8 @@ See [deku]'s documentation. `not-deku` takes the same API as deku (as of v2.0.0-
 
 These features are not part of deku, but are implemented here to prototype API additions to deku:
 
-- not-deku implements `setState`, which gets passed onto `render()` and other component [lifecycle hooks].
-- Components can have an `initialState` function.
+- not-deku implements `setState` and `state`, which gets passed onto `render()` and other component [lifecycle hooks]. This was a feature of deku v1 which was removed in v2.
+- Conversely, Components can also have an `initialState` function.
 
 ## Acknowledgements
 
