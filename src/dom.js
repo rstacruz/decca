@@ -2,6 +2,7 @@ import h from 'virtual-dom/h'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
+import getId from './id'
 
 /*
  * Creates a renderer function. Rteurns a function `render(vnode, [context])`
@@ -69,16 +70,17 @@ function Hook (component, model) {
 
 Hook.prototype.hook = function (domEl, prop, previous) {
   if (this.component.onCreate && !previous) {
-    this.component.onCreate(this.model)
+    domEl._dekuId = getId()
+    this.component.onCreate({ ...this.model, path: domEl._dekuId })
   }
   if (this.component.onUpdate && previous) {
-    this.component.onUpdate(this.model)
+    // absorb the id
+    this.component.onUpdate({ ...this.model, path: domEl._dekuId })
   }
 }
 
 Hook.prototype.unhook = function (domEl, prop, previous) {
-  console.log('==> unhook')
   if (this.component.onRemove) {
-    this.component.onRemove(this.model)
+    this.component.onRemove({ ...this.model, path: domEl._dekuId })
   }
 }

@@ -93,10 +93,10 @@ if (!process.env.JSDOM) {
 }
 
 test('onUpdate', (t) => {
-  t.plan(2)
+  t.plan(1)
   const App = {
-    onUpdate ({ context }) {
-      t.equal(context, 'CTX')
+    onUpdate ({ context, path }) {
+      t.equal(context, 'CTX', 'context is available onUpdate')
     },
     render ({ context }) {
       return <div></div>
@@ -105,31 +105,52 @@ test('onUpdate', (t) => {
 
   const { div, render } = r(<App />, 'CTX')
   render(<App />, 'CTX')
-  t.equal(div.innerHTML, '<div></div>')
   t.end()
 })
 
-test('onRemove', (t) => {
+test('path onUpdate', (t) => {
   t.plan(2)
+
+  var lastPath
   const App = {
-    onRemove ({ context }) { t.equal(context, 'CTX') },
+    onCreate ({ path }) { lastPath = path },
+    onUpdate ({ path }) {
+      t.equal(path, lastPath, 'path is the same onCreate and onUpdate')
+      t.ok(path, 'has a path onUpdate')
+    },
+    render ({ context }) { return <div></div> }
+  }
+
+  const { div, render } = r(<App />)
+  render(<App />)
+  t.end()
+})
+
+
+test('onRemove', (t) => {
+  t.plan(3)
+  const App = {
+    onRemove ({ context }) {
+      t.pass('onRemove was called')
+      t.equal(context, 'CTX', 'context is available onRemove')
+    },
     render ({ context }) { return <div></div> }
   }
 
   const { div, render } = r(<App />, 'CTX')
   render(<span></span>)
-  t.equal(div.innerHTML, '<span></span>')
+  t.equal(div.innerHTML, '<span></span>', 'renders correctly')
   t.end()
 })
 
 test('onRemove skipping', (t) => {
+  t.plan(0)
   const App = {
     onRemove ({ context }) { t.fail('not supposed to call onRemove') },
     render ({ context }) { return <div></div> }
   }
 
   const { div } = r(<App />, 'CTX')
-  t.equal(div.innerHTML, '<div></div>')
   t.end()
 })
 
@@ -137,7 +158,7 @@ test('onCreate', (t) => {
   t.plan(2)
   const App = {
     onCreate ({ context }) {
-      t.equal(context, 'CTX')
+      t.equal(context, 'CTX', 'context available onCreate')
     },
     render ({ context }) {
       return <div></div>
@@ -146,7 +167,7 @@ test('onCreate', (t) => {
 
   const { div, render } = r(<App />, 'CTX')
   render(<App />, 'CTX')
-  t.equal(div.innerHTML, '<div></div>')
+  t.equal(div.innerHTML, '<div></div>', 'renders correctly')
   t.end()
 })
 
