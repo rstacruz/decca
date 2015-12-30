@@ -51,7 +51,7 @@ render(<App />)
 
 ## Acknowledgements
 
-Obviously taken blatant inspiration from [deku] by the amazing [Anthony Short}.
+Obviously taken blatant inspiration from [deku] by the amazing [Anthony Short].
 
 [Anthony Short]: https://github.com/anthonyshort
 
