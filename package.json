@@ -1,0 +1,37 @@
+{
+  "name": "not-deku",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-plugin-transform-react-jsx": "6.3.13",
+    "babel-preset-es2015": "6.3.13",
+    "babel-preset-stage-0": "6.3.13",
+    "babelify": "7.2.0",
+    "hihat": "2.5.0",
+    "tap-dev-tool": "1.3.0",
+    "tape": "4.4.0"
+  },
+  "babel": {
+    "presets": [
+      "es2015"
+    ],
+    "plugins": [
+      "syntax-jsx",
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "element"
+        }
+      ]
+    ]
+  },
+  "dependencies": {
+    "babel-plugin-syntax-jsx": "6.3.13"
+  }
+}
