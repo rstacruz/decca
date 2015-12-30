@@ -7,4 +7,5 @@ require('./basic_test')
 //   events
 //   onUpdate
 //   onCreate
-//   onRender
+//   onRemove
+//   string rendering
