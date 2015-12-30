@@ -4,6 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build": "babel src --out-dir lib",
+    "watch": "babel -w src --out-dir lib",
     "test": "hihat test/index.js -- -t babelify --debug -p tap-dev-tool"
   },
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
@@ -13,6 +15,7 @@
     "babel-preset-es2015": "6.3.13",
     "babel-preset-stage-0": "6.3.13",
     "babelify": "7.2.0",
+    "deku": "2.0.0-rc6",
     "hihat": "2.5.0",
     "tap-dev-tool": "1.3.0",
     "tape": "4.4.0"

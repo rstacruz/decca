@@ -1,5 +1,5 @@
 /** @jsx element */
-import { element, dom } from '../lib'
+import { element, dom } from '../src'
 import test from 'tape'
 
 test('basic non-component', (t) => {

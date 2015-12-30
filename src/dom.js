@@ -10,7 +10,7 @@ function createRenderer (el, dispatch) {
   el.appendChild(rootNode)
 
   return function render (tree, context) {
-    var newTree = toHyper(context, dispatch, tree)
+    var newTree = toHyper(context, dispatch)(tree)
     var delta = diff(tree, newTree)
     rootNode = patch(rootNode, delta)
     tree = newTree
@@ -22,26 +22,37 @@ function createRenderer (el, dispatch) {
  * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
  */
 
-function toHyper (context, dispatch, el) {
-  var bound = toHyper.bind(this, context, dispatch)
-  if (typeof el === 'string') return el
-  if (typeof el === 'number') return '' + el
-  if (typeof el === 'undefined' || el === null) return
-  if (Array.isArray(el)) return el.map(bound)
-  if (typeof el !== 'object') throw new Error('wot m8')
+function toHyper (context, dispatch) {
+  return convert
+  
+  function convert (el) {
+    if (typeof el === 'string') return el
+    if (typeof el === 'number') return '' + el
+    if (typeof el === 'undefined' || el === null) return
+    if (Array.isArray(el)) return el.map(convert)
+    if (typeof el !== 'object') throw new Error('wot m8')
 
-  const { tag, props, children } = el
-  if (typeof tag === 'object') {
+    const { tag, props, children } = el
+
+    if (typeof tag === 'object') return convertComponent(tag, props)
+
+    return h(tag, props, children.map(convert))
+  }
+
+  function convertComponent (tag, props) {
     const model = { props, context, dispatch }
     const el = tag.render(model)
     if (!el.props) el.props = {}
     el.props['deku-hook'] = new Hook(tag, model)
-    return bound(el)
+    return convert(el)
   }
-  return h(tag, props, children.map(bound))
 }
 
 module.exports = { createRenderer }
+
+/*
+ * Life cycle hook
+ */
 
 function Hook (component, model) {
   this.component = component
@@ -51,12 +62,5 @@ function Hook (component, model) {
 Hook.prototype.hook = function (domEl) {
   if (this.component.onUpdate) {
     this.component.onUpdate(this.model)
-  }
-}
-
-Hook.prototype.unhook = function () {
-  // not working
-  if (this.component.onRemove) {
-    this.component.onRemove(this.model)
   }
 }
