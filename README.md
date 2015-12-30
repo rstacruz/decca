@@ -42,8 +42,6 @@ render(<App />)
 ### What's not
 
 - `string.render()` - string rendering
-- `onRemove` lifecycle hooks (todo)
-- `path` in model (todo)
 
 [deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
