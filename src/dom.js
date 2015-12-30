@@ -31,7 +31,7 @@ function createRenderer (rootEl, dispatch) {
 
 function buildPass (context, dispatch, states) {
   const stateChanges = {}
-  const pass = { convert, stateChanges }
+  const pass = { convert, setState }
   return pass
 
   /*
@@ -60,6 +60,11 @@ function buildPass (context, dispatch, states) {
 
     return h(tag, props, children.map(convert))
   }
+
+  function setState (path, state = {}) {
+    if (!stateChanges[path]) stateChanges[path] = {}
+    stateChanges[path] = { ...stateChanges[path], ...state }
+  }
 }
 
 /*
@@ -81,14 +86,13 @@ Widget.prototype.type = 'Widget'
  */
 
 Widget.prototype.init = function () {
-  const id = getId()
-  this.model.path = id
+  const id = this.setId(getId())
 
   // Create the virtual-dom tree
-  const el = this.trigger('render')
+  const el = this.component.render(this.model)
   this.tree = this.pass.convert(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
-  this.rootNode._dekuId = id
+  this.rootNode._dekuId = id // so future update() and destroy() can see it
 
   // Trigger
   this.trigger('onCreate')
@@ -102,10 +106,10 @@ Widget.prototype.init = function () {
  */
 
 Widget.prototype.update = function (previous, domNode) {
-  this.model.path = domNode._dekuId
+  this.setId(domNode._dekuId)
 
   // Re-render the component
-  const el = this.trigger('render')
+  const el = this.component.render(this.model)
   this.tree = this.pass.convert(el)
 
   // Patch the DOM node
@@ -122,6 +126,12 @@ Widget.prototype.update = function (previous, domNode) {
 Widget.prototype.destroy = function (domNode) {
   this.model.path = domNode._dekuId
   this.trigger('onRemove')
+}
+
+Widget.prototype.setId = function (id) {
+  this.model.path = id
+  this.model.setState = this.pass.setState.bind(this, id)
+  return id
 }
 
 /*
