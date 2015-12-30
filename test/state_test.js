@@ -21,8 +21,7 @@ test('state change', (t) => {
   t.equal(
     div.innerHTML,
     '<div>created: yes</div>',
-    'propagated state'
-  )
+    'propagated state')
   t.end()
 })
 
@@ -46,7 +45,21 @@ test('initialState', (t) => {
   t.equal(
     div.innerHTML,
     '<div>created: yes</div>',
-    'picked up initialState'
-  )
+    'picked up initialState')
+  t.end()
+})
+
+test('without initialState', (t) => {
+  t.plan(2)
+
+  const App = {
+    render ({ state }) {
+      t.equal(state, undefined, 'state is undefined without initialState')
+      return <div />
+    }
+  }
+
+  const { div, render } = r(<App />)
+  t.equal(div.innerHTML, '<div></div>', 'rendered')
   t.end()
 })

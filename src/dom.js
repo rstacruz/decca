@@ -41,6 +41,10 @@ function createRenderer (rootEl, dispatch) {
 
 /*
  * A rendering pass.
+ * This closure is responsible for:
+ *
+ * - keeping aware of `context` and `state` to be passed down to Components
+ * - queue up `stateChanges` so that it can be picked up later (by `render()`)
  */
 
 function buildPass (context, dispatch, states) {
@@ -94,6 +98,8 @@ function Widget ({ component, props, children }, model, pass) {
   if (!props) props = {}
   this.component = component
   this.pass = pass
+
+  // The parameters to be passed onto the component's functions.
   this.model = { props: { ...props, children }, ...model }
 }
 
@@ -139,13 +145,19 @@ Widget.prototype.update = function (previous, domNode) {
 }
 
 /*
- * On destroy, trigger the onRemove hook
+ * On destroy, trigger the onRemove hook.
  */
 
 Widget.prototype.destroy = function (domNode) {
-  this.model.path = domNode._dekuId
+  this.setId(domNode._dekuId)
   this.trigger('onRemove')
 }
+
+/*
+ * Updates the model with things that it can have when `id` is available.
+ * This is because `id`'s aren't always available when Widget is initialized,
+ * so these can't be in the ctor.
+ */
 
 Widget.prototype.setId = function (id) {
   this.model.path = id
@@ -155,7 +167,7 @@ Widget.prototype.setId = function (id) {
 }
 
 /*
- * Trigger a Component lifecycle event
+ * Trigger a Component lifecycle event.
  */
 
 Widget.prototype.trigger = function (hook, id) {
