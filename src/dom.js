@@ -40,16 +40,20 @@ function toHyper (context, dispatch) {
 
     const { tag, props, children } = el
 
-    if (typeof tag === 'object') return convertComponent(tag, props)
-
+    if (typeof tag === 'object') return convertComponent(tag, props, children)
     return h(tag, props, children.map(convert))
   }
 
-  function convertComponent (tag, props) {
-    const model = { props, context, dispatch }
-    const el = tag.render(model)
-    if (!el.props) el.props = {}
-    el.props['deku-hook'] = new Hook(tag, model)
+  // Render a component
+  function convertComponent (component, props = {}, children) {
+    const model = { props: { ...props, children }, context, dispatch }
+    const el = component.render(model)
+
+    // Inject a virtual-dom lifecycle hook
+    if (component.onUpdate) {
+      if (!el.props) el.props = {}
+      el.props['deku-hook'] = new Hook(component, model)
+    }
     return convert(el)
   }
 }
