@@ -22,7 +22,6 @@
     "url": "https://github.com/rstacruz/not-deku/issues"
   },
   "dependencies": {
-    "object-assign": "4.0.1",
     "virtual-dom": "2.1.1"
   },
   "devDependencies": {

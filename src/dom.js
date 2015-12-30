@@ -2,7 +2,6 @@ import h from 'virtual-dom/h'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
-import assign from 'object-assign'
 
 /*
  * Creates a renderer function. Rteurns a function `render(vnode, [context])`
