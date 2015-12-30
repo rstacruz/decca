@@ -1,7 +1,7 @@
 {
   "name": "not-deku",
   "description": "Render interfaces using pure functions and virtual DOM, kinda",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "babel": {
     "presets": [
