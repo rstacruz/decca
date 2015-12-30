@@ -1,6 +1,4 @@
-function createRenderer () {
-  return render
-}
+import getId from './id'
 
 function render (el, context) {
   if (typeof el === 'string') return el
@@ -18,9 +16,15 @@ function render (el, context) {
 
   if (typeof tag === 'object') {
     if (!tag.render) throw new Error('component has no render()')
-    return render(tag.render({ props: { ...props, children }, context /* TODO: path */ }))
+    return render(
+      tag.render({ props: { ...props, children }, path: getId(), context }),
+      context)
   }
 }
+
+/*
+ * { className: 'foo', id: 'box' } => ' class="foo" id="box"'
+ */
 
 function toProps (props) {
   if (!props) return ''
@@ -40,4 +44,4 @@ function toProps (props) {
   return result.length ? ' ' + result.join(' ') : ''
 }
 
-module.exports = { createRenderer, render }
+module.exports = { render }
