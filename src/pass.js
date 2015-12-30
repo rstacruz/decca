@@ -18,7 +18,6 @@ module.exports = buildPass
  */
 
 function buildPass (context, dispatch, states, commitState, rerender) {
-  let working = true
   const pass = { build, setState, commitState, states }
 
   /*

@@ -20,7 +20,7 @@ var now = Date.now || (() => new Date().getTime())
 
 module.exports = function debounce (func, wait, immediate) {
   var timeout, args, context, timestamp, result
-  if (null == wait) wait = 100
+  if (wait == null) wait = 100
 
   function later () {
     var last = now() - timestamp
