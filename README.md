@@ -34,6 +34,7 @@ render(<App />)
 
 - `dom.createRenderer()` - DOM rendering
 - `element()` - virtual element creation
+- Lifecycle hooks `onCreate` and `onUpdate`
 - DOM events
 - Redux integration (`context`, `dispatch`, etc)
 - everything else that's not in the list below
@@ -41,8 +42,8 @@ render(<App />)
 ### What's not
 
 - `string.render()` - string rendering
-- `onCreate` and `onRemove` lifecycle hooks (todo)
-- `path` in model
+- `onRemove` lifecycle hooks (todo)
+- `path` in model (todo)
 
 [deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom

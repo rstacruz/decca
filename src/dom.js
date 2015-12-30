@@ -8,13 +8,13 @@ import createElement from 'virtual-dom/create-element'
  * where `vnode` is the output of `element()`.
  */
 
-function createRenderer (el, dispatch) {
+function createRenderer (rootEl, dispatch) {
   var tree = h('noscript')
   var rootNode = createElement(tree)
-  el.appendChild(rootNode)
+  rootEl.appendChild(rootNode)
 
-  return function render (tree, context) {
-    var newTree = toHyper(context, dispatch)(tree)
+  return function render (el, context) {
+    var newTree = toHyper(context, dispatch)(el)
     var delta = diff(tree, newTree)
     rootNode = patch(rootNode, delta)
     tree = newTree
@@ -49,10 +49,9 @@ function toHyper (context, dispatch) {
     const el = component.render(model)
 
     // Inject a virtual-dom lifecycle hook
-    if (component.onUpdate) {
-      if (!el.props) el.props = {}
-      el.props['deku-hook'] = new Hook(component, model)
-    }
+    if (!el.props) el.props = {}
+    el.props['deku-hook'] = new Hook(component, model)
+
     return convert(el)
   }
 }
@@ -68,8 +67,11 @@ function Hook (component, model) {
   this.model = model
 }
 
-Hook.prototype.hook = function (domEl) {
-  if (this.component.onUpdate) {
+Hook.prototype.hook = function (domEl, prop, previous) {
+  if (this.component.onCreate && !previous) {
+    this.component.onCreate(this.model)
+  }
+  if (this.component.onUpdate && previous) {
     this.component.onUpdate(this.model)
   }
 }

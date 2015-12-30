@@ -103,28 +103,11 @@ test('onUpdate', (t) => {
     }
   }
 
-  const { div } = r(<App />, 'CTX')
-  t.equal(div.innerHTML, '<div></div>')
-  t.end()
-})
-
-test('onUpdate', (t) => {
-  t.plan(3)
-  const App = {
-    onUpdate ({ context }) {
-      t.equal(context, 'CTX')
-    },
-    render ({ context }) {
-      return <div></div>
-    }
-  }
-
   const { div, render } = r(<App />, 'CTX')
   render(<App />, 'CTX')
   t.equal(div.innerHTML, '<div></div>')
   t.end()
 })
-
 
 test.skip('onRemove', (t) => {
   t.plan(2)
@@ -149,6 +132,24 @@ test('onRemove skipping', (t) => {
   t.equal(div.innerHTML, '<div></div>')
   t.end()
 })
+
+test('onCreate', (t) => {
+  t.plan(2)
+  const App = {
+    onCreate ({ context }) {
+      t.equal(context, 'CTX')
+    },
+    render ({ context }) {
+      return <div></div>
+    }
+  }
+
+  const { div, render } = r(<App />, 'CTX')
+  render(<App />, 'CTX')
+  t.equal(div.innerHTML, '<div></div>')
+  t.end()
+})
+
 
 /*
  * Helper
