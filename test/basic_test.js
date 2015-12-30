@@ -68,6 +68,28 @@ test('context', (t) => {
   t.end()
 })
 
+test('events', (t) => {
+  t.plan(1)
+
+  const App = {
+    render ({ context }) {
+      return <button id='sup' onclick={yo}>click me</button>
+    }
+  }
+
+  function yo () {
+    t.pass('clicked')
+  }
+
+  const { div } = r(<App />)
+  document.body.appendChild(div)
+
+  var event = document.createEvent('HTMLEvents')
+  event.initEvent('click', true, false)
+  document.querySelector('#sup').dispatchEvent(event)
+  t.end()
+})
+
 
 /*
  * Helper
