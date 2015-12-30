@@ -33,5 +33,5 @@ test('state persistence over async', (t) => {
       '<div>created: yes</div>',
       'state was eventually changed')
     t.end()
-  }, 50)
+  }, 250)
 })
