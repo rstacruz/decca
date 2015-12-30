@@ -68,27 +68,29 @@ test('context', (t) => {
   t.end()
 })
 
-test('events', (t) => {
-  t.plan(1)
+if (!process.env.JSDOM) {
+  test('events', (t) => {
+    t.plan(1)
 
-  const App = {
-    render ({ context }) {
-      return <button id='sup' onClick={yo}>click me</button>
+    const App = {
+      render ({ context }) {
+        return <button id='sup' onClick={yo}>click me</button>
+      }
     }
-  }
 
-  function yo () {
-    t.pass('clicked')
-  }
+    function yo () {
+      t.pass('clicked')
+    }
 
-  const { div } = r(<App />)
-  document.body.appendChild(div)
+    const { div } = r(<App />)
+    document.body.appendChild(div)
 
-  var event = document.createEvent('HTMLEvents')
-  event.initEvent('click', true, false)
-  document.querySelector('#sup').dispatchEvent(event)
-  t.end()
-})
+    var event = document.createEvent('MouseEvent')
+    event.initEvent('click', true, true)
+    document.querySelector('#sup').dispatchEvent(event)
+    t.end()
+  })
+}
 
 test('onUpdate', (t) => {
   t.plan(2)
