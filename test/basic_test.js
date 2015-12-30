@@ -73,7 +73,7 @@ test('events', (t) => {
 
   const App = {
     render ({ context }) {
-      return <button id='sup' onclick={yo}>click me</button>
+      return <button id='sup' onClick={yo}>click me</button>
     }
   }
 

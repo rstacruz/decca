@@ -3,8 +3,15 @@
  */
 
 function element (tag, props, ...children) {
-  if (props && props.class) {
-    props.className = props.class
+  if (props) {
+    if (props.class) props.className = props.class
+
+    Object.keys(props).forEach((key) => {
+      let m = key.match(/^on([A-Z][a-z]+)$/)
+      if (m) {
+        props[key.toLowerCase()] = props[key]
+      }
+    })
   }
 
   return { tag, props, children }

@@ -34,17 +34,15 @@ render(<App />)
 
 - `dom.createRenderer()` - DOM rendering
 - `element()` - virtual element creation
+- DOM events
 - Redux integration (`context`, `dispatch`, etc)
+- everything else that's not in the list below
 
 ### What's not
 
 - `string.render()` - string rendering
 - `onCreate` and `onRemove` lifecycle hooks (todo)
 - `path` in model
-
-### What differs
-
-- Events are formatted as `onclick` and not `onClick`
 
 [deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
