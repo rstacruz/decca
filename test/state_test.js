@@ -92,3 +92,32 @@ test('initialState over nested', (t) => {
   t.end()
 })
 
+test('state persistence', (t) => {
+  t.plan(6)
+
+  const App = {
+    onCreate ({ path, setState }) {
+      t.pass('oncreate called')
+      setState({ created: true })
+    },
+    render ({ context, state }) {
+      t.pass('render called')
+      return <div>created: { state && state.created ? 'yes' : 'no' }</div>
+    }
+  }
+
+  const { div, render } = r(<App />)
+  t.equal(
+    div.innerHTML,
+    '<div>created: yes</div>',
+    'propagated state')
+
+  setTimeout(() => {
+    render(<App />)
+    t.equal(
+      div.innerHTML,
+      '<div>created: yes</div>',
+      'state persistence')
+    t.end()
+  })
+})

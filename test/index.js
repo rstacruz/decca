@@ -2,6 +2,7 @@ require('./basic_test')
 require('./children_test')
 require('./path_test')
 require('./state_test')
+require('./state_async_test')
 require('./string_test')
 
 // todo:
@@ -17,3 +18,4 @@ require('./string_test')
 // x path
 // x onCreate
 // x onRemove
+//   async state updating!

@@ -26,7 +26,8 @@ function createRenderer (rootEl, dispatch) {
       rootNode = patch(rootNode, delta)
       tree = newTree
 
-      if (!propagateState(pass.stateChanges)) break
+      if (!pass.end(propagateState)) break
+      // if (!propagateState(pass.stateChanges)) break
     }
   }
 
@@ -49,8 +50,10 @@ function createRenderer (rootEl, dispatch) {
  */
 
 function buildPass (context, dispatch, states) {
-  const stateChanges = {}
-  const pass = { convert, setState, stateChanges, states }
+  let stateChanges = {}
+  let working = true
+  let onChange = undefined
+  const pass = { convert, setState, states, end }
   return pass
 
   /*
@@ -80,6 +83,12 @@ function buildPass (context, dispatch, states) {
     return h(tag, fixProps(props), children.map(convert))
   }
 
+  function end (onChange_) {
+    working = false
+    onChange = onChange_
+    return onChange(stateChanges)
+  }
+
   /*
    * Called by widget
    */
@@ -87,6 +96,11 @@ function buildPass (context, dispatch, states) {
   function setState (path, state = {}) {
     if (!stateChanges[path]) stateChanges[path] = {}
     stateChanges[path] = { ...stateChanges[path], ...state }
+    if (onChange) {
+      onChange(stateChanges)
+      stateChanges = {}
+      // trigger rerender, only one per tick
+    }
   }
 }
 
