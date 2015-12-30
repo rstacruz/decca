@@ -34,7 +34,7 @@ render(<App />)
 
 - `dom.createRenderer()` - DOM rendering
 - `element()` - virtual element creation
-- Lifecycle hooks `onCreate` and `onUpdate`
+- Lifecycle hooks `onCreate` and `onUpdate` and `onRemove`
 - DOM events
 - Redux integration (`context`, `dispatch`, etc)
 - everything else that's not in the list below
