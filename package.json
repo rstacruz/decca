@@ -58,6 +58,7 @@
   },
   "scripts": {
     "build": "babel src --out-dir lib",
+    "prepublish": "npm run build",
     "test": "hihat test/index.js -- -t babelify --debug -p tap-dev-tool",
     "test:jsdom": "babel-node test/_jsdom.js",
     "watch": "babel -w src --out-dir lib"
