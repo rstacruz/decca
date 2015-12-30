@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "hihat test/index.js -- -t babelify --debug -p tap-dev-tool"
   },
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "license": "MIT",
@@ -32,6 +32,7 @@
     ]
   },
   "dependencies": {
-    "babel-plugin-syntax-jsx": "6.3.13"
+    "babel-plugin-syntax-jsx": "6.3.13",
+    "object-assign": "4.0.1"
   }
 }

@@ -1,5 +1,5 @@
 /** @jsx element */
-import { element, dom } from './lib'
+import { element, dom } from '../lib'
 import test from 'tape'
 
 test('basic non-component', (t) => {
@@ -25,7 +25,7 @@ test('basic component', (t) => {
     render () { return <div>hello</div> }
   }
 
-  const div = r(<App />)
+  const { div } = r(<App />)
   t.equal(div.innerHTML, '<div>hello</div>')
   t.end()
 })
@@ -58,4 +58,3 @@ function r (tree) {
   render(tree)
   return { div, render }
 }
-
