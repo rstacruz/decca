@@ -1,5 +1,6 @@
 require('./basic_test')
 require('./children_test')
+require('./dispatch_test')
 require('./path_test')
 require('./state_test')
 require('./state_async_test')
