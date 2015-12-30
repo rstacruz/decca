@@ -14,8 +14,11 @@ function createRenderer (rootEl, dispatch) {
   var rootNode = createElement(tree)
   rootEl.appendChild(rootNode)
 
+  var states = {}
+
   return function render (el, context) {
-    var newTree = toHyper(context, dispatch)(el)
+    var pass = buildPass(context, dispatch, states)
+    var newTree = pass.convert(el)
     var delta = diff(tree, newTree)
     rootNode = patch(rootNode, delta)
     tree = newTree
@@ -23,13 +26,21 @@ function createRenderer (rootEl, dispatch) {
 }
 
 /*
- * Converts a vnode (`element()` output) to a virtual hyperscript element.
- * This is curried to keep the `context` and `dispatch` alive recursively.
- * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
+ * A rendering pass.
  */
 
-function toHyper (context, dispatch) {
-  return function convert (el) {
+function buildPass (context, dispatch, states) {
+  const stateChanges = {}
+  const pass = { convert, stateChanges }
+  return pass
+
+  /*
+   * Converts a vnode (`element()` output) to a virtual hyperscript element.
+   * This is curried to keep the `context` and `dispatch` alive recursively.
+   * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
+   */
+
+  function convert (el) {
     if (typeof el === 'string') return el
     if (typeof el === 'number') return '' + el
     if (typeof el === 'undefined' || el === null) return
@@ -40,10 +51,11 @@ function toHyper (context, dispatch) {
 
     // Defer to Widget if it's a component
     if (typeof tag === 'object') {
+      if (!tag.render) throw new Error('no render() in component')
       return new Widget(
         { component: tag, props, children },
         { context, dispatch },
-        convert)
+        pass)
     }
 
     return h(tag, props, children.map(convert))
@@ -55,12 +67,11 @@ function toHyper (context, dispatch) {
  * We need to do this to hook lifecycle hooks properly.
  */
 
-function Widget ({ component, props, children }, model, convert) {
+function Widget ({ component, props, children }, model, pass) {
+  if (!props) props = {}
   this.component = component
-  this.props = props || {}
-  this.children = children
-  this.convert = convert
-  this.model = { props: { ...this.props, children }, ...model }
+  this.pass = pass
+  this.model = { props: { ...props, children }, ...model }
 }
 
 Widget.prototype.type = 'Widget'
@@ -71,17 +82,18 @@ Widget.prototype.type = 'Widget'
 
 Widget.prototype.init = function () {
   const id = getId()
-
-  // Trigger
-  this.trigger('onCreate', { _dekuId: id })
+  this.model.path = id
 
   // Create the virtual-dom tree
-  const el = this.component.render(this.model)
-  this.tree = this.convert(el) // virtual-dom vnode
+  const el = this.trigger('render')
+  this.tree = this.pass.convert(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
+  this.rootNode._dekuId = id
+
+  // Trigger
+  this.trigger('onCreate')
 
   // Export
-  this.rootNode._dekuId = id
   return this.rootNode
 }
 
@@ -90,15 +102,17 @@ Widget.prototype.init = function () {
  */
 
 Widget.prototype.update = function (previous, domNode) {
-  this.trigger('onUpdate', domNode)
+  this.model.path = domNode._dekuId
 
   // Re-render the component
-  const el = this.component.render(this.model)
-  this.tree = this.convert(el)
+  const el = this.trigger('render')
+  this.tree = this.pass.convert(el)
 
-  // Patch the DOM nodne
+  // Patch the DOM node
   var delta = diff(previous.tree, this.tree)
   this.rootNode = patch(previous.rootNode, delta)
+
+  this.trigger('onUpdate')
 }
 
 /*
@@ -106,18 +120,17 @@ Widget.prototype.update = function (previous, domNode) {
  */
 
 Widget.prototype.destroy = function (domNode) {
-  this.trigger('onRemove', domNode)
+  this.model.path = domNode._dekuId
+  this.trigger('onRemove')
 }
 
 /*
  * Trigger a Component lifecycle event
  */
 
-Widget.prototype.trigger = function (hook, domNode) {
-  if (this.component[hook]) {
-    this.component[hook](
-      { ...this.model, path: domNode._dekuId })
-  }
+Widget.prototype.trigger = function (hook, id) {
+  if (!this.component[hook]) return
+  return this.component[hook](this.model)
 }
 
 module.exports = { createRenderer }
