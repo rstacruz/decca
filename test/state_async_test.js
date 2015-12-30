@@ -4,7 +4,7 @@ import { element, dom } from '../src'
 import test from 'tape'
 import r from './support/r'
 
-test('state persistence over async', (t) => {
+test.only('state persistence over async', (t) => {
   t.plan(4)
 
   const App = {
@@ -31,5 +31,5 @@ test('state persistence over async', (t) => {
       '<div>created: yes</div>',
       'state was eventually changed')
     t.end()
-  })
+  }, 50)
 })

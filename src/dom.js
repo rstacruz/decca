@@ -4,6 +4,7 @@ import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
 import fixProps from './fix_props'
 import getId from './id'
+import debounce from 'debounce'
 
 /*
  * Creates a renderer function. Rteurns a function `render(vnode, [context])`
@@ -41,7 +42,7 @@ function createRenderer (rootEl, dispatch) {
     if (!Object.keys(changes).length) return
     Object.keys(changes).forEach((path) => {
       if (!states[path]) states[path] = {}
-      states[path] = { ...states[path], ...changes[path] } 
+      states[path] = { ...states[path], ...changes[path] }
     })
     return true
   }
@@ -67,6 +68,12 @@ function buildPass (context, dispatch, states, propagateState) {
   let working = true
   let onChange = undefined
   const pass = { convert, setState, propagateState, states, flush }
+
+  let updateDebounce = debounce(() => {
+    if (onChange) onChange(stateChanges)
+    stateChanges = {}
+  }, 20)
+
   return pass
 
   /*
@@ -113,11 +120,7 @@ function buildPass (context, dispatch, states, propagateState) {
   function setState (path, state = {}) {
     if (!stateChanges[path]) stateChanges[path] = {}
     stateChanges[path] = { ...stateChanges[path], ...state }
-    if (onChange) {
-      onChange(stateChanges)
-      stateChanges = {}
-      // TODO trigger rerender only one per tick
-    }
+    if (!working) updateDebounce()
   }
 }
 
