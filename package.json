@@ -30,6 +30,7 @@
     "babel-plugin-transform-react-jsx": "6.3.13",
     "babel-preset-es2015": "6.3.13",
     "babel-preset-stage-0": "6.3.13",
+    "babel-register": "6.3.13",
     "babelify": "7.2.0",
     "deku": "2.0.0-rc6",
     "hihat": "2.5.0",
