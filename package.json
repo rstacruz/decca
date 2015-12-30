@@ -63,7 +63,7 @@
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
     "test": "hihat test/index.js -- -t babelify --debug -p tap-dev-tool",
-    "test:watch": "watchify -v --bare --no-bundle-external -t babelify test/_jsdom.js -o 'node | tap-spec'",
+    "test:watch": "env FORCE_COLOR=1 watchify -v --bare --node --no-bundle-external -t babelify test/_jsdom.js -o 'node | tap-spec'",
     "test:jsdom": "babel-node test/_jsdom.js | tap-spec",
     "test:lint": "standard -v src/*.js",
     "watch": "babel -w src --out-dir lib"
