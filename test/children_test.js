@@ -1,6 +1,8 @@
-'use strict'
-/** @jsx element */
-import { element, dom } from '../src'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/react-in-jsx-scope */
+
+import { element } from '../src'
 import test from 'tape'
 import r from './support/r'
 

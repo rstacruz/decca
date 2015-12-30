@@ -35,6 +35,7 @@
     "deku": "2.0.0-rc6",
     "hihat": "2.5.0",
     "jsdom": "7.2.2",
+    "standard": "5.4.1",
     "tap-dev-tool": "1.3.0",
     "tap-spec": "4.1.1",
     "tape": "4.4.0"
@@ -63,6 +64,7 @@
     "prepublish": "npm run build",
     "test": "hihat test/index.js -- -t babelify --debug -p tap-dev-tool",
     "test:jsdom": "babel-node test/_jsdom.js | tap-spec",
+    "test:lint": "standard -v src/*.js",
     "watch": "babel -w src --out-dir lib"
   }
 }

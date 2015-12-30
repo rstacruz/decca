@@ -1,4 +1,3 @@
-import h from 'virtual-dom/h'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
@@ -41,18 +40,18 @@ function createRenderer (rootEl, dispatch) {
    */
 
   function update (el, pass) {
-      if (!tree) {
-        // Build initial tree
-        tree = pass.convert(el)
-        rootNode = createElement(tree)
-        rootEl.appendChild(rootNode)
-      } else {
-        // Build diff
-        var newTree = pass.convert(el)
-        var delta = diff(tree, newTree)
-        rootNode = patch(rootNode, delta)
-        tree = newTree
-      }
+    if (!tree) {
+      // Build initial tree
+      tree = pass.convert(el)
+      rootNode = createElement(tree)
+      rootEl.appendChild(rootNode)
+    } else {
+      // Build diff
+      var newTree = pass.convert(el)
+      var delta = diff(tree, newTree)
+      rootNode = patch(rootNode, delta)
+      tree = newTree
+    }
   }
 
   /*

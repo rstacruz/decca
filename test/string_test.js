@@ -1,6 +1,9 @@
-'use strict'
-/** @jsx element */
-import { element, string } from '../src'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/react-in-jsx-scope */
+
+import { element } from '../src'
+import { string } from '../src'
 import test from 'tape'
 
 test('string: basic non-component', (t) => {

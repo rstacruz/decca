@@ -1,6 +1,8 @@
-'use strict'
-/** @jsx element */
-import { element, dom } from '../src'
+/* eslint-disable react/prop-types */
+/* eslint-disable react/no-unknown-property */
+/* eslint-disable react/react-in-jsx-scope */
+
+import { element } from '../src'
 import test from 'tape'
 import r from './support/r'
 
@@ -17,7 +19,7 @@ test('state change', (t) => {
     }
   }
 
-  const { div, render } = r(<App />)
+  const { div } = r(<App />)
   t.equal(
     div.innerHTML,
     '<div>created: yes</div>',
@@ -41,7 +43,7 @@ test('initialState', (t) => {
     }
   }
 
-  const { div, render } = r(<App />, 'CTX')
+  const { div } = r(<App />, 'CTX')
   t.equal(
     div.innerHTML,
     '<div>created: yes</div>',
@@ -59,7 +61,7 @@ test('without initialState', (t) => {
     }
   }
 
-  const { div, render } = r(<App />)
+  const { div } = r(<App />)
   t.equal(div.innerHTML, '<div></div>', 'rendered')
   t.end()
 })
@@ -84,7 +86,7 @@ test('initialState over nested', (t) => {
     render: () => <div><Button /></div>
   }
 
-  const { div, render } = r(<App />, 'CTX')
+  const { div } = r(<App />, 'CTX')
   t.equal(
     div.innerHTML,
     '<div><div>created: yes</div></div>',
@@ -141,7 +143,7 @@ test('state stacking', (t) => {
     }
   }
 
-  const { div, render } = r(<App />)
+  const { div } = r(<App />)
   t.end()
 })
 

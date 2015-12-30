@@ -3,6 +3,7 @@ node_js:
 - "4.1"
 script:
 - npm run test:jsdom
+- npm run test:lint
 cache:
   directories:
   - node_modules
