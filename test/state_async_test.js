@@ -4,7 +4,7 @@ import { element, dom } from '../src'
 import test from 'tape'
 import r from './support/r'
 
-test.only('state persistence over async', (t) => {
+test('state persistence over async', (t) => {
   t.plan(4)
 
   const App = {
