@@ -43,6 +43,7 @@ function createRenderer (rootEl, dispatch) {
       // Build initial tree
       tree = pass.build(el)
       rootNode = createElement(tree)
+      rootEl.innerHTML = ''
       rootEl.appendChild(rootNode)
     } else {
       // Build diff
