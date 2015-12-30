@@ -1,6 +1,8 @@
+'use strict'
 /** @jsx element */
 import { element, dom } from '../src'
 import test from 'tape'
+import r from './support/r'
 
 test('basic non-component', (t) => {
   const { div } = r(<div>hello</div>)
@@ -108,25 +110,6 @@ test('onUpdate', (t) => {
   t.end()
 })
 
-test('path onUpdate', (t) => {
-  t.plan(2)
-
-  var lastPath
-  const App = {
-    onCreate ({ path }) { lastPath = path },
-    onUpdate ({ path }) {
-      t.equal(path, lastPath, 'path is the same onCreate and onUpdate')
-      t.ok(path, 'has a path onUpdate')
-    },
-    render ({ context }) { return <div></div> }
-  }
-
-  const { div, render } = r(<App />)
-  render(<App />)
-  t.end()
-})
-
-
 test('onRemove', (t) => {
   t.plan(3)
   const App = {
@@ -170,15 +153,3 @@ test('onCreate', (t) => {
   t.equal(div.innerHTML, '<div></div>', 'renders correctly')
   t.end()
 })
-
-
-/*
- * Helper
- */
-
-function r (...args) {
-  const div = document.createElement('div')
-  const render = dom.createRenderer(div)
-  render(...args)
-  return { div, render }
-}

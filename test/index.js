@@ -1,4 +1,5 @@
 require('./basic_test')
+require('./path_test')
 
 // todo:
 // x dom.createRenderer(el, [dispatcher])
@@ -10,7 +11,6 @@ require('./basic_test')
 // x context
 // x events
 // x onUpdate
-//   path
-//   onCreate
-//   onRemove
-//   string rendering
+// x path
+// x onCreate
+// x onRemove

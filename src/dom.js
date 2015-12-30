@@ -46,41 +46,51 @@ function toHyper (context, dispatch) {
 
   // Render a component
   function convertComponent (component, props = {}, children) {
-    const model = { props: { ...props, children }, context, dispatch }
-    const el = component.render(model)
+    return new Widget(component, props, children, context, dispatch, convert)
+  }
+}
 
-    // Inject a virtual-dom lifecycle hook
-    if (!el.props) el.props = {}
-    el.props['deku-hook'] = new Hook(component, model)
+function Widget (component, props, children, context, dispatch, convert) {
+  this.component = component
+  this.props = props
+  this.children = children
+  this.convert = convert
+  this.model = { props: this.props, context, dispatch } // TODO children
+}
 
-    return convert(el)
+Widget.prototype.type = 'Widget'
+
+Widget.prototype.init = function () {
+  const id = getId()
+  this.model.path = id
+
+  if (this.component.onCreate) {
+    this.component.onCreate(this.model)
+  }
+
+  this.el = this.component.render(this.model)
+  this.tree = this.convert(this.el) // virtual-dom vnode
+  this.rootNode = createElement(this.tree) // DOM element
+  this.rootNode._dekuId = id
+  return this.rootNode
+}
+
+Widget.prototype.update = function (previous, domNode) {
+  this.model.path = domNode._dekuId
+  if (this.component.onUpdate) {
+    this.component.onUpdate(this.model)
+  }
+  this.el = this.component.render(this.model)
+  this.tree = this.convert(this.el)
+  var delta = diff(previous.tree, this.tree)
+  this.rootNode = patch(previous.rootNode, delta)
+}
+
+Widget.prototype.destroy = function (domNode) {
+  this.model.path = domNode._dekuId
+  if (this.component.onRemove) {
+    this.component.onRemove(this.model)
   }
 }
 
 module.exports = { createRenderer }
-
-/*
- * Life cycle hook; called by virtual-dom
- */
-
-function Hook (component, model) {
-  this.component = component
-  this.model = model
-}
-
-Hook.prototype.hook = function (domEl, prop, previous) {
-  if (this.component.onCreate && !previous) {
-    domEl._dekuId = getId()
-    this.component.onCreate({ ...this.model, path: domEl._dekuId })
-  }
-  if (this.component.onUpdate && previous) {
-    // absorb the id
-    this.component.onUpdate({ ...this.model, path: domEl._dekuId })
-  }
-}
-
-Hook.prototype.unhook = function (domEl, prop, previous) {
-  if (this.component.onRemove) {
-    this.component.onRemove({ ...this.model, path: domEl._dekuId })
-  }
-}
