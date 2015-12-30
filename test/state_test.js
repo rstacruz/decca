@@ -121,3 +121,27 @@ test('state persistence', (t) => {
     t.end()
   })
 })
+
+test('state stacking', (t) => {
+  t.plan(3)
+  var renders = 1
+
+  const App = {
+    initialState: () => ({ initial: true }),
+    onCreate: ({ setState }) => { setState({ created: true }) },
+    render ({ state }) {
+      if (renders === 1) {
+        t.equal(state.initial, true, 'initialState available on render')
+        renders++
+      } else {
+        t.equal(state.initial, true, 'initialState persists on next render')
+        t.equal(state.created, true, 'state stacked')
+      }
+      return <div />
+    }
+  }
+
+  const { div, render } = r(<App />)
+  t.end()
+})
+

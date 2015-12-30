@@ -20,14 +20,13 @@ function createRenderer (rootEl, dispatch) {
 
   function render (el, context) {
     while (true) {
-      var pass = buildPass(context, dispatch, states)
+      var pass = buildPass(context, dispatch, states, propagateState)
       var newTree = pass.convert(el)
       var delta = diff(tree, newTree)
       rootNode = patch(rootNode, delta)
       tree = newTree
 
-      if (!pass.end(propagateState)) break
-      // if (!propagateState(pass.stateChanges)) break
+      if (!pass.flush(propagateState)) break
     }
   }
 
@@ -47,13 +46,20 @@ function createRenderer (rootEl, dispatch) {
  *
  * - keeping aware of `context` and `state` to be passed down to Components
  * - queue up `stateChanges` so that it can be picked up later (by `render()`)
+ *
+ *     pass = buildPass(...)
+ *     pass.convert(el)             // render a component/node
+ *     pass.flush(propagateState)   // call propagateState on state changes
+ *                                  // returns whatever propagateState returns
+ *                                  // also stops listening
+ *                                  // also calls propagateState in the future
  */
 
-function buildPass (context, dispatch, states) {
+function buildPass (context, dispatch, states, propagateState) {
   let stateChanges = {}
   let working = true
   let onChange = undefined
-  const pass = { convert, setState, states, end }
+  const pass = { convert, setState, propagateState, states, flush }
   return pass
 
   /*
@@ -83,7 +89,11 @@ function buildPass (context, dispatch, states) {
     return h(tag, fixProps(props), children.map(convert))
   }
 
-  function end (onChange_) {
+  /*
+   * Stops collecting state changes
+   */
+
+  function flush (onChange_) {
     working = false
     onChange = onChange_
     return onChange(stateChanges)
@@ -99,7 +109,7 @@ function buildPass (context, dispatch, states) {
     if (onChange) {
       onChange(stateChanges)
       stateChanges = {}
-      // trigger rerender, only one per tick
+      // TODO trigger rerender only one per tick
     }
   }
 }
@@ -127,6 +137,9 @@ Widget.prototype.type = 'Widget'
 Widget.prototype.init = function () {
   const id = this.setId(getId())
   this.model.state = this.trigger('initialState')
+
+  // Silently propagate it, don't trigger a re-render
+  this.pass.propagateState({ [id]: this.model.state })
 
   // Create the virtual-dom tree
   const el = this.component.render(this.model)
