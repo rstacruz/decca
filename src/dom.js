@@ -75,3 +75,10 @@ Hook.prototype.hook = function (domEl, prop, previous) {
     this.component.onUpdate(this.model)
   }
 }
+
+Hook.prototype.unhook = function (domEl, prop, previous) {
+  console.log('==> unhook')
+  if (this.component.onRemove) {
+    this.component.onRemove(this.model)
+  }
+}

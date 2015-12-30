@@ -109,7 +109,7 @@ test('onUpdate', (t) => {
   t.end()
 })
 
-test.skip('onRemove', (t) => {
+test('onRemove', (t) => {
   t.plan(2)
   const App = {
     onRemove ({ context }) { t.equal(context, 'CTX') },
