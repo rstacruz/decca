@@ -1,8 +1,8 @@
 {
   "name": "not-deku",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "Render interfaces using pure functions and virtual DOM, kinda",
+  "main": "lib/index.js",
   "scripts": {
     "build": "babel src --out-dir lib",
     "watch": "babel -w src --out-dir lib",

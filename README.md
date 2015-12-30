@@ -6,6 +6,8 @@ An implementation of [deku] in <100 lines using [virtual-dom]. Implements most o
 
 **NB:** made as a proof-of-concept. Don't use.
 
+[![Status](https://travis-ci.org/rstacruz/not-deku.svg?branch=master)](https://travis-ci.org/rstacruz/not-deku "See test builds")
+
 ```js
 /** @jsx element */
 import { dom, element } from 'not-deku'
@@ -46,3 +48,21 @@ render(<App />)
 
 [deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
+
+## Acknowledgements
+
+Obviously taken blatant inspiration from [deku] by the amazing [Anthony Short}.
+
+[Anthony Short]: https://github.com/anthonyshort
+
+## Thanks
+
+**not-deku** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
+
+> [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
+> GitHub [@rstacruz](https://github.com/rstacruz) &nbsp;&middot;&nbsp;
+> Twitter [@rstacruz](https://twitter.com/rstacruz)
+
+[MIT]: http://mit-license.org/
+[contributors]: http://github.com/rstacruz/not-deku/contributors
