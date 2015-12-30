@@ -4,8 +4,9 @@ require('./basic_test')
 // x properties
 // x components
 // x context
-//   events
-//   onUpdate
+// x events
+// x onUpdate
+//   path
 //   onCreate
 //   onRemove
 //   string rendering

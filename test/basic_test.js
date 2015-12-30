@@ -90,6 +90,63 @@ test('events', (t) => {
   t.end()
 })
 
+test('onUpdate', (t) => {
+  t.plan(2)
+  const App = {
+    onUpdate ({ context }) {
+      t.equal(context, 'CTX')
+    },
+    render ({ context }) {
+      return <div></div>
+    }
+  }
+
+  const { div } = r(<App />, 'CTX')
+  t.equal(div.innerHTML, '<div></div>')
+  t.end()
+})
+
+test('onUpdate', (t) => {
+  t.plan(3)
+  const App = {
+    onUpdate ({ context }) {
+      t.equal(context, 'CTX')
+    },
+    render ({ context }) {
+      return <div></div>
+    }
+  }
+
+  const { div, render } = r(<App />, 'CTX')
+  render(<App />, 'CTX')
+  t.equal(div.innerHTML, '<div></div>')
+  t.end()
+})
+
+
+test.skip('onRemove', (t) => {
+  t.plan(2)
+  const App = {
+    onRemove ({ context }) { t.equal(context, 'CTX') },
+    render ({ context }) { return <div></div> }
+  }
+
+  const { div, render } = r(<App />, 'CTX')
+  render(<span></span>)
+  t.equal(div.innerHTML, '<span></span>')
+  t.end()
+})
+
+test('onRemove skipping', (t) => {
+  const App = {
+    onRemove ({ context }) { t.fail('not supposed to call onRemove') },
+    render ({ context }) { return <div></div> }
+  }
+
+  const { div } = r(<App />, 'CTX')
+  t.equal(div.innerHTML, '<div></div>')
+  t.end()
+})
 
 /*
  * Helper
