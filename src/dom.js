@@ -26,8 +26,15 @@ function createRenderer (rootEl, dispatch) {
       rootNode = patch(rootNode, delta)
       tree = newTree
 
-      if (!pass.flush(propagateState)) break
+      var stateChanges = pass.flush(setStateAsync.bind(this, el, context))
+      if (!propagateState(stateChanges)) break
     }
+  }
+
+  // Update state after the tree has been updated
+  function setStateAsync (el, context, changes) {
+    propagateState(changes)
+    render(el, context)
   }
 
   function propagateState (changes) {
@@ -96,7 +103,7 @@ function buildPass (context, dispatch, states, propagateState) {
   function flush (onChange_) {
     working = false
     onChange = onChange_
-    return onChange(stateChanges)
+    return stateChanges
   }
 
   /*

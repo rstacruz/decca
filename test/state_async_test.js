@@ -4,7 +4,7 @@ import { element, dom } from '../src'
 import test from 'tape'
 import r from './support/r'
 
-test('state persistence', (t) => {
+test('state persistence over async', (t) => {
   t.plan(4)
 
   const App = {
@@ -26,7 +26,6 @@ test('state persistence', (t) => {
     'initial state is empty')
 
   setTimeout(() => {
-    render(<App />)
     t.equal(
       div.innerHTML,
       '<div>created: yes</div>',
