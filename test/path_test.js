@@ -21,16 +21,3 @@ test('path onUpdate', (t) => {
   render(<App />)
   t.end()
 })
-
-test('path onUpdate', (t) => {
-  const App = {
-    render ({ context, path }) {
-      console.log('==>', path)
-      return <div></div>
-    }
-  }
-
-  const { div, render } = r(<App />)
-  render(<App />)
-  t.end()
-})

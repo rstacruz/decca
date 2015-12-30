@@ -29,9 +29,7 @@ function createRenderer (rootEl, dispatch) {
  */
 
 function toHyper (context, dispatch) {
-  return convert
-  
-  function convert (el) {
+  return function convert (el) {
     if (typeof el === 'string') return el
     if (typeof el === 'number') return '' + el
     if (typeof el === 'undefined' || el === null) return
@@ -40,13 +38,15 @@ function toHyper (context, dispatch) {
 
     const { tag, props, children } = el
 
-    if (typeof tag === 'object') return convertComponent(tag, props, children)
-    return h(tag, props, children.map(convert))
-  }
+    // Defer to Widget if it's a component
+    if (typeof tag === 'object') {
+      return new Widget(
+        { component: tag, props, children },
+        { context, dispatch },
+        convert)
+    }
 
-  // Render a component
-  function convertComponent (component, props = {}, children) {
-    return new Widget(component, props, children, { context, dispatch }, convert)
+    return h(tag, props, children.map(convert))
   }
 }
 
@@ -55,7 +55,7 @@ function toHyper (context, dispatch) {
  * We need to do this to hook lifecycle hooks properly.
  */
 
-function Widget (component, props, children, model, convert) {
+function Widget ({ component, props, children }, model, convert) {
   this.component = component
   this.props = props || {}
   this.children = children
@@ -65,37 +65,58 @@ function Widget (component, props, children, model, convert) {
 
 Widget.prototype.type = 'Widget'
 
+/*
+ * On widget creation, do the virtual-dom createElement() dance
+ */
+
 Widget.prototype.init = function () {
   const id = getId()
-  this.model.path = id
 
-  if (this.component.onCreate) {
-    this.component.onCreate(this.model)
-  }
+  // Trigger
+  this.trigger('onCreate', { _dekuId: id })
 
+  // Create the virtual-dom tree
   const el = this.component.render(this.model)
   this.tree = this.convert(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
+
+  // Export
   this.rootNode._dekuId = id
   return this.rootNode
 }
 
+/*
+ * On update, diff with the previous (also a Widget)
+ */
+
 Widget.prototype.update = function (previous, domNode) {
-  this.model.path = domNode._dekuId
-  if (this.component.onUpdate) {
-    this.component.onUpdate(this.model)
-  }
+  this.trigger('onUpdate', domNode)
+
+  // Re-render the component
   const el = this.component.render(this.model)
   this.tree = this.convert(el)
 
+  // Patch the DOM nodne
   var delta = diff(previous.tree, this.tree)
   this.rootNode = patch(previous.rootNode, delta)
 }
 
+/*
+ * On destroy, trigger the onRemove hook
+ */
+
 Widget.prototype.destroy = function (domNode) {
-  this.model.path = domNode._dekuId
-  if (this.component.onRemove) {
-    this.component.onRemove(this.model)
+  this.trigger('onRemove', domNode)
+}
+
+/*
+ * Trigger a Component lifecycle event
+ */
+
+Widget.prototype.trigger = function (hook, domNode) {
+  if (this.component[hook]) {
+    this.component[hook](
+      { ...this.model, path: domNode._dekuId })
   }
 }
 
