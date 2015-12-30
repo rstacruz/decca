@@ -37,11 +37,7 @@ render(<App />)
 - Lifecycle hooks `onCreate` and `onUpdate` and `onRemove`
 - DOM events
 - Redux integration (`context`, `dispatch`, etc)
-- everything else that's not in the list below
-
-### What's not
-
-- `string.render()` - string rendering
+- everything else, really
 
 ### What's here that's not in deku v2
 
