@@ -2,7 +2,7 @@
 
 > Render interfaces using pure functions and virtual DOM
 
-An implementation of [deku] in <100 lines using [virtual-dom]. Implements most of the deku v2 API. See [deku]'s documentation on how to use this.
+An implementation of [deku] in <200 lines using [virtual-dom]. Implements most of the deku v2 API. See [deku]'s documentation on how to use this.
 
 **NB:** made as a proof-of-concept. Don't use.
 
