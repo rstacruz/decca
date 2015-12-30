@@ -2,9 +2,9 @@
 
 > Render interfaces using pure functions and virtual DOM
 
-An implementation of [deku] in <200 lines using [virtual-dom]. Implements most of the deku v2 API. See [deku]'s documentation on how to use this.
+An implementation of [deku] in <200 lines using [virtual-dom]. Implements the deku v2 API.
 
-**NB:** made as a proof-of-concept. Don't use.
+**NB:** _This package is made as a proof-of-concept. While it's fully functional, it's not likely to be supported in the future._
 
 [![Status](https://travis-ci.org/rstacruz/not-deku.svg?branch=master)](https://travis-ci.org/rstacruz/not-deku "See test builds")
 
@@ -30,26 +30,24 @@ render = dom.createRenderer(document.body)
 render(<App />)
 ```
 
-## What's here
+## Usage
 
-- `dom.createRenderer()` - DOM rendering
-- `element()` - virtual element creation
-- Lifecycle hooks `onCreate` and `onUpdate` and `onRemove`
-- DOM events
-- Redux integration (`context`, `dispatch`, etc)
-- everything else, really
+See [deku]'s documentation. `not-deku` takes the same API as deku (as of v2.0.0-rc6, which isn't complete yet).
 
-### What's here that's not in deku v2
+## Extra features
 
-- `setState`
+These features are not part of deku, but are implemented here to prototype API additions to deku:
 
-[deku]: https://dekujs.github.io/deku
-[virtual-dom]: https://www.npmjs.com/package/virtual-dom
+- not-deku implements `setState`, which gets passed onto `render()` and other component [lifecycle hooks].
+- Components can have an `initialState` function.
 
 ## Acknowledgements
 
 Obviously taken blatant inspiration from [deku] by the amazing [Anthony Short].
 
+[deku]: https://dekujs.github.io/deku
+[virtual-dom]: https://www.npmjs.com/package/virtual-dom
+[lifecycle hooks]: http://dekujs.github.io/deku/docs/advanced/lifecycle.html
 [Anthony Short]: https://github.com/anthonyshort
 
 ## Thanks
