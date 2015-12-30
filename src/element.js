@@ -1,12 +1,12 @@
-// import assign from 'object-assign'
+/*
+ * Returns a vnode to be consumed by render()
+ */
 
 function element (tag, props, ...children) {
   if (props && props.class) {
     props.className = props.class
-    // props = assign({}, props, { className: props.class })
   }
 
-  // todo: onClick -> onclick
   return { tag, props, children }
 }
 

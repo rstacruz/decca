@@ -4,6 +4,11 @@ import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
 import assign from 'object-assign'
 
+/*
+ * Creates a renderer function. Rteurns a function `render(vnode, [context])`
+ * where `vnode` is the output of `element()`.
+ */
+
 function createRenderer (el, dispatch) {
   var tree = h('noscript')
   var rootNode = createElement(tree)
@@ -18,7 +23,8 @@ function createRenderer (el, dispatch) {
 }
 
 /*
- * Converts an element() to a virtual hyperscript element.
+ * Converts a vnode (`element()` output) to a virtual hyperscript element.
+ * This is curried to keep the `context` and `dispatch` alive recursively.
  * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
  */
 
@@ -51,7 +57,7 @@ function toHyper (context, dispatch) {
 module.exports = { createRenderer }
 
 /*
- * Life cycle hook
+ * Life cycle hook; called by virtual-dom
  */
 
 function Hook (component, model) {
