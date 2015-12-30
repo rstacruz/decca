@@ -46,16 +46,21 @@ function toHyper (context, dispatch) {
 
   // Render a component
   function convertComponent (component, props = {}, children) {
-    return new Widget(component, props, children, context, dispatch, convert)
+    return new Widget(component, props, children, { context, dispatch }, convert)
   }
 }
 
-function Widget (component, props, children, context, dispatch, convert) {
+/*
+ * A widget that represents a component.
+ * We need to do this to hook lifecycle hooks properly.
+ */
+
+function Widget (component, props, children, model, convert) {
   this.component = component
-  this.props = props
+  this.props = props || {}
   this.children = children
   this.convert = convert
-  this.model = { props: this.props, context, dispatch } // TODO children
+  this.model = { props: { ...this.props, children }, ...model }
 }
 
 Widget.prototype.type = 'Widget'
@@ -68,8 +73,8 @@ Widget.prototype.init = function () {
     this.component.onCreate(this.model)
   }
 
-  this.el = this.component.render(this.model)
-  this.tree = this.convert(this.el) // virtual-dom vnode
+  const el = this.component.render(this.model)
+  this.tree = this.convert(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
   this.rootNode._dekuId = id
   return this.rootNode
@@ -80,8 +85,9 @@ Widget.prototype.update = function (previous, domNode) {
   if (this.component.onUpdate) {
     this.component.onUpdate(this.model)
   }
-  this.el = this.component.render(this.model)
-  this.tree = this.convert(this.el)
+  const el = this.component.render(this.model)
+  this.tree = this.convert(el)
+
   var delta = diff(previous.tree, this.tree)
   this.rootNode = patch(previous.rootNode, delta)
 }
