@@ -20,11 +20,13 @@ test('state change', (t) => {
   }
 
   const { div } = r(<App />)
-  t.equal(
-    div.innerHTML,
-    '<div>created: yes</div>',
-    'propagated state')
-  t.end()
+  setTimeout(() => {
+    t.equal(
+      div.innerHTML,
+      '<div>created: yes</div>',
+      'propagated state')
+    t.end()
+  }, 100)
 })
 
 test('initialState', (t) => {

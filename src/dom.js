@@ -1,16 +1,19 @@
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
+import debounce from './debounce'
 import buildPass from './pass'
 
 /*
- * Creates a renderer function. Rteurns a function `render(vnode, [context])`
+ * Creates a renderer function. Returns a function `render(vnode, [context])`
  * where `vnode` is the output of `element()`.
+ *
+ * Internally, it manages the state (exported via `render.states`).
  */
 
 function createRenderer (rootEl, dispatch) {
   var states = {}
-  var tree, rootNode
+  var tree, rootNode // virtual-dom states
   render.states = states // Export for debugging
 
   return render
@@ -21,33 +24,29 @@ function createRenderer (rootEl, dispatch) {
 
   function render (el, context) {
     while (true) {
-      var pass = buildPass(context, dispatch, states, commitState)
-
-      // Update DOM
-      update(el, pass)
-
-      // Collect state changes; any further changes will be async
-      var stateChanges = pass.flush()
-      pass.onchange(setStateAsync.bind(this, el, context))
-
-      // Save changes
-      if (!commitState(stateChanges)) break
+      var rerender = debounce(() => render(el, context), 20)
+      var pass = buildPass(context, dispatch, states, commitState, rerender)
+      update(pass, el) // Update DOM
+      if (rerender.calls === 0) break // no setState => continue
+      rerender.cancel() // loop again
     }
+    return true
   }
 
   /*
    * Internal: Updates the DOM tree with the given element `el`.
+   * Either builds the initial tree, or makes a patch on the existing tree.
    */
 
-  function update (el, pass) {
+  function update (pass, el) {
     if (!tree) {
       // Build initial tree
-      tree = pass.convert(el)
+      tree = pass.build(el)
       rootNode = createElement(tree)
       rootEl.appendChild(rootNode)
     } else {
       // Build diff
-      var newTree = pass.convert(el)
+      var newTree = pass.build(el)
       var delta = diff(tree, newTree)
       rootNode = patch(rootNode, delta)
       tree = newTree
@@ -55,25 +54,13 @@ function createRenderer (rootEl, dispatch) {
   }
 
   /*
-   * Internal: Update state after the tree has been updated.
-   */
-
-  function setStateAsync (el, context, changes) {
-    commitState(changes)
-    render(el, context)
-  }
-
-  /*
    * Internal: Save changes silently; will not trigger re-renders.
+   * Available in a `pass` object.
    * Used by Widget for `initialState()`.
    */
 
-  function commitState (changes) {
-    if (!Object.keys(changes).length) return
-    Object.keys(changes).forEach((path) => {
-      if (!states[path]) states[path] = {}
-      states[path] = { ...states[path], ...changes[path] }
-    })
+  function commitState (path, changes) {
+    states[path] = { ...(states[path] || {}), ...changes }
     return true
   }
 }

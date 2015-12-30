@@ -1,6 +1,5 @@
 import h from 'virtual-dom/h'
 import fixProps from './fix_props'
-import debounce from 'debounce'
 import Widget from './widget'
 
 module.exports = buildPass
@@ -10,34 +9,29 @@ module.exports = buildPass
  * This closure is responsible for:
  *
  * - keeping aware of `context` and `state` to be passed down to Components
- * - queue up `stateChanges` so that it can be picked up later (by `render()`)
  *
  *     pass = buildPass(...)
- *     pass.convert(el)             // render a component/node
- *     pass.flush()                 // returns batch changes, clears out the change queue
- *     pass.onchange(fn)            // from this point forward, call `fn` for any more state changes
- *     pass.commitState({...})      // silently make changes to the state
+ *     pass.build(el)               // render a component/node
+ *     pass.commitState({...})      // make changes to the state, silently
+ *     pass.setState({...})         // make changes to the state, rerender after
  *     pass.states                  // the component states mega-object
  */
 
-function buildPass (context, dispatch, states, commitState) {
-  let stateChanges = {}
+function buildPass (context, dispatch, states, commitState, rerender) {
   let working = true
-  let onChange
-  const pass = { convert, setState, states, flush, onchange }
+  const pass = { build, setState, commitState, states }
 
   /*
-   * Converts a vnode (`element()` output) to a virtual hyperscript element.
-   * This is curried to keep the `context` and `dispatch` alive recursively.
+   * Builds from a vnode (`element()` output) to a virtual hyperscript element.
+   * The `context` and `dispatch` is passed down recursively.
    * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
    */
 
-  function convert (el) {
+  function build (el) {
     if (typeof el === 'string') return el
     if (typeof el === 'number') return '' + el
     if (typeof el === 'undefined' || el === null) return
-    if (Array.isArray(el)) return el.map(convert)
-    if (typeof el !== 'object') throw new Error('wot m8')
+    if (Array.isArray(el)) return el.map(build)
 
     const { tag, props, children } = el
 
@@ -47,29 +41,10 @@ function buildPass (context, dispatch, states, commitState) {
       return new Widget(
         { component: tag, props, children },
         { context, dispatch },
-        pass, commitState)
+        pass)
     }
 
-    return h(tag, fixProps(props), children.map(convert))
-  }
-
-  /*
-   * Stops collecting state changes, returns whatever in the state change queue
-   */
-
-  function flush () {
-    const changes = stateChanges
-    stateChanges = {}
-    return changes
-  }
-
-  /*
-   * Set change handler
-   */
-
-  function onchange (onChange_) {
-    working = false
-    onChange = onChange_
+    return h(tag, fixProps(props), children.map(build))
   }
 
   /*
@@ -78,19 +53,9 @@ function buildPass (context, dispatch, states, commitState) {
    */
 
   function setState (componentId, state = {}) {
-    const id = componentId
-    if (!stateChanges[id]) stateChanges[id] = { ...state }
-    else stateChanges[id] = { ...stateChanges[id], ...state }
-    if (!working) updateLater()
+    commitState(componentId, state)
+    rerender()
   }
-
-  /*
-   * Updates queued up changes
-   */
-
-  let updateLater = debounce(() => {
-    if (onChange) onChange(flush())
-  }, 20)
 
   return pass
 }

@@ -22,7 +22,6 @@ function Widget ({ component, props, children }, model, pass, commitState) {
   if (!props) props = {}
   this.component = component
   this.pass = pass
-  this.commitState = commitState
 
   // The parameters to be passed onto the component's functions.
   this.model = { props: { ...props, children }, ...model }
@@ -39,11 +38,11 @@ Widget.prototype.init = function () {
   this.model.state = this.trigger('initialState')
 
   // Silently propagate it, don't trigger a re-render
-  this.commitState({ [id]: this.model.state })
+  this.pass.commitState(id, this.model.state)
 
   // Create the virtual-dom tree
   const el = this.component.render(this.model)
-  this.tree = this.pass.convert(el) // virtual-dom vnode
+  this.tree = this.pass.build(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
   this.rootNode._dekuId = id // so future update() and destroy() can see it
 
@@ -63,7 +62,7 @@ Widget.prototype.update = function (previous, domNode) {
 
   // Re-render the component
   const el = this.component.render(this.model)
-  this.tree = this.pass.convert(el)
+  this.tree = this.pass.build(el)
 
   // Patch the DOM node
   var delta = diff(previous.tree, this.tree)
