@@ -15,7 +15,7 @@ import { dom, element } from 'not-deku'
 const App = {
   render () {
     return <div>
-      Hello there, <button label={'Press me'}</button>
+      Hello there, <button label={'Press me'}></button>
     </div>
   }
 }
