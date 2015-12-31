@@ -38,7 +38,7 @@ render(<App />)
 Components can have the following functions:
 
 ```js
-function render(model)
+function render(model) => Element
 function onCreate(model)
 function onUpdate(model)
 function onRemove(model)
@@ -57,11 +57,11 @@ The following things are implemented:
 import { dom, element, string } from 'not-deku'
 
 // dom:
-dom.createRenderer(domElement: DOMNode, [dispatch]) => Function
-render(element: Element, [context]) => void
+dom.createRenderer(domElement: DOMNode, dispatch: ?any) => Function
+render(element: Element, context: ?any) => void
 
 // string:
-string.render(element, [context]) => string
+string.render(element, context: ?any) => string
 
 // element:
 // (best used with JSX)
