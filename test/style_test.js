@@ -8,6 +8,6 @@ import r from './support/r'
 
 test('string styles', (t) => {
   const { div } = r(<div style='color: blue'>hello</div>)
-  t.equal(div.innerHTML, '<div style="color: blue">hello</div>')
+  t.ok(/^<div style="color: blue;?">hello<\/div>$/.test(div.innerHTML), 'renders')
   t.end()
 })
