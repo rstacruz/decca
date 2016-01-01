@@ -45,6 +45,33 @@ A model is an Object passed onto every function in a component. It has these pro
 
 <!-- {table:.no-head} -->
 
+## Nesting components
+
+Well, yes, of course you can.
+
+```js
+/** @jsx element */
+import { dom, element } from 'decca'
+
+const App = {
+  render () {
+    return <div>
+      <button label={'Press me'}></button>
+    </div>
+  }
+}
+
+const Button = {
+  render ({ props }) {
+    return <button>{ label }</button>
+  }
+}
+
+// Render the app tree
+render = dom.createRenderer(document.body)
+render(<App />)
+```
+
 ## Further references
 
 See Deku's documentation:

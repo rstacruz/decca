@@ -18,23 +18,15 @@ Components are mere objects (not [classes!](https://facebook.github.io/react/doc
 /** @jsx element */
 import { dom, element } from 'decca'
 
-const App = {
-  render () {
-    return <div>
-      Hello there, <button label={'Press me'}></button>
-    </div>
-  }
-}
-
-const Button = {
+const Message = {
   render ({ props }) {
-    return <button>{ label }</button>
+    return <div>Hello there, {props.name}</div>
   }
 }
 
 // Render the app tree
-render = dom.createRenderer(document.body)
-render(<App />)
+const render = dom.createRenderer(document.body)
+render(<Message name='Rico S.' />)
 ```
 
 ## Usage
