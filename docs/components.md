@@ -1,6 +1,9 @@
 # Components
 
-Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function.
+Components are mere objects (not
+    [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass))
+that at least implement a `render()` function.  Here is a minimal example of a
+component:
 
 ```js
 /** @jsx element */
@@ -51,3 +54,9 @@ A model is an Object passed onto every function in a component. It has these pro
 - __context__ - the `context` object passed onto [render()](api.md#render)
 - __dispatch__ - the `dispatch` object passed onto [dom.createRenderer()](api.md#dom.createrenderer).
 - __path__ - a unique ID of the component instance.
+
+## Further references
+
+See Deku's documentation:
+
+- [Lifecycle hooks](https://dekujs.github.io/deku/docs/advanced/lifecycle.html)
