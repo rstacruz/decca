@@ -35,7 +35,7 @@ A model is an Object passed onto every function in a component. It has these pro
 
 | Property | Description
 |---|---
-| __props__ | An Object with the properties passed on the the component.
+| __props__ | An Object with the properties passed on the component.
 | __props.children__ | An array of children in a component.
 | __state__ | The component's state.
 | __setState__ | A function you can use to update state. Calling this will trigger a re-render. (Don't call this onCreate or onRender!)
