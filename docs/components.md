@@ -7,7 +7,7 @@ Components are mere objects (not [classes!](https://facebook.github.io/react/doc
 import { element } from 'decca'
 
 function render ({ props }) {
-    return <button>{ label }</button>
+    return <button>{ props.label }</button>
   }
 }
 
