@@ -26,25 +26,14 @@
         <div class="markdown-body"><h1 id="components">Components</h1>
 <p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function.</p>
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
-<span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
+<span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-const App = {
-  render () {
-    return &lt;div&gt;
-      Hello there, &lt;button label={<span class="pl-s">&apos;Press me&apos;</span>}&gt;&lt;/button&gt;
-    &lt;/div&gt;
-  }
-}
-
-const Button = {
-  render ({ props }) {
+function render ({ props }) {
     return &lt;button&gt;{ label }&lt;/button&gt;
   }
 }
 
-// Render the app tree
-render = dom.createRenderer(document.body)
-render(&lt;App /&gt;)
+module.exports = { render }
 </code></pre>
 <h2 id="component-api">Component API</h2>
 <p>Components can have the following functions:</p>
@@ -60,6 +49,25 @@ render(&lt;App /&gt;)
 <span class="pl-c">// ...initialState, state, and setState are non-standard</span>
 <span class="pl-c">// additions on top of the Deku v2 API.</span>
 </code></pre>
+<h2 id="lifecycle-hooks">Lifecycle hooks</h2>
+<ul>
+<li><strong>render</strong> - called every <a href="api.html#render">render()</a> pass.</li>
+<li><strong>onCreate</strong> - called after the first render().</li>
+<li><strong>onUpdate</strong> - called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</li>
+<li><strong>onRemove</strong> - called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</li>
+<li><strong>initialState</strong> - called before the first render(). The return value will be used as the first <code>state</code>.</li>
+</ul>
+<h2 id="model">Model</h2>
+<p>A model is an Object passed onto every function in a component. It has these properties:</p>
+<ul>
+<li><strong>props</strong> - an Object with the properties passed on the the component.</li>
+<li><strong>props.children</strong> - an array of children in a component.</li>
+<li><strong>state</strong> - the component&#x2019;s state.</li>
+<li><strong>setState</strong> - a function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</li>
+<li><strong>context</strong> - the <code>context</code> object passed onto <a href="api.html#render">render()</a></li>
+<li><strong>dispatch</strong> - the <code>dispatch</code> object passed onto <a href="api.html#dom.createrenderer">dom.createRenderer()</a>.</li>
+<li><strong>path</strong> - a unique ID of the component instance.</li>
+</ul>
 
         </div>
         <div class="footer-nav">
@@ -77,6 +85,10 @@ render(&lt;App /&gt;)
                 <li class="menu-item -level-2"><a href="components.html" class="link title -active link-components">Components</a>
                   <ul class="headings heading-list">
                     <li class="heading-item -depth-2"><a href="#component-api" class="hlink link-component-api">Component API</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#lifecycle-hooks" class="hlink link-lifecycle-hooks">Lifecycle hooks</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#model" class="hlink link-model">Model</a>
                     </li>
                   </ul>
                 </li>

@@ -48,6 +48,16 @@
                 "title": "Component API",
                 "depth": 2,
                 "id": "component-api"
+              },
+              {
+                "title": "Lifecycle hooks",
+                "depth": 2,
+                "id": "lifecycle-hooks"
+              },
+              {
+                "title": "Model",
+                "depth": 2,
+                "id": "model"
               }
             ]
           },
@@ -125,6 +135,16 @@
           "title": "Component API",
           "depth": 2,
           "id": "component-api"
+        },
+        {
+          "title": "Lifecycle hooks",
+          "depth": 2,
+          "id": "lifecycle-hooks"
+        },
+        {
+          "title": "Model",
+          "depth": 2,
+          "id": "model"
         }
       ]
     },
