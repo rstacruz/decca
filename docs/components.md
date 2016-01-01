@@ -16,13 +16,15 @@ module.exports = { render }
 
 ## Lifecycle hooks
 
+A component can have these funtions:
+
 | Function | Description
 |---|---
-| __render__ | called every [render()](api.md#render) pass.
-| __onCreate__ | called after the first render().
-| __onUpdate__ | called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.
-| __onRemove__ | called after the component is removed. Use this for side effects like cleaning up `document` DOM bindings.
-| __initialState__ | called before the first render(). The return value will be used as the first `state`.
+| __render()__ | called every [render()](api.md#render) pass.
+| __onCreate()__ | called after the first render().
+| __onUpdate()__ | called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.
+| __onRemove()__ | called after the component is removed. Use this for side effects like cleaning up `document` DOM bindings.
+| __initialState()__ | called before the first render(). The return value will be used as the first `state`.
 
 <!-- {table:.no-head} -->
 
