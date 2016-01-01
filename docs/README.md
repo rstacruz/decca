@@ -3,5 +3,5 @@
 * **[decca](../README.md)**
 * Documentation
   * [Components](components.md)
-  * [API](api.md)
+  * [API reference](api.md)
   * [JSX](jsx.md)

@@ -12,7 +12,7 @@ This is an implementation of [Deku] in <200 lines using [virtual-dom]. The full 
 
 ## Components
 
-Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function.
+Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
 
 ```js
 /** @jsx element */
@@ -37,11 +37,9 @@ render = dom.createRenderer(document.body)
 render(<App />)
 ```
 
-See [components](docs/components.md) documentation for more information.
-
 ## Usage
 
-Decca exposes a small [API](docs/api.md). Also see [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
+See the [API reference](docs/api.md) and [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
 
 ## Extra features
 
@@ -52,15 +50,13 @@ These features are not part of deku, but are implemented here to prototype API a
 
 ## Acknowledgements
 
-Obviously taken blatant inspiration from [Deku] by the amazing [Anthony Short] and friends.
+Decca takes blatant inspiration from [Deku] by the amazing [Anthony Short] and friends.
 
 [Deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
-[lifecycle hooks]: http://dekujs.github.io/deku/docs/advanced/lifecycle.html
+[lifecycle hooks]: docs/components.md
 [Anthony Short]: https://github.com/anthonyshort
 [React]: https://facebook.github.io/react/
-
-**NB:** _This package is made as a proof-of-concept. While it's fully functional, it's not likely to be supported in the future._
 
 ## Thanks
 

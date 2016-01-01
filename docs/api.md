@@ -1,4 +1,4 @@
-# API
+# API reference
 
 ```js
 import { dom, element, string } from 'decca'
@@ -39,7 +39,7 @@ The attributes `attrs` is an Object. It's passed onto the DOM except in some exc
 - If the attribute `key` is given, it'll be used as a key to optimize the virtual DOM rendering process.
 - If any of the attributes start with `on` (such as `onclick`), they will be treated as event handlers.
 
-This is compatible with JSX, and is typically used with [babel-plugin-transform-react-jsx] The result of this is typically consumed by [render()], or returned by a component's `render` function.
+This is compatible with [JSX]. The result of this is typically consumed by [render()], or returned by a component's `render` function.
 
 ## string.render
 
@@ -58,6 +58,6 @@ When components are rendered via `string.render`:
 [render()]: #render
 [element()]: #element
 [dom.createRenderer()]: #dom.createrenderer
-[babel-plugin-transform-react-jsx]: https://babeljs.io/docs/plugins/transform-react-jsx/
 [component]: components.md
 [components]: components.md
+[JSX]: jsx.md

@@ -6,3 +6,4 @@ See [Deku's documentation](http://dekujs.github.io/deku/docs/basics/JSX.html) fo
 
 [JSX]: https://facebook.github.io/jsx/
 [Babel]: https://babeljs.io/
+[babel-plugin-transform-react-jsx]: https://babeljs.io/docs/plugins/transform-react-jsx/
