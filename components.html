@@ -47,23 +47,23 @@ module.exports = { render }
 <tbody>
 <tr>
 <td><strong>render()</strong></td>
-<td>called every <a href="api.html#render">render()</a> pass.</td>
+<td>Called every <a href="api.html#render">render()</a> pass.</td>
 </tr>
 <tr>
 <td><strong>onCreate()</strong></td>
-<td>called after the first render().</td>
+<td>Called after the first render().</td>
 </tr>
 <tr>
 <td><strong>onUpdate()</strong></td>
-<td>called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
+<td>Called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
 </tr>
 <tr>
 <td><strong>onRemove()</strong></td>
-<td>called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</td>
+<td>Called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</td>
 </tr>
 <tr>
 <td><strong>initialState()</strong></td>
-<td>called before the first render(). The return value will be used as the first <code>state</code>.</td>
+<td>Called before the first render(). The return value will be used as the first <code>state</code>.</td>
 </tr>
 </tbody>
 </table>
@@ -79,31 +79,31 @@ module.exports = { render }
 <tbody>
 <tr>
 <td><strong>props</strong></td>
-<td>an Object with the properties passed on the the component.</td>
+<td>An Object with the properties passed on the the component.</td>
 </tr>
 <tr>
 <td><strong>props.children</strong></td>
-<td>an array of children in a component.</td>
+<td>An array of children in a component.</td>
 </tr>
 <tr>
 <td><strong>state</strong></td>
-<td>the component&#x2019;s state.</td>
+<td>The component&#x2019;s state.</td>
 </tr>
 <tr>
 <td><strong>setState</strong></td>
-<td>a function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</td>
+<td>A function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</td>
 </tr>
 <tr>
 <td><strong>context</strong></td>
-<td>the <code>context</code> object passed onto <a href="api.html#render">render()</a></td>
+<td>The <code>context</code> object passed onto <a href="api.html#render">render()</a></td>
 </tr>
 <tr>
 <td><strong>dispatch</strong></td>
-<td>the <code>dispatch</code> object passed onto <a href="api.html#dom.createrenderer">dom.createRenderer()</a>.</td>
+<td>The <code>dispatch</code> object passed onto <a href="api.html#dom.createrenderer">dom.createRenderer()</a>.</td>
 </tr>
 <tr>
 <td><strong>path</strong></td>
-<td>a unique ID of the component instance.</td>
+<td>A unique ID of the component instance.</td>
 </tr>
 </tbody>
 </table>
