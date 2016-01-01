@@ -1,7 +1,7 @@
 {
   "name": "not-deku",
   "description": "Render interfaces using pure functions and virtual DOM, kinda",
-  "version": "0.0.14",
+  "version": "0.0.15",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "babel": {
     "presets": [
@@ -24,6 +24,7 @@
     "url": "https://github.com/rstacruz/not-deku/issues"
   },
   "dependencies": {
+    "debounce": "1.0.0",
     "virtual-dom": "2.1.1"
   },
   "devDependencies": {

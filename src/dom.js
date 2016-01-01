@@ -1,7 +1,7 @@
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
-import debounce from './debounce'
+import debounce from 'debounce'
 import buildPass from './pass'
 
 /*
@@ -25,12 +25,9 @@ function createRenderer (rootEl, dispatch) {
 
   function render (el, context) {
     last = [ el, context ]
-    while (true) {
-      var rerender = debounce(() => render(...last), 20)
-      var pass = buildPass(context, dispatch, states, commitState, rerender)
-      update(pass, el) // Update DOM
-    }
-    return true
+    var rerender = debounce(() => render(...last), 0)
+    var pass = buildPass(context, dispatch, states, commitState, rerender)
+    update(pass, el) // Update DOM
   }
 
   /*
