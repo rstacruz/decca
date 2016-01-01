@@ -1,10 +1,12 @@
 # decca
 
-> Render interfaces using pure functions and virtual DOM
+<!-- {.massive-header.-with-tagline } -->
 
-decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for [Deku], which takes much inspiration from [React] and other functional-style view libraries.
+> Render UI via pure functions and virtual DOM
 
-This is an implementation of [Deku] in ~200 lines using [virtual-dom]. The full Deku v2 API is implemented, plus a little more.
+Decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for [Deku], which takes much inspiration from [React] and other functional-style view libraries.
+
+This is an implementation of [Deku] in <200 lines using [virtual-dom]. The full Deku v2 API is implemented, plus a little more.
 
 [![Status](https://travis-ci.org/rstacruz/decca.svg?branch=master)](https://travis-ci.org/rstacruz/decca "See test builds")
 
@@ -35,42 +37,11 @@ render = dom.createRenderer(document.body)
 render(<App />)
 ```
 
-Components can have the following functions:
-
-```js
-function render(model) => Element
-function onCreate(model)
-function onUpdate(model)
-function onRemove(model)
-function initialState(model)
-
-// Where model is:
-{ props, state, setState, context, dispatch, path }
-
-// ...initialState, state, and setState are non-standard
-// additions on top of the Deku v2 API.
-```
-
-The following things are implemented:
-
-```js
-import { dom, element, string } from 'decca'
-
-// dom:
-dom.createRenderer(domElement: DOMNode, dispatch: ?any) => Function
-render(element: Element, context: ?any) => void
-
-// string:
-string.render(element, context: ?any) => string
-
-// element:
-// (best used with JSX)
-element(tag: string|Component, attrs: ?Object, ...children: Array<Element>) => Element
-```
+See [components](docs/components.md) documentation for more information.
 
 ## Usage
 
-See [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
+Decca exposes a small [API](docs/api.md). Also see [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
 
 ## Extra features
 
