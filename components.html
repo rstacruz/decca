@@ -24,10 +24,7 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="components">Components</h1>
-<p>Components are mere objects (not
-<a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>)
-that at least implement a <code>render()</code> function.  Here is a minimal example of a
-component:</p>
+<p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function.  Here is a minimal example of a component:</p>
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
@@ -37,20 +34,6 @@ function render ({ props }) {
 }
 
 module.exports = { render }
-</code></pre>
-<h2 id="component-api">Component API</h2>
-<p>Components can have the following functions:</p>
-<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span>(<span class="hljs-params">model</span>) =&gt; <span class="pl-ent">Element</span>
-<span class="pl-ent">function</span> <span class="pl-ent">onCreate</span>(<span class="hljs-params">model</span>)
-<span class="pl-ent">function</span> <span class="pl-ent">onUpdate</span>(<span class="hljs-params">model</span>)
-<span class="pl-ent">function</span> <span class="pl-ent">onRemove</span>(<span class="hljs-params">model</span>)
-<span class="pl-ent">function</span> <span class="pl-ent">initialState</span>(<span class="hljs-params">model</span>)
-
-// <span class="pl-ent">Where</span> <span class="pl-ent">model</span> <span class="pl-ent">is</span>:
-</span>{ props, state, setState, context, dispatch, path }
-
-<span class="pl-c">// ...initialState, state, and setState are non-standard</span>
-<span class="pl-c">// additions on top of the Deku v2 API.</span>
 </code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
 <table class="no-head">
@@ -144,8 +127,6 @@ module.exports = { render }
               <ul class="submenu">
                 <li class="menu-item -level-2"><a href="components.html" class="link title -active link-components">Components</a>
                   <ul class="headings heading-list">
-                    <li class="heading-item -depth-2"><a href="#component-api" class="hlink link-component-api">Component API</a>
-                    </li>
                     <li class="heading-item -depth-2"><a href="#lifecycle-hooks" class="hlink link-lifecycle-hooks">Lifecycle hooks</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#model" class="hlink link-model">Model</a>

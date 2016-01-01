@@ -45,11 +45,6 @@
             "slug": "components",
             "headings": [
               {
-                "title": "Component API",
-                "depth": 2,
-                "id": "component-api"
-              },
-              {
                 "title": "Lifecycle hooks",
                 "depth": 2,
                 "id": "lifecycle-hooks"
@@ -142,11 +137,6 @@
       "title": "Components",
       "slug": "components",
       "headings": [
-        {
-          "title": "Component API",
-          "depth": 2,
-          "id": "component-api"
-        },
         {
           "title": "Lifecycle hooks",
           "depth": 2,
