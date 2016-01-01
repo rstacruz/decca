@@ -29,8 +29,6 @@ function createRenderer (rootEl, dispatch) {
       var rerender = debounce(() => render(...last), 20)
       var pass = buildPass(context, dispatch, states, commitState, rerender)
       update(pass, el) // Update DOM
-      if (rerender.calls === 0) break // no setState => continue
-      rerender.cancel() // loop again
     }
     return true
   }

@@ -11,7 +11,7 @@ test('state change', (t) => {
 
   const App = {
     onCreate ({ path, setState }) {
-      setState({ created: true })
+      setTimeout(() => { setState({ created: true }) })
     },
     render ({ context, state }) {
       t.pass('render called')
@@ -97,12 +97,12 @@ test('initialState over nested', (t) => {
 })
 
 test('state persistence', (t) => {
-  t.plan(6)
+  t.plan(5)
 
   const App = {
     onCreate ({ path, setState }) {
       t.pass('oncreate called')
-      setState({ created: true })
+      setTimeout(() => { setState({ created: true }) })
     },
     render ({ context, state }) {
       t.pass('render called')
@@ -111,10 +111,6 @@ test('state persistence', (t) => {
   }
 
   const { div, render } = r(<App />)
-  t.equal(
-    div.innerHTML,
-    '<div>created: yes</div>',
-    'propagated state')
 
   setTimeout(() => {
     render(<App />)
@@ -123,7 +119,7 @@ test('state persistence', (t) => {
       '<div>created: yes</div>',
       'state persistence')
     t.end()
-  })
+  }, 500)
 })
 
 test('state stacking', (t) => {
@@ -132,7 +128,9 @@ test('state stacking', (t) => {
 
   const App = {
     initialState: () => ({ initial: true }),
-    onCreate: ({ setState }) => { setState({ created: true }) },
+    onCreate: ({ setState }) => {
+      setTimeout(() => { setState({ created: true }) })
+    },
     render ({ state }) {
       if (renders === 1) {
         t.equal(state.initial, true, 'initialState available on render')
@@ -140,12 +138,12 @@ test('state stacking', (t) => {
       } else {
         t.equal(state.initial, true, 'initialState persists on next render')
         t.equal(state.created, true, 'state stacked')
+        t.end()
       }
       return <div />
     }
   }
 
   const { div } = r(<App />)
-  t.end()
 })
 

@@ -18,7 +18,7 @@ import patch from 'virtual-dom/patch'
  *     widget.remove()
  */
 
-function Widget ({ component, props, children }, model, pass, commitState) {
+function Widget ({ component, props, children }, model, pass) {
   if (!props) props = {}
   this.component = component
   this.pass = pass
