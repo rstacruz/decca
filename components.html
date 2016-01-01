@@ -53,24 +53,76 @@ module.exports = { render }
 <span class="pl-c">// additions on top of the Deku v2 API.</span>
 </code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
-<ul>
-<li><strong>render</strong> - called every <a href="api.html#render">render()</a> pass.</li>
-<li><strong>onCreate</strong> - called after the first render().</li>
-<li><strong>onUpdate</strong> - called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</li>
-<li><strong>onRemove</strong> - called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</li>
-<li><strong>initialState</strong> - called before the first render(). The return value will be used as the first <code>state</code>.</li>
-</ul>
+<table class="no-head">
+<thead>
+<tr>
+<th>Function</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>render</strong></td>
+<td>called every <a href="api.html#render">render()</a> pass.</td>
+</tr>
+<tr>
+<td><strong>onCreate</strong></td>
+<td>called after the first render().</td>
+</tr>
+<tr>
+<td><strong>onUpdate</strong></td>
+<td>called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
+</tr>
+<tr>
+<td><strong>onRemove</strong></td>
+<td>called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</td>
+</tr>
+<tr>
+<td><strong>initialState</strong></td>
+<td>called before the first render(). The return value will be used as the first <code>state</code>.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="model">Model</h2>
 <p>A model is an Object passed onto every function in a component. It has these properties:</p>
-<ul>
-<li><strong>props</strong> - an Object with the properties passed on the the component.</li>
-<li><strong>props.children</strong> - an array of children in a component.</li>
-<li><strong>state</strong> - the component&#x2019;s state.</li>
-<li><strong>setState</strong> - a function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</li>
-<li><strong>context</strong> - the <code>context</code> object passed onto <a href="api.html#render">render()</a></li>
-<li><strong>dispatch</strong> - the <code>dispatch</code> object passed onto <a href="api.html#dom.createrenderer">dom.createRenderer()</a>.</li>
-<li><strong>path</strong> - a unique ID of the component instance.</li>
-</ul>
+<table class="no-head">
+<thead>
+<tr>
+<th>Property</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>props</strong></td>
+<td>an Object with the properties passed on the the component.</td>
+</tr>
+<tr>
+<td><strong>props.children</strong></td>
+<td>an array of children in a component.</td>
+</tr>
+<tr>
+<td><strong>state</strong></td>
+<td>the component&#x2019;s state.</td>
+</tr>
+<tr>
+<td><strong>setState</strong></td>
+<td>a function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</td>
+</tr>
+<tr>
+<td><strong>context</strong></td>
+<td>the <code>context</code> object passed onto <a href="api.html#render">render()</a></td>
+</tr>
+<tr>
+<td><strong>dispatch</strong></td>
+<td>the <code>dispatch</code> object passed onto <a href="api.html#dom.createrenderer">dom.createRenderer()</a>.</td>
+</tr>
+<tr>
+<td><strong>path</strong></td>
+<td>a unique ID of the component instance.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
 <ul>
