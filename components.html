@@ -51,11 +51,11 @@ module.exports = { render }
 </tr>
 <tr>
 <td><strong>onCreate()</strong></td>
-<td>Called after the first render().</td>
+<td>Called after first render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
 </tr>
 <tr>
 <td><strong>onUpdate()</strong></td>
-<td>Called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
+<td>Called after render(), except the first one&#x2026;</td>
 </tr>
 <tr>
 <td><strong>onRemove()</strong></td>
