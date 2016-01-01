@@ -67,7 +67,7 @@
             ]
           },
           {
-            "title": "API",
+            "title": "API reference",
             "source": "docs/api.md",
             "url": "api.html",
             "slug": "api",
@@ -166,7 +166,7 @@
     },
     "api.html": {
       "source": "docs/api.md",
-      "title": "API",
+      "title": "API reference",
       "slug": "api",
       "headings": [
         {

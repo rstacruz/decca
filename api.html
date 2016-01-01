@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
     <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
     <script src="assets/script.js?t=2bcc4b59"></script>
-    <title>API</title>
+    <title>API reference</title>
     <meta name="viewport" content="width=device-width">
     <script>
       if (false || window.location.hostname.indexOf("ricostacruz.com") === window.location.hostname.length - 15) {
@@ -23,7 +23,7 @@
               <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
           </div>
         </div>
-        <div class="markdown-body"><h1 id="api">API</h1>
+        <div class="markdown-body"><h1 id="api-reference">API reference</h1>
 <pre><code class="lang-js"><span class="pl-k">import</span> { dom, element, string } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 </code></pre>
 <h2 id="dom.createrenderer">dom.createRenderer</h2>
@@ -60,7 +60,7 @@
 <li>If the attribute <code>key</code> is given, it&#x2019;ll be used as a key to optimize the virtual DOM rendering process.</li>
 <li>If any of the attributes start with <code>on</code> (such as <code>onclick</code>), they will be treated as event handlers.</li>
 </ul>
-<p>This is compatible with JSX, and is typically used with <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">babel-plugin-transform-react-jsx</a> The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
+<p>This is compatible with <a href="jsx.html">JSX</a>. The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
 <h2 id="string.render">string.render</h2>
 <blockquote>
 <p><code>string.render(element, [context])</code></p>
@@ -91,7 +91,7 @@
               <ul class="submenu">
                 <li class="menu-item -level-2"><a href="components.html" class="link title  link-components">Components</a>
                 </li>
-                <li class="menu-item -level-2"><a href="api.html" class="link title -active link-api">API</a>
+                <li class="menu-item -level-2"><a href="api.html" class="link title -active link-api">API reference</a>
                   <ul class="headings heading-list">
                     <li class="heading-item -depth-2"><a href="#dom.createrenderer" class="hlink link-dom.createrenderer">dom.createRenderer</a>
                     </li>
