@@ -1,9 +1,6 @@
 # Components
 
-Components are mere objects (not
-    [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass))
-that at least implement a `render()` function.  Here is a minimal example of a
-component:
+Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function.  Here is a minimal example of a component:
 
 ```js
 /** @jsx element */
@@ -15,24 +12,6 @@ function render ({ props }) {
 }
 
 module.exports = { render }
-```
-
-## Component API
-
-Components can have the following functions:
-
-```js
-function render(model) => Element
-function onCreate(model)
-function onUpdate(model)
-function onRemove(model)
-function initialState(model)
-
-// Where model is:
-{ props, state, setState, context, dispatch, path }
-
-// ...initialState, state, and setState are non-standard
-// additions on top of the Deku v2 API.
 ```
 
 ## Lifecycle hooks
