@@ -3,7 +3,7 @@ import getId from './id'
 function render (el, context) {
   if (typeof el === 'string') return el
   if (typeof el === 'number') return '' + el
-  if (Array.isArray(el)) return el.map(render)
+  if (Array.isArray(el)) return el.map((_el) => render(_el, context))
   if (typeof el === 'undefined' || el === null) return ''
 
   const { tag, props, children } = el
@@ -11,7 +11,7 @@ function render (el, context) {
   if (typeof tag === 'string') {
     const open = '<' + tag + toProps(props) + '>'
     const close = '</' + tag + '>'
-    return open + (children || []).map(render) + close
+    return open + (children || []).map((_el) => render(_el, context)) + close
   }
 
   if (typeof tag === 'object') {

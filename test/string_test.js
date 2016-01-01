@@ -50,11 +50,11 @@ test('string: contexts in nested components', (t) => {
   const App = {
     render: ({ context }) => {
       t.equal(context, 'my context', 'context in level 1')
-      return <Button />
+      return <div><Button /></div>
     }
   }
   const output = string.render(<App />, 'my context')
-  t.equal(output, '<div class="foo">hello</div>', 'renders')
+  t.equal(output, '<div><div class="foo">hello</div></div>', 'renders')
   t.end()
 })
 
