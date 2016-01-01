@@ -1,0 +1,165 @@
+{
+  "toc": {
+    "sections": [
+      {
+        "title": "decca",
+        "source": "README.md",
+        "expand": true,
+        "url": "index.html",
+        "slug": "index",
+        "headings": [
+          {
+            "title": "Components",
+            "depth": 2,
+            "id": "components"
+          },
+          {
+            "title": "Usage",
+            "depth": 2,
+            "id": "usage"
+          },
+          {
+            "title": "Extra features",
+            "depth": 2,
+            "id": "extra-features"
+          },
+          {
+            "title": "Acknowledgements",
+            "depth": 2,
+            "id": "acknowledgements"
+          },
+          {
+            "title": "Thanks",
+            "depth": 2,
+            "id": "thanks"
+          }
+        ]
+      },
+      {
+        "title": "Documentation",
+        "sections": [
+          {
+            "title": "Components",
+            "source": "docs/components.md",
+            "url": "components.html",
+            "slug": "components",
+            "headings": [
+              {
+                "title": "Component API",
+                "depth": 2,
+                "id": "component-api"
+              }
+            ]
+          },
+          {
+            "title": "API",
+            "source": "docs/api.md",
+            "url": "api.html",
+            "slug": "api",
+            "headings": [
+              {
+                "title": "dom.createRenderer",
+                "depth": 2,
+                "id": "dom.createrenderer"
+              },
+              {
+                "title": "render",
+                "depth": 2,
+                "id": "render"
+              },
+              {
+                "title": "element",
+                "depth": 2,
+                "id": "element"
+              },
+              {
+                "title": "string.render",
+                "depth": 2,
+                "id": "string.render"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "index": {
+    "index.html": {
+      "source": "README.md",
+      "title": "decca",
+      "slug": "index",
+      "headings": [
+        {
+          "title": "Components",
+          "depth": 2,
+          "id": "components"
+        },
+        {
+          "title": "Usage",
+          "depth": 2,
+          "id": "usage"
+        },
+        {
+          "title": "Extra features",
+          "depth": 2,
+          "id": "extra-features"
+        },
+        {
+          "title": "Acknowledgements",
+          "depth": 2,
+          "id": "acknowledgements"
+        },
+        {
+          "title": "Thanks",
+          "depth": 2,
+          "id": "thanks"
+        }
+      ]
+    },
+    "components.html": {
+      "source": "docs/components.md",
+      "title": "Components",
+      "slug": "components",
+      "headings": [
+        {
+          "title": "Component API",
+          "depth": 2,
+          "id": "component-api"
+        }
+      ]
+    },
+    "api.html": {
+      "source": "docs/api.md",
+      "title": "API",
+      "slug": "api",
+      "headings": [
+        {
+          "title": "dom.createRenderer",
+          "depth": 2,
+          "id": "dom.createrenderer"
+        },
+        {
+          "title": "render",
+          "depth": 2,
+          "id": "render"
+        },
+        {
+          "title": "element",
+          "depth": 2,
+          "id": "element"
+        },
+        {
+          "title": "string.render",
+          "depth": 2,
+          "id": "string.render"
+        }
+      ]
+    }
+  },
+  "sources": {
+    "README.md": "index.html",
+    "docs/components.md": "components.html",
+    "docs/api.md": "api.html",
+    "docs/docpress.json": "docpress.json"
+  }
+}

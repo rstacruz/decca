@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>decca</title>
+    <meta name="viewport" content="width=device-width">
+    <script>
+      if (false || window.location.hostname.indexOf("ricostacruz.com") === window.location.hostname.length - 15) {
+        (function(d,o,c,p,r,e,s){d['GoogleAnalyticsObject']=r;d[r]=d[r]||function(){(d[r].q=d[r].q||[]).push(arguments)},d[r].l=1*new Date();e=o.createElement(c),s=o.getElementsByTagName(c)[0];e.async=1;e.src=p;s.parentNode.insertBefore(e,s)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create',"UA-20473929-1",'auto')
+      }
+    </script>
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-index">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/rstacruz/decca" data-title="rstacruz/decca" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 class="massive-header -with-tagline" id="decca">decca</h1>
+<blockquote>
+<p>Render UI via pure functions and virtual&#xA0;DOM</p>
+</blockquote>
+<p>Decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for <a href="https://dekujs.github.io/deku">Deku</a>, which takes much inspiration from <a href="https://facebook.github.io/react/">React</a> and other functional-style view libraries.</p>
+<p>This is an implementation of <a href="https://dekujs.github.io/deku">Deku</a> in &lt;200 lines using <a href="https://www.npmjs.com/package/virtual-dom">virtual-dom</a>. The full Deku v2 API is implemented, plus a little more.</p>
+<p><a href="https://travis-ci.org/rstacruz/decca" title="See test builds"><img src="https://travis-ci.org/rstacruz/decca.svg?branch=master" alt="Status"></a></p>
+<h2 id="components">Components</h2>
+<p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function.</p>
+<pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
+<span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
+
+const App = {
+  render () {
+    return &lt;div&gt;
+      Hello there, &lt;button label={<span class="pl-s">&apos;Press me&apos;</span>}&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  }
+}
+
+const Button = {
+  render ({ props }) {
+    return &lt;button&gt;{ label }&lt;/button&gt;
+  }
+}
+
+// Render the app tree
+render = dom.createRenderer(document.body)
+render(&lt;App /&gt;)
+</code></pre>
+<p>See <a href="components.html">components</a> documentation for more information.</p>
+<h2 id="usage">Usage</h2>
+<p>Decca exposes a small <a href="api.html">API</a>. Also see <a href="https://dekujs.github.io/deku">Deku</a>&apos;s documentation. <code>decca</code> takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.</p>
+<h2 id="extra-features">Extra features</h2>
+<p>These features are not part of deku, but are implemented here to prototype API additions to deku:</p>
+<ul>
+<li>decca implements <code>setState</code> and <code>state</code>, which gets passed onto <code>render()</code> and other component <a href="http://dekujs.github.io/deku/docs/advanced/lifecycle.html">lifecycle hooks</a>. This was a feature of deku v1 which was removed in v2.</li>
+<li>Conversely, Components can also have an <code>initialState</code> function.</li>
+</ul>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Obviously taken blatant inspiration from <a href="https://dekujs.github.io/deku">Deku</a> by the amazing <a href="https://github.com/anthonyshort">Anthony Short</a> and friends.</p>
+<p><strong>NB:</strong> <em>This package is made as a proof-of-concept. While it&#x2019;s fully functional, it&#x2019;s not likely to be supported in the future.</em></p>
+<h2 id="thanks">Thanks</h2>
+<p><strong>decca</strong> &#xA9; 2015+, Rico Sta. Cruz. Released under the <a href="http://mit-license.org/">MIT</a> License.<br>
+Authored and maintained by Rico Sta. Cruz with help from contributors (<a href="http://github.com/rstacruz/decca/contributors">list</a>).</p>
+<blockquote>
+<p><a href="http://ricostacruz.com">ricostacruz.com</a> &#xA0;&#xB7;&#xA0;
+GitHub <a href="https://github.com/rstacruz">@rstacruz</a> &#xA0;&#xB7;&#xA0;
+Twitter <a href="https://twitter.com/rstacruz">@rstacruz</a></p>
+</blockquote>
+
+        </div>
+        <div class="footer-nav">
+          <div class="right"><a href="components.html"><span class="label">Next: </span><span class="title">Components</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title -active link-index">decca</a>
+            </li>
+            <li class="menu-item -level-1"><a href="#components" class="link title link-components">Components</a>
+            </li>
+            <li class="menu-item -level-1"><a href="#usage" class="link title link-usage">Usage</a>
+            </li>
+            <li class="menu-item -level-1"><a href="#extra-features" class="link title link-extra-features">Extra features</a>
+            </li>
+            <li class="menu-item -level-1"><a href="#acknowledgements" class="link title link-acknowledgements">Acknowledgements</a>
+            </li>
+            <li class="menu-item -level-1"><a href="#thanks" class="link title link-thanks">Thanks</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Documentation</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="components.html" class="link title  link-components">Components</a>
+                </li>
+                <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

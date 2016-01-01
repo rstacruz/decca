@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>API</title>
+    <meta name="viewport" content="width=device-width">
+    <script>
+      if (false || window.location.hostname.indexOf("ricostacruz.com") === window.location.hostname.length - 15) {
+        (function(d,o,c,p,r,e,s){d['GoogleAnalyticsObject']=r;d[r]=d[r]||function(){(d[r].q=d[r].q||[]).push(arguments)},d[r].l=1*new Date();e=o.createElement(c),s=o.getElementsByTagName(c)[0];e.async=1;e.src=p;s.parentNode.insertBefore(e,s)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create',"UA-20473929-1",'auto')
+      }
+    </script>
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-api">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/rstacruz/decca" data-title="rstacruz/decca" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="api">API</h1>
+<pre><code class="lang-js"><span class="pl-k">import</span> { dom, element, string } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
+</code></pre>
+<h2 id="dom.createrenderer">dom.createRenderer</h2>
+<blockquote>
+<p><code>dom.createRenderer(domNode, [dispatch])</code></p>
+</blockquote>
+<p>Returns a <a href="#render">render()</a> function that will update the DOM Node given in <code>domNode</code>.  If <code>dispatch</code> is given, it will be passed onto all components in the tree as <code>dispatch</code>.</p>
+<h2 id="render">render</h2>
+<blockquote>
+<p><code>render(element, [context])</code></p>
+</blockquote>
+<p>Renders an virtual element <code>element</code> (a return value of JSX <code>element()</code>).
+A <code>render()</code> function is the result of <a href="#dom.createrenderer">dom.createRenderer()</a>.
+If <code>context</code> is given, it will be passed onto all components in the tree as <code>context</code>.</p>
+<p>See <a href="components.html">components</a> for more information on components.</p>
+<h2 id="element">element</h2>
+<blockquote>
+<p><code>element(tag, [attrs], [...children])</code></p>
+</blockquote>
+<p>Returns a virtual element. This is compatible with JSX, and is typically used with <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">babel-plugin-transform-react-jsx</a> The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
+<p>The parameter <code>tag</code> can either be a tag name (such as <code>&apos;div&apos;</code>) or a <a href="components.html">component</a>.</p>
+<p>The attributes <code>attrs</code> is an Object. It&#x2019;s passed onto the DOM except in some exceptions:</p>
+<ul>
+<li>If the attribute <code>key</code> is given, it&#x2019;ll be used as a key to optimize the virtual DOM rendering process.</li>
+<li>If any of the attributes start with <code>on</code> (such as <code>onclick</code>), they will be treated as event handlers.</li>
+</ul>
+<h2 id="string.render">string.render</h2>
+<blockquote>
+<p><code>string.render(element, [context])</code></p>
+</blockquote>
+<p>Renders the given virtual element <code>element</code> as a string. This works like <a href="#render">render()</a>, only it outputs strings instead of performing operations in the DOM.</p>
+<p>When components are rendered via <code>string.render</code>:</p>
+<ul>
+<li><code>dispatch</code> will not be available in components.</li>
+<li>Lifecycle hooks in components, such as <code>onCreate</code> and <code>onUpdate</code> will not be called.</li>
+</ul>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="components.html"><span class="title">Components</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title  link-index">decca</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Documentation</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="components.html" class="link title  link-components">Components</a>
+                </li>
+                <li class="menu-item -level-2"><a href="api.html" class="link title -active link-api">API</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#dom.createrenderer" class="hlink link-dom.createrenderer">dom.createRenderer</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#render" class="hlink link-render">render</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#element" class="hlink link-element">element</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#string.render" class="hlink link-string.render">string.render</a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>
