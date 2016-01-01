@@ -1,7 +1,7 @@
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
-import debounce from 'debounce'
+import debounce from 'simpler-debounce'
 import buildPass from './pass'
 
 /*

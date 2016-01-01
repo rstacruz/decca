@@ -1,7 +1,7 @@
 if (typeof(window) === 'object' && !process.env.JSDOM) {
-    var tape_dom = require('tape-dom')
-    tape_dom.installCSS()
-    tape_dom.stream(require('tape'))
+    var tapeDom = require('tape-dom')
+    tapeDom.installCSS()
+    tapeDom.stream(require('tape'))
 }
 
 require('es5-shim')
