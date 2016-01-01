@@ -30,31 +30,46 @@
 <blockquote>
 <p><code>dom.createRenderer(domNode, [dispatch])</code></p>
 </blockquote>
-<p>Returns a <a href="#render">render()</a> function that will update the DOM Node given in <code>domNode</code>.  If <code>dispatch</code> is given, it will be passed onto all components in the tree as <code>dispatch</code>.</p>
+<p>Returns a <a href="#render">render()</a> function that will update the given DOM Node.</p>
+<ul>
+<li><code>domNode</code> <em>(DOMNode)</em> &#x2014; the DOM node to mount to.</li>
+<li><code>dispatch</code> <em>(any)</em> &#x2014; if given, it will be passed onto the <a href="components.html">components</a>&apos;s functions as <code>dispatch</code>.</li>
+</ul>
 <h2 id="render">render</h2>
 <blockquote>
 <p><code>render(element, [context])</code></p>
 </blockquote>
-<p>Renders an virtual element <code>element</code> (a return value of JSX <code>element()</code>).
-A <code>render()</code> function is the result of <a href="#dom.createrenderer">dom.createRenderer()</a>.
-If <code>context</code> is given, it will be passed onto all components in the tree as <code>context</code>.</p>
+<p>Renders an virtual element <code>element</code>, performing virtual DOM updates to ensure minimal DOM access. This function is the result of <a href="#dom.createrenderer">dom.createRenderer()</a>.</p>
+<ul>
+<li><code>element</code> <em>(Element)</em> &#x2014; the return value of <a href="#element">element()</a> to be rendered.</li>
+<li><code>context</code> <em>(any)</em> &#x2014; if given, it will be passed onto all components in the tree as <code>context</code>.</li>
+</ul>
 <p>See <a href="components.html">components</a> for more information on components.</p>
 <h2 id="element">element</h2>
 <blockquote>
 <p><code>element(tag, [attrs], [...children])</code></p>
 </blockquote>
-<p>Returns a virtual element. This is compatible with JSX, and is typically used with <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">babel-plugin-transform-react-jsx</a> The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
-<p>The parameter <code>tag</code> can either be a tag name (such as <code>&apos;div&apos;</code>) or a <a href="components.html">component</a>.</p>
+<p>Returns a virtual element representing either a DOM node or a Component.</p>
+<ul>
+<li><code>tag</code> <em>(String | Component)</em> &#x2014; either be a tag name (such as <code>&apos;div&apos;</code>) or a <a href="components.html">component</a>.</li>
+<li><code>attrs</code> <em>(Object)</em> &#x2014; attributes to pass onto the DOM node.</li>
+<li><code>children</code> <em>(Array)</em> &#x2014; an array of strings, numbers, more arrays, or virtual elements.</li>
+</ul>
 <p>The attributes <code>attrs</code> is an Object. It&#x2019;s passed onto the DOM except in some exceptions:</p>
 <ul>
 <li>If the attribute <code>key</code> is given, it&#x2019;ll be used as a key to optimize the virtual DOM rendering process.</li>
 <li>If any of the attributes start with <code>on</code> (such as <code>onclick</code>), they will be treated as event handlers.</li>
 </ul>
+<p>This is compatible with JSX, and is typically used with <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">babel-plugin-transform-react-jsx</a> The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
 <h2 id="string.render">string.render</h2>
 <blockquote>
 <p><code>string.render(element, [context])</code></p>
 </blockquote>
 <p>Renders the given virtual element <code>element</code> as a string. This works like <a href="#render">render()</a>, only it outputs strings instead of performing operations in the DOM.</p>
+<ul>
+<li><code>element</code> <em>(Element)</em> &#x2014; the return value of <a href="#element">element()</a> to be rendered.</li>
+<li><code>context</code> <em>(any)</em> &#x2014; if given, it will be passed onto all components in the tree as <code>context</code>.</li>
+</ul>
 <p>When components are rendered via <code>string.render</code>:</p>
 <ul>
 <li><code>dispatch</code> will not be available in components.</li>
@@ -64,6 +79,7 @@ If <code>context</code> is given, it will be passed onto all components in the t
         </div>
         <div class="footer-nav">
           <div class="left"><a href="components.html"><span class="title">Components</span></a></div>
+          <div class="right"><a href="jsx.html"><span class="label">Next: </span><span class="title">JSX</span></a></div>
         </div>
       </div>
       <div class="menu toc-menu">
@@ -86,6 +102,8 @@ If <code>context</code> is given, it will be passed onto all components in the t
                     <li class="heading-item -depth-2"><a href="#string.render" class="hlink link-string.render">string.render</a>
                     </li>
                   </ul>
+                </li>
+                <li class="menu-item -level-2"><a href="jsx.html" class="link title  link-jsx">JSX</a>
                 </li>
               </ul>
             </li>

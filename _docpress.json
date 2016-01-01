@@ -58,6 +58,11 @@
                 "title": "Model",
                 "depth": 2,
                 "id": "model"
+              },
+              {
+                "title": "Further references",
+                "depth": 2,
+                "id": "further-references"
               }
             ]
           },
@@ -88,6 +93,12 @@
                 "id": "string.render"
               }
             ]
+          },
+          {
+            "title": "JSX",
+            "source": "docs/jsx.md",
+            "url": "jsx.html",
+            "slug": "jsx"
           }
         ]
       }
@@ -145,6 +156,11 @@
           "title": "Model",
           "depth": 2,
           "id": "model"
+        },
+        {
+          "title": "Further references",
+          "depth": 2,
+          "id": "further-references"
         }
       ]
     },
@@ -174,12 +190,18 @@
           "id": "string.render"
         }
       ]
+    },
+    "jsx.html": {
+      "source": "docs/jsx.md",
+      "title": "JSX",
+      "slug": "jsx"
     }
   },
   "sources": {
     "README.md": "index.html",
     "docs/components.md": "components.html",
     "docs/api.md": "api.html",
+    "docs/jsx.md": "jsx.html",
     "docs/docpress.json": "docpress.json"
   }
 }
