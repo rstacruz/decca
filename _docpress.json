@@ -55,6 +55,11 @@
                 "id": "model"
               },
               {
+                "title": "Nesting components",
+                "depth": 2,
+                "id": "nesting-components"
+              },
+              {
                 "title": "Further references",
                 "depth": 2,
                 "id": "further-references"
@@ -146,6 +151,11 @@
           "title": "Model",
           "depth": 2,
           "id": "model"
+        },
+        {
+          "title": "Nesting components",
+          "depth": 2,
+          "id": "nesting-components"
         },
         {
           "title": "Further references",

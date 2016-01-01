@@ -107,6 +107,29 @@ module.exports = { render }
 </tr>
 </tbody>
 </table>
+<h2 id="nesting-components">Nesting components</h2>
+<p>Well, yes, of course you can.</p>
+<pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
+<span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
+
+const App = {
+  render () {
+    return &lt;div&gt;
+      &lt;button label={<span class="pl-s">&apos;Press me&apos;</span>}&gt;&lt;/button&gt;
+    &lt;/div&gt;
+  }
+}
+
+const Button = {
+  render ({ props }) {
+    return &lt;button&gt;{ label }&lt;/button&gt;
+  }
+}
+
+// Render the app tree
+render = dom.createRenderer(document.body)
+render(&lt;App /&gt;)
+</code></pre>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
 <ul>
@@ -131,6 +154,8 @@ module.exports = { render }
                     <li class="heading-item -depth-2"><a href="#lifecycle-hooks" class="hlink link-lifecycle-hooks">Lifecycle hooks</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#model" class="hlink link-model">Model</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#nesting-components" class="hlink link-nesting-components">Nesting components</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#further-references" class="hlink link-further-references">Further references</a>
                     </li>

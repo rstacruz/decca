@@ -35,23 +35,15 @@
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-const App = {
-  render () {
-    return &lt;div&gt;
-      Hello there, &lt;button label={<span class="pl-s">&apos;Press me&apos;</span>}&gt;&lt;/button&gt;
-    &lt;/div&gt;
-  }
-}
-
-const Button = {
+const Message = {
   render ({ props }) {
-    return &lt;button&gt;{ label }&lt;/button&gt;
+    return &lt;div&gt;Hello there, {props.name}&lt;/div&gt;
   }
 }
 
 // Render the app tree
-render = dom.createRenderer(document.body)
-render(&lt;App /&gt;)
+const render = dom.createRenderer(document.body)
+render(&lt;Message name=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;)
 </code></pre>
 <h2 id="usage">Usage</h2>
 <p>See the <a href="api.html">API reference</a> and <a href="https://dekujs.github.io/deku">Deku</a>&apos;s documentation. <code>decca</code> takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.</p>
