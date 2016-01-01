@@ -8,5 +8,5 @@
 
 - Initial release.
 
-[v0.0.1]: https://github.com/rstacruz/not-deku/tree/v0.0.1
-[v0.1.0]: https://github.com/rstacruz/not-deku/compare/v0.0.1...v0.1.0
+[v0.0.1]: https://github.com/rstacruz/decca/tree/v0.0.1
+[v0.1.0]: https://github.com/rstacruz/decca/compare/v0.0.1...v0.1.0

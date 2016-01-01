@@ -1,5 +1,5 @@
 {
-  "name": "not-deku",
+  "name": "decca",
   "description": "Render interfaces using pure functions and virtual DOM, kinda",
   "version": "0.1.0",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
@@ -21,7 +21,7 @@
     ]
   },
   "bugs": {
-    "url": "https://github.com/rstacruz/not-deku/issues"
+    "url": "https://github.com/rstacruz/decca/issues"
   },
   "dependencies": {
     "debounce": "1.0.0",
@@ -51,7 +51,7 @@
   "directories": {
     "test": "test"
   },
-  "homepage": "https://github.com/rstacruz/not-deku#readme",
+  "homepage": "https://github.com/rstacruz/decca#readme",
   "keywords": [
     "deku",
     "dom",
@@ -65,7 +65,7 @@
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rstacruz/not-deku.git"
+    "url": "git+https://github.com/rstacruz/decca.git"
   },
   "scripts": {
     "build": "babel src --out-dir lib",

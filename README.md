@@ -1,12 +1,12 @@
-# not-deku
+# decca
 
 > Render interfaces using pure functions and virtual DOM
 
-not-deku allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for [Deku], which takes much inspiration from [React] and other functional-style view libraries.
+decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for [Deku], which takes much inspiration from [React] and other functional-style view libraries.
 
 This is an implementation of [Deku] in ~200 lines using [virtual-dom]. The full Deku v2 API is implemented, plus a little more.
 
-[![Status](https://travis-ci.org/rstacruz/not-deku.svg?branch=master)](https://travis-ci.org/rstacruz/not-deku "See test builds")
+[![Status](https://travis-ci.org/rstacruz/decca.svg?branch=master)](https://travis-ci.org/rstacruz/decca "See test builds")
 
 ## Components
 
@@ -14,7 +14,7 @@ Components are mere objects (not [classes!](https://facebook.github.io/react/doc
 
 ```js
 /** @jsx element */
-import { dom, element } from 'not-deku'
+import { dom, element } from 'decca'
 
 const App = {
   render () {
@@ -54,7 +54,7 @@ function initialState(model)
 The following things are implemented:
 
 ```js
-import { dom, element, string } from 'not-deku'
+import { dom, element, string } from 'decca'
 
 // dom:
 dom.createRenderer(domElement: DOMNode, dispatch: ?any) => Function
@@ -70,13 +70,13 @@ element(tag: string|Component, attrs: ?Object, ...children: Array<Element>) => E
 
 ## Usage
 
-See [Deku]'s documentation. `not-deku` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
+See [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
 
 ## Extra features
 
 These features are not part of deku, but are implemented here to prototype API additions to deku:
 
-- not-deku implements `setState` and `state`, which gets passed onto `render()` and other component [lifecycle hooks]. This was a feature of deku v1 which was removed in v2.
+- decca implements `setState` and `state`, which gets passed onto `render()` and other component [lifecycle hooks]. This was a feature of deku v1 which was removed in v2.
 - Conversely, Components can also have an `initialState` function.
 
 ## Acknowledgements
@@ -93,7 +93,7 @@ Obviously taken blatant inspiration from [Deku] by the amazing [Anthony Short] a
 
 ## Thanks
 
-**not-deku** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+**decca** © 2015+, Rico Sta. Cruz. Released under the [MIT] License.<br>
 Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
 
 > [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
@@ -101,4 +101,4 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 > Twitter [@rstacruz](https://twitter.com/rstacruz)
 
 [MIT]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/not-deku/contributors
+[contributors]: http://github.com/rstacruz/decca/contributors
