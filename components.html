@@ -36,6 +36,7 @@ function render ({ props }) {
 module.exports = { render }
 </code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
+<p>A component can have these funtions:</p>
 <table class="no-head">
 <thead>
 <tr>
@@ -45,23 +46,23 @@ module.exports = { render }
 </thead>
 <tbody>
 <tr>
-<td><strong>render</strong></td>
+<td><strong>render()</strong></td>
 <td>called every <a href="api.html#render">render()</a> pass.</td>
 </tr>
 <tr>
-<td><strong>onCreate</strong></td>
+<td><strong>onCreate()</strong></td>
 <td>called after the first render().</td>
 </tr>
 <tr>
-<td><strong>onUpdate</strong></td>
+<td><strong>onUpdate()</strong></td>
 <td>called after every render() when the DOM is constructed. Use this for side-effects like DOM bindings.</td>
 </tr>
 <tr>
-<td><strong>onRemove</strong></td>
+<td><strong>onRemove()</strong></td>
 <td>called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</td>
 </tr>
 <tr>
-<td><strong>initialState</strong></td>
+<td><strong>initialState()</strong></td>
 <td>called before the first render(). The return value will be used as the first <code>state</code>.</td>
 </tr>
 </tbody>
