@@ -29,7 +29,7 @@ render(<Message name='Rico S.' />)
 
 ## Usage
 
-See the [API reference](docs/api.md) and [Deku]'s documentation. Also see a [comparison with Deku](about-deku.md).
+See the [API reference](docs/api.md) and [Deku]'s documentation. Also see a [comparison with Deku](docs/about-deku.md).
 
 ## Acknowledgements
 

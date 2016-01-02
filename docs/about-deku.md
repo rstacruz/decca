@@ -11,7 +11,7 @@ Decca is an implementation of [Deku] in <200 lines using [virtual-dom]. The full
 
 ### Other small changes
 
-- `path` (see [Components](docs/components.md) in Deku is a dot-separated path of the component relative to its ancestors (eg, `aw398.0.0`). In Decca, `path` is simply a unique ID for the component instance (eg, `c83`). It fulfills the same function as a unique identifier.
+- `path` (see [Components](components.md)) in Deku is a dot-separated path of the component relative to its ancestors (eg, `aw398.0.0`). In Decca, `path` is simply a unique ID for the component instance (eg, `c83`). It fulfills the same function as a unique identifier.
 
 [Deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
