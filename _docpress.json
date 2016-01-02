@@ -19,11 +19,6 @@
             "id": "usage"
           },
           {
-            "title": "Extra features",
-            "depth": 2,
-            "id": "extra-features"
-          },
-          {
             "title": "Acknowledgements",
             "depth": 2,
             "id": "acknowledgements"
@@ -99,6 +94,31 @@
             "source": "docs/jsx.md",
             "url": "jsx.html",
             "slug": "jsx"
+          },
+          {
+            "title": "About Deku",
+            "source": "docs/about-deku.md",
+            "url": "about-deku.html",
+            "slug": "about-deku",
+            "headings": [
+              {
+                "title": "Differences with Deku",
+                "depth": 2,
+                "id": "differences-with-deku",
+                "headings": [
+                  {
+                    "title": "States",
+                    "depth": 3,
+                    "id": "states"
+                  },
+                  {
+                    "title": "Other small changes",
+                    "depth": 3,
+                    "id": "other-small-changes"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -119,11 +139,6 @@
           "title": "Usage",
           "depth": 2,
           "id": "usage"
-        },
-        {
-          "title": "Extra features",
-          "depth": 2,
-          "id": "extra-features"
         },
         {
           "title": "Acknowledgements",
@@ -195,6 +210,30 @@
       "source": "docs/jsx.md",
       "title": "JSX",
       "slug": "jsx"
+    },
+    "about-deku.html": {
+      "source": "docs/about-deku.md",
+      "title": "About Deku",
+      "slug": "about-deku",
+      "headings": [
+        {
+          "title": "Differences with Deku",
+          "depth": 2,
+          "id": "differences-with-deku",
+          "headings": [
+            {
+              "title": "States",
+              "depth": 3,
+              "id": "states"
+            },
+            {
+              "title": "Other small changes",
+              "depth": 3,
+              "id": "other-small-changes"
+            }
+          ]
+        }
+      ]
     }
   },
   "sources": {
@@ -202,6 +241,7 @@
     "docs/components.md": "components.html",
     "docs/api.md": "api.html",
     "docs/jsx.md": "jsx.html",
+    "docs/about-deku.md": "about-deku.html",
     "docs/docpress.json": "docpress.json"
   }
 }

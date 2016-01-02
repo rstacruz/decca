@@ -27,8 +27,7 @@
 <blockquote>
 <p>Render UI via pure functions and virtual&#xA0;DOM</p>
 </blockquote>
-<p>Decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for <a href="https://dekujs.github.io/deku">Deku</a>, which takes much inspiration from <a href="https://facebook.github.io/react/">React</a> and other functional-style view libraries.</p>
-<p>This is an implementation of <a href="https://dekujs.github.io/deku">Deku</a> in &lt;200 lines using <a href="https://www.npmjs.com/package/virtual-dom">virtual-dom</a>. The full Deku v2 API is implemented, plus a little more.</p>
+<p>Decca allows you to compose DOM structures with reuseable Components in a functional way. <strong>It is a drop-in replacement for <a href="https://dekujs.github.io/deku">Deku</a>,</strong> which takes much inspiration from <a href="https://facebook.github.io/react/">React</a> and other functional-style view libraries.</p>
 <p><a href="https://travis-ci.org/rstacruz/decca" title="See test builds"><img src="https://travis-ci.org/rstacruz/decca.svg?branch=master" alt="Status"></a></p>
 <h2 id="components">Components</h2>
 <p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function. See <a href="components.html">components</a> documentation for more information.</p>
@@ -46,13 +45,7 @@ const render = dom.createRenderer(document.body)
 render(&lt;Message name=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;)
 </code></pre>
 <h2 id="usage">Usage</h2>
-<p>See the <a href="api.html">API reference</a> and <a href="https://dekujs.github.io/deku">Deku</a>&apos;s documentation. <code>decca</code> takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.</p>
-<h2 id="extra-features">Extra features</h2>
-<p>These features are not part of deku, but are implemented here to prototype API additions to deku:</p>
-<ul>
-<li>decca implements <code>setState</code> and <code>state</code>, which gets passed onto <code>render()</code> and other component <a href="components.html">lifecycle hooks</a>. This was a feature of deku v1 which was removed in v2.</li>
-<li>Conversely, Components can also have an <code>initialState</code> function.</li>
-</ul>
+<p>See the <a href="api.html">API reference</a> and <a href="https://dekujs.github.io/deku">Deku</a>&apos;s documentation. Also see a <a href="about-deku.html">comparison with Deku</a>.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>
 <p>Decca takes blatant inspiration from <a href="https://dekujs.github.io/deku">Deku</a> by the amazing <a href="https://github.com/anthonyshort">Anthony Short</a> and friends.</p>
 <h2 id="thanks">Thanks</h2>
@@ -78,8 +71,6 @@ Twitter <a href="https://twitter.com/rstacruz">@rstacruz</a></p>
             </li>
             <li class="menu-item -level-1"><a href="#usage" class="link title link-usage">Usage</a>
             </li>
-            <li class="menu-item -level-1"><a href="#extra-features" class="link title link-extra-features">Extra features</a>
-            </li>
             <li class="menu-item -level-1"><a href="#acknowledgements" class="link title link-acknowledgements">Acknowledgements</a>
             </li>
             <li class="menu-item -level-1"><a href="#thanks" class="link title link-thanks">Thanks</a>
@@ -91,6 +82,8 @@ Twitter <a href="https://twitter.com/rstacruz">@rstacruz</a></p>
                 <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API reference</a>
                 </li>
                 <li class="menu-item -level-2"><a href="jsx.html" class="link title  link-jsx">JSX</a>
+                </li>
+                <li class="menu-item -level-2"><a href="about-deku.html" class="link title  link-about-deku">About Deku</a>
                 </li>
               </ul>
             </li>

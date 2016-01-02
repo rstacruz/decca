@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>About Deku</title>
+    <meta name="viewport" content="width=device-width">
+    <script>
+      if (false || window.location.hostname.indexOf("ricostacruz.com") === window.location.hostname.length - 15) {
+        (function(d,o,c,p,r,e,s){d['GoogleAnalyticsObject']=r;d[r]=d[r]||function(){(d[r].q=d[r].q||[]).push(arguments)},d[r].l=1*new Date();e=o.createElement(c),s=o.getElementsByTagName(c)[0];e.async=1;e.src=p;s.parentNode.insertBefore(e,s)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create',"UA-20473929-1",'auto')
+      }
+    </script>
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-about-deku">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/rstacruz/decca" data-title="rstacruz/decca" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="about-deku">About Deku</h1>
+<p>Decca is an implementation of <a href="https://dekujs.github.io/deku">Deku</a> in &lt;200 lines using <a href="https://www.npmjs.com/package/virtual-dom">virtual-dom</a>. The full Deku v2 API is implemented (plus a little more)&#x2014;you can use Decca while Deku v2.0.0 is in development.</p>
+<h2 id="differences-with-deku">Differences with Deku</h2>
+<h3 id="states">States</h3>
+<ul>
+<li>decca implements <code>setState</code> and <code>state</code>, which gets passed onto <code>render()</code> and other component [lifecycle hooks]. This was a feature of deku v1 which was removed in v2.</li>
+<li>Conversely, Components can also have an <code>initialState</code> function.</li>
+</ul>
+<h3 id="other-small-changes">Other small changes</h3>
+<ul>
+<li><code>path</code> (see <a href="components.html">Components</a>) in Deku is a dot-separated path of the component relative to its ancestors (eg, <code>aw398.0.0</code>). In Decca, <code>path</code> is simply a unique ID for the component instance (eg, <code>c83</code>). It fulfills the same function as a unique identifier.</li>
+</ul>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="jsx.html"><span class="title">JSX</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title  link-index">decca</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Documentation</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="components.html" class="link title  link-components">Components</a>
+                </li>
+                <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API reference</a>
+                </li>
+                <li class="menu-item -level-2"><a href="jsx.html" class="link title  link-jsx">JSX</a>
+                </li>
+                <li class="menu-item -level-2"><a href="about-deku.html" class="link title -active link-about-deku">About Deku</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#differences-with-deku" class="hlink link-differences-with-deku">Differences with Deku</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a href="#states" class="hlink link-states">States</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a href="#other-small-changes" class="hlink link-other-small-changes">Other small changes</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>
