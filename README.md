@@ -4,9 +4,7 @@
 
 > Render UI via pure functions and virtual DOM
 
-Decca allows you to compose DOM structures with reuseable Components in a functional way. It is a drop-in replacement for [Deku], which takes much inspiration from [React] and other functional-style view libraries.
-
-This is an implementation of [Deku] in <200 lines using [virtual-dom]. The full Deku v2 API is implemented, plus a little more.
+Decca allows you to compose DOM structures with reuseable Components in a functional way. **It is a drop-in replacement for [Deku],** which takes much inspiration from [React] and other functional-style view libraries.
 
 [![Status](https://travis-ci.org/rstacruz/decca.svg?branch=master)](https://travis-ci.org/rstacruz/decca "See test builds")
 
@@ -31,14 +29,7 @@ render(<Message name='Rico S.' />)
 
 ## Usage
 
-See the [API reference](docs/api.md) and [Deku]'s documentation. `decca` takes the same API as deku (as of v2.0.0-rc6). You can use this while deku v2.0.0 is in development.
-
-## Extra features
-
-These features are not part of deku, but are implemented here to prototype API additions to deku:
-
-- decca implements `setState` and `state`, which gets passed onto `render()` and other component [lifecycle hooks]. This was a feature of deku v1 which was removed in v2.
-- Conversely, Components can also have an `initialState` function.
+See the [API reference](docs/api.md) and [Deku]'s documentation. Also see a [comparison with Deku](about-deku.md).
 
 ## Acknowledgements
 
