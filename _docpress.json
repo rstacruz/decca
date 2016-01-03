@@ -100,6 +100,12 @@
             "slug": "jsx"
           },
           {
+            "title": "Examples",
+            "source": "docs/examples.md",
+            "url": "examples.html",
+            "slug": "examples"
+          },
+          {
             "title": "About Deku",
             "source": "docs/about-deku.md",
             "url": "about-deku.html",
@@ -220,6 +226,11 @@
       "title": "JSX",
       "slug": "jsx"
     },
+    "examples.html": {
+      "source": "docs/examples.md",
+      "title": "Examples",
+      "slug": "examples"
+    },
     "about-deku.html": {
       "source": "docs/about-deku.md",
       "title": "About Deku",
@@ -250,6 +261,7 @@
     "docs/components.md": "components.html",
     "docs/api.md": "api.html",
     "docs/jsx.md": "jsx.html",
+    "docs/examples.md": "examples.html",
     "docs/about-deku.md": "about-deku.html",
     "docs/docpress.json": "docpress.json"
   }
