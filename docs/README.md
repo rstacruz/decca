@@ -1,6 +1,6 @@
 # Table of contents
 
-* **[decca](../README.md)**
+* [decca](../README.md)
 * Documentation
   * [Components](components.md)
   * [API reference](api.md)
