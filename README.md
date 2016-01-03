@@ -12,6 +12,14 @@ Decca allows you to compose DOM structures with reuseable Components in a functi
 
 <!--{p:style='display: none'}-->
 
+## Installation
+
+Decca is available via npm for Browserify and Webpack. (Don't use npm? Get the standalone build from [brcdn.org](https://www.brcdn.org/?module=decca).)
+
+```
+npm install --save --save-exact decca
+```
+
 ## Components
 
 Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
