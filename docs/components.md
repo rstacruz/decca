@@ -22,7 +22,7 @@ A component can have these functions:
 |---|---
 | __render()__ | Called every [render()](api.md#render) pass.
 | __onCreate()__ | Called after first render() when the DOM is constructed. Use this for side-effects like DOM bindings.
-| __onUpdate()__ | Called after render(), except the first one..
+| __onUpdate()__ | Called after every render() except the first one.
 | __onRemove()__ | Called after the component is removed. Use this for side effects like cleaning up `document` DOM bindings.
 | __initialState()__ | Called before the first render(). The return value will be used as the first `state`.
 
