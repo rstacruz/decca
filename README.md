@@ -8,6 +8,10 @@ Decca allows you to compose DOM structures with reuseable Components in a functi
 
 [![Status](https://travis-ci.org/rstacruz/decca.svg?branch=master)](https://travis-ci.org/rstacruz/decca "See test builds")
 
+**[Documentation →](http://ricostacruz.com/decca)**
+
+<!--{p:style='display: none'}-->
+
 ## Components
 
 Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
