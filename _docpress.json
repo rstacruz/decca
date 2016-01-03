@@ -9,6 +9,11 @@
         "slug": "index",
         "headings": [
           {
+            "title": "Installation",
+            "depth": 2,
+            "id": "installation"
+          },
+          {
             "title": "Components",
             "depth": 2,
             "id": "components"
@@ -130,6 +135,11 @@
       "title": "decca",
       "slug": "index",
       "headings": [
+        {
+          "title": "Installation",
+          "depth": 2,
+          "id": "installation"
+        },
         {
           "title": "Components",
           "depth": 2,
