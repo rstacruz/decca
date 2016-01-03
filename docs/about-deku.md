@@ -15,3 +15,4 @@ Decca is an implementation of [Deku] in <200 lines using [virtual-dom]. The full
 
 [Deku]: https://dekujs.github.io/deku
 [virtual-dom]: https://www.npmjs.com/package/virtual-dom
+[lifecycle hooks]: components.md
