@@ -62,7 +62,7 @@ const App = {
 
 const Button = {
   render ({ props }) {
-    return <button>{ label }</button>
+    return <button>{ props.label }</button>
   }
 }
 
