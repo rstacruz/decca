@@ -24,7 +24,7 @@ function Widget ({ component, props, children }, model, pass) {
   this.pass = pass
 
   // The parameters to be passed onto the component's functions.
-  this.model = { props: { ...props, children }, ...model }
+  this.model = { props, children, ...model }
 }
 
 Widget.prototype.type = 'Widget'
