@@ -82,7 +82,7 @@ module.exports = { render }
 <td>An Object with the properties passed to the component.</td>
 </tr>
 <tr>
-<td><strong>props.children</strong></td>
+<td><strong>children</strong></td>
 <td>An array of children in a component.</td>
 </tr>
 <tr>
@@ -122,7 +122,7 @@ const App = {
 
 const Button = {
   render ({ props }) {
-    return &lt;button&gt;{ label }&lt;/button&gt;
+    return &lt;button&gt;{ props.label }&lt;/button&gt;
   }
 }
 
