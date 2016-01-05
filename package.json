@@ -65,6 +65,7 @@
   ],
   "license": "MIT",
   "main": "lib/index.js",
+  "jsnext:main": "src/index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rstacruz/decca.git"
