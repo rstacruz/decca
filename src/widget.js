@@ -42,6 +42,7 @@ Widget.prototype.init = function () {
 
   // Create the virtual-dom tree
   const el = this.component.render(this.model)
+  this.el = el
   this.tree = this.pass.build(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
   this.rootNode._dekuId = id // so future update() and destroy() can see it
@@ -62,11 +63,16 @@ Widget.prototype.update = function (previous, domNode) {
 
   // Re-render the component
   const el = this.component.render(this.model)
+
+  // If it was memoized, don't patch
+  if (el === this.el) return
+
   this.tree = this.pass.build(el)
 
   // Patch the DOM node
   var delta = diff(previous.tree, this.tree)
   this.rootNode = patch(previous.rootNode, delta)
+  this.el = el
 
   trigger(this, 'onUpdate')
 }
