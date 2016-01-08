@@ -1,3 +1,8 @@
+## [v1.0.1]
+> Jan  8, 2016
+
+- Some minor optimizations to make rendering faster between passes.
+
 ## [v1.0.0]
 > Jan 1, 2015
 
@@ -16,3 +21,4 @@
 [v0.0.1]: https://github.com/rstacruz/decca/tree/v0.0.1
 [v0.1.0]: https://github.com/rstacruz/decca/compare/v0.0.1...v0.1.0
 [v1.0.0]: https://github.com/rstacruz/decca/compare/v0.1.0...v1.0.0
+[v1.0.1]: https://github.com/rstacruz/decca/compare/v1.0.0...v1.0.1
