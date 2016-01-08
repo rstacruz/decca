@@ -64,8 +64,14 @@ Widget.prototype.update = function (previous, domNode) {
   // Re-render the component
   const el = this.component.render(this.model)
 
-  // If it was memoized, don't patch
-  if (el === this.el) return
+  // If it was memoized, don't patch.
+  // Just make this widget a copy of the previous.
+  if (previous.el === el) {
+    this.tree = previous.tree
+    this.rootNode = previous.rootNode
+    this.el = el
+    return
+  }
 
   this.tree = this.pass.build(el)
 
