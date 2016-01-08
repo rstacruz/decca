@@ -34,8 +34,8 @@ Widget.prototype.type = 'Widget'
  */
 
 Widget.prototype.init = function () {
-  const id = this.setId(getId())
-  this.model.state = this.trigger('initialState')
+  const id = setId(this, getId())
+  this.model.state = trigger(this, 'initialState')
 
   // Silently propagate it, don't trigger a re-render
   this.pass.commitState(id, this.model.state)
@@ -47,7 +47,7 @@ Widget.prototype.init = function () {
   this.rootNode._dekuId = id // so future update() and destroy() can see it
 
   // Trigger
-  this.trigger('onCreate')
+  trigger(this, 'onCreate')
 
   // Export
   return this.rootNode
@@ -58,7 +58,7 @@ Widget.prototype.init = function () {
  */
 
 Widget.prototype.update = function (previous, domNode) {
-  this.setId(domNode._dekuId)
+  setId(this, domNode._dekuId)
 
   // Re-render the component
   const el = this.component.render(this.model)
@@ -68,7 +68,7 @@ Widget.prototype.update = function (previous, domNode) {
   var delta = diff(previous.tree, this.tree)
   this.rootNode = patch(previous.rootNode, delta)
 
-  this.trigger('onUpdate')
+  trigger(this, 'onUpdate')
 }
 
 /*
@@ -76,8 +76,8 @@ Widget.prototype.update = function (previous, domNode) {
  */
 
 Widget.prototype.destroy = function (domNode) {
-  this.setId(domNode._dekuId)
-  this.trigger('onRemove')
+  setId(this, domNode._dekuId)
+  trigger(this, 'onRemove')
 }
 
 /*
@@ -86,10 +86,10 @@ Widget.prototype.destroy = function (domNode) {
  * so these can't be in the ctor.
  */
 
-Widget.prototype.setId = function (id) {
-  this.model.path = id
-  this.model.setState = this.pass.setState.bind(this, id)
-  this.model.state = this.pass.states[id]
+function setId (widget, id) {
+  widget.model.path = id
+  widget.model.setState = widget.pass.setState.bind(widget, id)
+  widget.model.state = widget.pass.states[id]
   return id
 }
 
@@ -97,9 +97,9 @@ Widget.prototype.setId = function (id) {
  * Trigger a Component lifecycle event.
  */
 
-Widget.prototype.trigger = function (hook, id) {
-  if (!this.component[hook]) return
-  return this.component[hook](this.model)
+function trigger (widget, hook, id) {
+  if (!widget.component[hook]) return
+  return widget.component[hook](widget.model)
 }
 
 module.exports = Widget
