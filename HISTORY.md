@@ -1,3 +1,11 @@
+## [v2.0.0]
+> Jan 10, 2016
+
+- Removes `state`, `setState` and `initialState` - making decca fully 1:1 analogous to Deku v2.0.0-rc11 API. For states, use [deku-stateful].
+
+[deku-stateful]: https://www.npmjs.com/package/deku-stateful
+[v2.0.0]: https://github.com/rstacruz/decca/compare/v1.2.1...v2.0.0
+
 ## [v1.2.1]
 > Jan  8, 2016
 
