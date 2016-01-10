@@ -26,12 +26,6 @@
         <div class="markdown-body"><h1 id="about-deku">About Deku</h1>
 <p>Decca is an implementation of <a href="https://dekujs.github.io/deku">Deku</a> in &lt;200 lines using <a href="https://www.npmjs.com/package/virtual-dom">virtual-dom</a>. The full Deku v2 API is implemented (plus a little more)&#x2014;you can use Decca while Deku v2.0.0 is in development.</p>
 <h2 id="differences-with-deku">Differences with Deku</h2>
-<h3 id="states">States</h3>
-<ul>
-<li>decca implements <code>setState</code> and <code>state</code>, which gets passed onto <code>render()</code> and other component <a href="components.html">lifecycle hooks</a>. This was a feature of deku v1 which was removed in v2.</li>
-<li>Conversely, Components can also have an <code>initialState</code> function.</li>
-</ul>
-<h3 id="other-small-changes">Other small changes</h3>
 <ul>
 <li><code>path</code> (see <a href="components.html">Components</a>) in Deku is a dot-separated path of the component relative to its ancestors (eg, <code>aw398.0.0</code>). In Decca, <code>path</code> is simply a unique ID for the component instance (eg, <code>c83</code>). It fulfills the same function as a unique identifier.</li>
 </ul>
@@ -59,12 +53,6 @@
                 <li class="menu-item -level-2"><a href="about-deku.html" class="link title -active link-about-deku">About Deku</a>
                   <ul class="headings heading-list">
                     <li class="heading-item -depth-2"><a href="#differences-with-deku" class="hlink link-differences-with-deku">Differences with Deku</a>
-                      <ul class="heading-list -depth-2">
-                        <li class="heading-item -depth-3"><a href="#states" class="hlink link-states">States</a>
-                        </li>
-                        <li class="heading-item -depth-3"><a href="#other-small-changes" class="hlink link-other-small-changes">Other small changes</a>
-                        </li>
-                      </ul>
                     </li>
                   </ul>
                 </li>

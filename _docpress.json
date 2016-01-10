@@ -114,19 +114,7 @@
               {
                 "title": "Differences with Deku",
                 "depth": 2,
-                "id": "differences-with-deku",
-                "headings": [
-                  {
-                    "title": "States",
-                    "depth": 3,
-                    "id": "states"
-                  },
-                  {
-                    "title": "Other small changes",
-                    "depth": 3,
-                    "id": "other-small-changes"
-                  }
-                ]
+                "id": "differences-with-deku"
               }
             ]
           }
@@ -239,19 +227,7 @@
         {
           "title": "Differences with Deku",
           "depth": 2,
-          "id": "differences-with-deku",
-          "headings": [
-            {
-              "title": "States",
-              "depth": 3,
-              "id": "states"
-            },
-            {
-              "title": "Other small changes",
-              "depth": 3,
-              "id": "other-small-changes"
-            }
-          ]
+          "id": "differences-with-deku"
         }
       ]
     }

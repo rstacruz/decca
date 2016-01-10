@@ -61,10 +61,6 @@ module.exports = { render }
 <td><strong>onRemove()</strong></td>
 <td>Called after the component is removed. Use this for side effects like cleaning up <code>document</code> DOM bindings.</td>
 </tr>
-<tr>
-<td><strong>initialState()</strong></td>
-<td>Called before the first render(). The return value will be used as the first <code>state</code>.</td>
-</tr>
 </tbody>
 </table>
 <h2 id="model">Model</h2>
@@ -84,14 +80,6 @@ module.exports = { render }
 <tr>
 <td><strong>children</strong></td>
 <td>An array of children in a component.</td>
-</tr>
-<tr>
-<td><strong>state</strong></td>
-<td>The component&#x2019;s state.</td>
-</tr>
-<tr>
-<td><strong>setState</strong></td>
-<td>A function you can use to update state. Calling this will trigger a re-render. (Don&#x2019;t call this onCreate or onRender!)</td>
 </tr>
 <tr>
 <td><strong>context</strong></td>
