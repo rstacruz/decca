@@ -24,7 +24,6 @@ A component can have these functions:
 | __onCreate()__ | Called after first render() when the DOM is constructed. Use this for side-effects like DOM bindings.
 | __onUpdate()__ | Called after every render() except the first one.
 | __onRemove()__ | Called after the component is removed. Use this for side effects like cleaning up `document` DOM bindings.
-| __initialState()__ | Called before the first render(). The return value will be used as the first `state`.
 
 <!-- {table:.no-head} -->
 
@@ -36,8 +35,6 @@ A model is an Object passed onto every function in a component. It has these pro
 |---|---
 | __props__ | An Object with the properties passed to the component.
 | __children__ | An array of children in a component.
-| __state__ | The component's state.
-| __setState__ | A function you can use to update state. Calling this will trigger a re-render. (Don't call this onCreate or onRender!)
 | __context__ | The `context` object passed onto [render()](api.md#render)
 | __dispatch__ | The `dispatch` object passed onto [dom.createRenderer()](api.md#dom.createrenderer).
 | __path__ | A unique ID of the component instance.
