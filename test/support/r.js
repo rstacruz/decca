@@ -2,7 +2,7 @@
  * Helper
  */
 
-import { element, dom } from '../../src'
+import { dom } from '../../src'
 
 module.exports = function r (...args) {
   const div = document.createElement('div')

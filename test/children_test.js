@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable react/react-in-jsx-scope */
+/* eslint-disable no-unused-vars */
 
 import { element } from '../src'
 import test from 'tape'
@@ -16,7 +17,6 @@ test('children', (t) => {
   t.equal(div.innerHTML, '<div class="app"><b>hi</b></div>')
   t.end()
 })
-
 
 test('text with children', (t) => {
   const App = {

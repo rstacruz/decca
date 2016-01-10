@@ -48,6 +48,7 @@
     "tap-spec": "4.1.1",
     "tape": "4.4.0",
     "tape-dom": "0.0.10",
+    "tape-standard": "1.0.0",
     "watchify": "3.6.1"
   },
   "directories": {
@@ -73,10 +74,9 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
-    "test": "budo test/index.js --live --open -- -t babelify --debug",
+    "test": "babel-node test/_jsdom.js | tap-spec",
+    "test:budo": "budo test/index.js --live --open -- -t babelify --debug",
     "test:watch": "env FORCE_COLOR=1 watchify -v --bare --node --no-bundle-external -t babelify test/_jsdom.js -o 'node | tap-spec'",
-    "test:jsdom": "babel-node test/_jsdom.js | tap-spec",
-    "test:lint": "standard -v src/*.js",
     "watch": "babel -w src --out-dir lib"
   }
 }

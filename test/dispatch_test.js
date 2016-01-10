@@ -1,28 +1,24 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/react-in-jsx-scope */
-
-import { element, dom } from '../src'
+import { element as h, dom } from '../src'
 import test from 'tape'
 
 test('dispatch', (t) => {
   const Button = {
     render ({ props, dispatch }) {
       t.equal(dispatch, 'CTX')
-      return <button>{ props.label }</button>
+      return h('button', {}, props.label)
     }
   }
 
   const App = {
     render ({ dispatch }) {
       t.equal(dispatch, 'CTX')
-      return <div>hi. <Button label='press' /></div>
+      return h('div', {}, 'hi. ', h(Button, { label: 'press' }))
     }
   }
 
   const div = document.createElement('div')
   const render = dom.createRenderer(div, 'CTX')
-  render(<App />)
+  render(h(App))
   t.equal(div.innerHTML, '<div>hi. <button>press</button></div>')
   t.end()
 })

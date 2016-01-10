@@ -7,3 +7,5 @@ require('./path_test')
 require('./string_test')
 require('./style_test')
 require('./deku/create_dom_renderer_test')
+
+if (process.env.JSDOM) require('tape')('standard', require('tape-standard')())
