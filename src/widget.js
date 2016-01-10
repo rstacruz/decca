@@ -11,17 +11,17 @@ import patch from 'virtual-dom/patch'
  *
  * Consumed in virtual-dom like so:
  *
- *     h('div', {}, [ new Widget(el, model, pass) ])
+ *     h('div', {}, [ new Widget(el, model, build) ])
  *
  *     widget.init()
  *     widget.update()
  *     widget.remove()
  */
 
-function Widget ({ component, props, children }, model, pass) {
+function Widget ({ component, props, children }, model, build) {
   if (!props) props = {}
   this.component = component
-  this.pass = pass
+  this.build = build
 
   // The parameters to be passed onto the component's functions.
   this.model = { props, children, ...model }
@@ -35,15 +35,11 @@ Widget.prototype.type = 'Widget'
 
 Widget.prototype.init = function () {
   const id = setId(this, getId())
-  this.model.state = trigger(this, 'initialState')
-
-  // Silently propagate it, don't trigger a re-render
-  this.pass.commitState(id, this.model.state)
 
   // Create the virtual-dom tree
   const el = this.component.render(this.model)
   this.el = el
-  this.tree = this.pass.build(el) // virtual-dom vnode
+  this.tree = this.build(el) // virtual-dom vnode
   this.rootNode = createElement(this.tree) // DOM element
   this.rootNode._dekuId = id // so future update() and destroy() can see it
 
@@ -73,7 +69,7 @@ Widget.prototype.update = function (previous, domNode) {
     return
   }
 
-  this.tree = this.pass.build(el)
+  this.tree = this.build(el)
 
   // Patch the DOM node
   var delta = diff(previous.tree, this.tree)
@@ -100,8 +96,6 @@ Widget.prototype.destroy = function (domNode) {
 
 function setId (widget, id) {
   widget.model.path = id
-  widget.model.setState = widget.pass.setState.bind(widget, id)
-  widget.model.state = widget.pass.states[id]
   return id
 }
 

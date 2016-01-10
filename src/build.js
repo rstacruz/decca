@@ -8,25 +8,20 @@ module.exports = buildPass
  * A rendering pass.
  * This closure is responsible for:
  *
- * - keeping aware of `context` and `state` to be passed down to Components
+ * - keeping aware of `context` to be passed down to Components
  *
- *     pass = buildPass(...)
- *     pass.build(el)               // render a component/node
- *     pass.commitState({...})      // make changes to the state, silently
- *     pass.setState({...})         // make changes to the state, rerender after
- *     pass.states                  // the component states mega-object
+ *     build = buildPass(...)
+ *     build(el)               // render a component/node
  */
 
-function buildPass (context, dispatch, states, commitState, rerender) {
-  const pass = { build, setState, commitState, states }
-
+function buildPass (context, dispatch) {
   /*
    * Builds from a vnode (`element()` output) to a virtual hyperscript element.
    * The `context` and `dispatch` is passed down recursively.
    * https://github.com/Matt-Esch/virtual-dom/blob/master/virtual-hyperscript/README.md
    */
 
-  function build (el) {
+  return function build (el) {
     if (typeof el === 'string') return el
     if (typeof el === 'number') return '' + el
     if (typeof el === 'undefined' || el === null) return
@@ -40,21 +35,9 @@ function buildPass (context, dispatch, states, commitState, rerender) {
       return new Widget(
         { component: tag, props, children },
         { context, dispatch },
-        pass)
+        build)
     }
 
     return h(tag, fixProps(props), children.map(build))
   }
-
-  /*
-   * Called by Components (via Widget). Queues up state changes, and updates it
-   * when it can.
-   */
-
-  function setState (componentId, state = {}) {
-    commitState(componentId, state)
-    rerender()
-  }
-
-  return pass
 }

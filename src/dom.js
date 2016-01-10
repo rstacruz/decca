@@ -2,20 +2,16 @@ import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
 import debounce from 'simpler-debounce'
-import buildPass from './pass'
+import buildPass from './build'
 
 /*
  * Creates a renderer function. Returns a function `render(vnode, [context])`
  * where `vnode` is the output of `element()`.
- *
- * Internally, it manages the state (exported via `render.states`).
  */
 
 function createRenderer (rootEl, dispatch) {
-  var states = {}
   var tree, rootNode // virtual-dom states
   var last // last render()
-  render.states = states // Export for debugging
 
   return render
 
@@ -25,9 +21,8 @@ function createRenderer (rootEl, dispatch) {
 
   function render (el, context) {
     last = [ el, context ]
-    var rerender = debounce(() => render(...last), 0)
-    var pass = buildPass(context, dispatch, states, commitState, rerender)
-    update(pass, el) // Update DOM
+    var build = buildPass(context, dispatch)
+    update(build, el) // Update DOM
   }
 
   /*
@@ -35,31 +30,20 @@ function createRenderer (rootEl, dispatch) {
    * Either builds the initial tree, or makes a patch on the existing tree.
    */
 
-  function update (pass, el) {
+  function update (build, el) {
     if (!tree) {
       // Build initial tree
-      tree = pass.build(el)
+      tree = build(el)
       rootNode = createElement(tree)
       rootEl.innerHTML = ''
       rootEl.appendChild(rootNode)
     } else {
       // Build diff
-      var newTree = pass.build(el)
+      var newTree = build(el)
       var delta = diff(tree, newTree)
       rootNode = patch(rootNode, delta)
       tree = newTree
     }
-  }
-
-  /*
-   * Internal: Save changes silently; will not trigger re-renders.
-   * Available in a `pass` object.
-   * Used by Widget for `initialState()`.
-   */
-
-  function commitState (path, changes) {
-    states[path] = { ...(states[path] || {}), ...changes }
-    return true
   }
 }
 
