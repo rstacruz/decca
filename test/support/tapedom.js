@@ -1,4 +1,4 @@
-if (typeof window === 'object' && !process.env.JSDOM) {
+if (typeof window === 'object' && navigator.userAgent.indexOf('Node.js') === -1) {
   var tapeDom = require('tape-dom')
   var style = document.createElement('style')
   style.innerHTML = `
