@@ -52,7 +52,7 @@ import { dom, element } from 'decca'
 const App = {
   render () {
     return <div>
-      <button label={'Press me'}></button>
+      <Button label={'Press me'}></Button>
     </div>
   }
 }
