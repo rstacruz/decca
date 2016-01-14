@@ -82,7 +82,7 @@
     "prepublish": "npm run build",
     "test": "node test/index.js | tap-spec",
     "test:budo": "budo test/index.js --live --open -- -t babelify --debug",
-    "test:watch": "tape-watch test/index.js -p tap-spec",
+    "test:watch": "tape-watch test/index.js -o '|tap-spec --min --color'",
     "watch": "babel -w src --out-dir lib"
   }
 }
