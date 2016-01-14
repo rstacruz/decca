@@ -1,6 +1,6 @@
+require('babel-register')
 require('jsdom-global')()
 require('./support/tapedom')
-require('es5-shim')
 require('./basic_test')
 require('./children_test')
 require('./dispatch_test')

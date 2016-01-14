@@ -73,29 +73,30 @@ test('context', (t) => {
   t.end()
 })
 
-if (!process.env.JSDOM) {
-  test('events', (t) => {
+test('events', (t) => {
+  // not consistently working on jsdom. why?
+  if (navigator.userAgent.indexOf('Node.js') === -1) {
     t.plan(1)
+  }
 
-    const App = {
-      render ({ context }) {
-        return <button id='sup' onClick={yo}>click me</button>
-      }
+  const App = {
+    render ({ context }) {
+      return <button id='sup' onClick={yo}>click me</button>
     }
+  }
 
-    function yo () {
-      t.pass('clicked')
-    }
+  function yo () {
+    t.pass('clicked')
+  }
 
-    const { div } = r(<App />)
-    document.body.appendChild(div)
+  const { div } = r(<App />)
+  document.body.appendChild(div)
 
-    var event = document.createEvent('MouseEvent')
-    event.initEvent('click', true, true)
-    document.querySelector('#sup').dispatchEvent(event)
-    t.end()
-  })
-}
+  var event = document.createEvent('MouseEvent')
+  event.initEvent('click', true, true)
+  document.querySelector('#sup').dispatchEvent(event)
+  t.end()
+})
 
 test('onUpdate', (t) => {
   t.plan(1)
