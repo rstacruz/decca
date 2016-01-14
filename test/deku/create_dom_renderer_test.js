@@ -167,4 +167,3 @@ test('context should be passed down across re-renders even after disappearance',
   render(<Form visible />, 'the context')
   t.end()
 })
-
