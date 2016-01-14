@@ -1,5 +1,6 @@
 'use strict'
 /** @jsx element */
+
 import { element } from '../src'
 import test from 'tape'
 import r from './support/r'

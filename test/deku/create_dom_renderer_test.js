@@ -1,7 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable no-unused-vars */
-
 import test from 'tape'
 import { dom, element } from '../../src'
 const { createRenderer } = dom

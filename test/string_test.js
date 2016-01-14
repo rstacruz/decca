@@ -1,8 +1,3 @@
-/* eslint-disable react/prop-types */
-/* eslint-disable react/no-unknown-property */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable no-unused-vars */
-
 import { element } from '../src'
 import { string } from '../src'
 import test from 'tape'
