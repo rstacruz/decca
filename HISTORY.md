@@ -1,3 +1,10 @@
+## [v2.0.1]
+> Jan 16, 2016
+
+- Fix string rendering inserting random commas.
+
+[v2.0.1]: https://github.com/rstacruz/decca/compare/v2.0.0...v2.0.1
+
 ## [v2.0.0]
 > Jan 10, 2016
 
