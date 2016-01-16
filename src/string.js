@@ -11,7 +11,9 @@ function render (el, context) {
   if (typeof tag === 'string') {
     const open = '<' + tag + toProps(props) + '>'
     const close = '</' + tag + '>'
-    return open + (children || []).map((_el) => render(_el, context)) + close
+    return open +
+      (children || []).map((_el) => render(_el, context)).join('') +
+      close
   }
 
   if (typeof tag === 'object') {
