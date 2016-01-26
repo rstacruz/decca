@@ -37,7 +37,7 @@
     "budo": "8.0.1",
     "deku": "2.0.0-rc12",
     "docpress": "0.6.10",
-    "es5-shim": "4.4.1",
+    "es5-shim": "4.5.1",
     "eslint": "1.10.3",
     "eslint-config-standard": "4.4.0",
     "eslint-config-standard-react": "1.2.1",
