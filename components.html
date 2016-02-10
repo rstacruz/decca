@@ -28,13 +28,13 @@
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-function render ({ props }) {
-    return &lt;button&gt;{ props.label }&lt;/button&gt;
+<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{ props }</span>) </span>{
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   }
 }
 
 module.exports = { render }
-</code></pre>
+</span></code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
 <p>A component can have these functions:</p>
 <table class="no-head">
@@ -100,23 +100,23 @@ module.exports = { render }
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-const App = {
+<span class="pl-k">const</span> App = {
   render () {
-    return &lt;div&gt;
-      &lt;Button label={<span class="pl-s">&apos;Press me&apos;</span>}&gt;&lt;/Button&gt;
-    &lt;/div&gt;
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="pl-s">{&apos;Press</span> <span class="hljs-attr">me</span>&apos;}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
   }
 }
 
 const Button = {
   render ({ props }) {
-    return &lt;button&gt;{ props.label }&lt;/button&gt;
+    return <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
   }
 }
 
 // Render the app tree
 render = dom.createRenderer(document.body)
-render(&lt;App /&gt;)
+render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)</span>
 </code></pre>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
