@@ -34,7 +34,7 @@
     "babel-preset-stage-0": "6.5.0",
     "babel-register": "6.6.5",
     "babelify": "7.2.0",
-    "budo": "8.0.4",
+    "budo": "8.2.2",
     "deku": "2.0.0-rc16",
     "docpress": "0.6.11",
     "es5-shim": "4.5.3",
