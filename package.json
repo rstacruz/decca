@@ -38,7 +38,7 @@
     "deku": "2.0.0-rc16",
     "docpress": "0.6.11",
     "es5-shim": "4.5.3",
-    "eslint": "1.10.3",
+    "eslint": "2.7.0",
     "eslint-config-standard": "4.4.0",
     "eslint-config-standard-react": "1.2.1",
     "eslint-plugin-react": "4.2.3",
