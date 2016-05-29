@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@rstacruz/tap-spec": "4.1.1",
-    "babel-cli": "6.6.5",
+    "babel-cli": "6.9.0",
     "babel-plugin-syntax-jsx": "6.5.0",
     "babel-plugin-transform-react-jsx": "6.6.5",
     "babel-preset-es2015": "6.5.0",
