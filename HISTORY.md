@@ -1,3 +1,10 @@
+## [v2.1.0]
+> Jun  1, 2016
+
+- [#12] - Fix not being able to use camelCase properties (like `accessKey`). ([#130], [@mikz])
+
+[v2.1.0]: https://github.com/rstacruz/decca/compare/v2.0.1...v2.1.0
+
 ## [v2.0.1]
 > Jan 16, 2016
 
@@ -43,3 +50,7 @@
 [v1.0.0]: https://github.com/rstacruz/decca/compare/v0.1.0...v1.0.0
 [v1.2.0]: https://github.com/rstacruz/decca/compare/v1.0.0...v1.2.0
 [v1.2.1]: https://github.com/rstacruz/decca/compare/v1.2.0...v1.2.1
+[#12]: https://github.com/rstacruz/decca/issues/12
+[#130]: https://github.com/rstacruz/decca/issues/130
+[@mikz]: https://github.com/mikz
+
