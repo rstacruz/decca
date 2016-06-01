@@ -36,7 +36,7 @@ function toProps (props) {
     if (/^on[A-Za-z]/.test(attr)) return
     const val = props[attr]
     if (typeof val === 'undefined' || val === null) return
-    result.push(`${ attr }=${ JSON.stringify(val) }`)
+    result.push(`${attr}=${JSON.stringify(val)}`)
   })
 
   return result.length ? ' ' + result.join(' ') : ''

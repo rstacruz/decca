@@ -1,5 +1,4 @@
-import { element } from '../src'
-import { string } from '../src'
+import { element, string } from '../src'
 import test from 'tape'
 
 test('string: basic non-component', (t) => {
@@ -75,7 +74,7 @@ test('string: paths in nested components', (t) => {
 
 test('string: components with children', (t) => {
   const Button = {
-    render: ({ props }) => <div>{ props.children }</div>
+    render: ({ props }) => <div>{props.children}</div>
   }
   const App = {
     render: () => <Button>hello</Button>

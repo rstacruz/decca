@@ -33,7 +33,7 @@ test('basic component', (t) => {
 test('props', (t) => {
   const Button = {
     render ({ props }) {
-      return <button>{ props.label }</button>
+      return <button>{props.label}</button>
     }
   }
 
@@ -52,7 +52,7 @@ test('context', (t) => {
   const Button = {
     render ({ props, context }) {
       t.equal(context, 'CTX')
-      return <button>{ props.label }</button>
+      return <button>{props.label}</button>
     }
   }
 
@@ -159,7 +159,7 @@ test('class in component', (t) => {
   const App = {
     render ({ props }) {
       t.equal(props.class, 'app', 'has class')
-      return <div class={ props.class }>hello</div>
+      return <div class={props.class}>hello</div>
     }
   }
 

@@ -51,7 +51,7 @@ test('moving elements using keys', t => {
 
   t.equal(
     el.innerHTML,
-    `<div><span id="2"></span><span id="1"></span><span id="3"></span></div>`,
+    '<div><span id="2"></span><span id="1"></span><span id="3"></span></div>',
     'elements rearranged'
   )
 
@@ -150,7 +150,7 @@ test('rendering the same node', t => {
 test('context should be passed down across re-renders even after disappearance', t => {
   let Form = {
     render ({ props }) {
-      return <div>{ props.visible ? <Button /> : [] }</div>
+      return <div>{props.visible ? <Button /> : []}</div>
     }
   }
   let Button = {

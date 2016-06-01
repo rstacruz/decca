@@ -5,7 +5,7 @@ import r from './support/r'
 test('children', (t) => {
   const App = {
     render ({ props, children }) {
-      return <div class='app'>{ children }</div>
+      return <div class='app'>{children}</div>
     }
   }
   const { div } = r(<App><b>hi</b></App>)
@@ -16,7 +16,7 @@ test('children', (t) => {
 test('text with children', (t) => {
   const App = {
     render ({ props, children }) {
-      return <div>hi { children }</div>
+      return <div>hi {children}</div>
     }
   }
   const { div } = r(<App>John</App>)

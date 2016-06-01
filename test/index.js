@@ -1,4 +1,3 @@
-require('babel-register')
 require('jsdom-global')()
 require('./support/tapedom')
 require('./basic_test')
