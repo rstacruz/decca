@@ -40,7 +40,10 @@
     "es5-shim": "4.5.8",
     "eslint": "2.11.1",
     "eslint-config-standard": "5.3.1",
+    "eslint-config-standard-jsx": "1.2.0",
     "eslint-config-standard-react": "2.4.0",
+    "eslint-engine": "0.2.0",
+    "eslint-plugin-promise": "1.3.1",
     "eslint-plugin-react": "5.1.1",
     "eslint-plugin-standard": "1.3.2",
     "git-update-ghpages": "1.3.0",
@@ -49,7 +52,6 @@
     "tap-dev-tool": "1.3.0",
     "tape": "4.5.1",
     "tape-dom": "0.0.10",
-    "tape-eslint": "1.2.1",
     "tape-watch": "2.1.0",
     "watchify": "3.7.0"
   },
@@ -79,6 +81,7 @@
     "test": "tape -r babel-register test/index.js | tap-spec",
     "test:budo": "budo test/index.js --live --open -- -t babelify --debug",
     "test:watch": "tape-watch -r babel-register test/index.js -o '|tap-spec --min --color'",
-    "watch": "babel -w src --out-dir lib"
+    "watch": "babel -w src --out-dir lib",
+    "lint": "eslint-check"
   }
 }
