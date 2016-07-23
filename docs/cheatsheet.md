@@ -11,9 +11,24 @@ const Message = {
 }
 
 // Render the app tree
-// (`dispatch` is optional)
-const render = dom.createRenderer(document.body, dispatch)
+const render = dom.createRenderer(document.body)
 render(<Message name='Rico S.' />)
+```
+
+## Redux
+
+```js
+import { createStore } from 'redux'
+
+const store = createStore(/*...*/)
+const render = dom.createRenderer(document.body, store.dispatch)
+
+function update () {
+  render(<Message name='Rico S.' />, store.getState())
+}
+
+stoer.subscribe(update)
+update()
 ```
 
 ## Components
