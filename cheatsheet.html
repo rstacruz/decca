@@ -38,7 +38,9 @@ const render = dom.createRenderer(document.body)
 render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
 </code></pre>
 <h2 id="redux">Redux</h2>
-<pre><code class="lang-js"><span class="pl-c">// `dispatch` and `context` are optional</span>
+<pre><code class="lang-js"><span class="pl-k">import</span> { createStore } <span class="pl-k">from</span> <span class="pl-s">&apos;redux&apos;</span>
+
+<span class="pl-k">const</span> store = createStore(<span class="pl-c">/*...*/</span>)
 <span class="pl-k">const</span> render = dom.createRenderer(<span class="pl-c1">document</span>.body, store.dispatch)
 
 <span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">update</span> (<span class="hljs-params"></span>) </span>{
