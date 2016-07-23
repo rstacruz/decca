@@ -1,5 +1,7 @@
 # Cheatsheet
 
+Here's a basic "Hello World" example.
+
 ```js
 /** @jsx element */
 import { dom, element } from 'decca'
@@ -17,6 +19,8 @@ render(<Message name='Rico S.' />)
 
 ## Redux
 
+Pass `store.dispatch` to *createRenderer()*, and `store.getState()` to *render()*.
+
 ```js
 import { createStore } from 'redux'
 
@@ -33,6 +37,8 @@ update()
 
 ## Components
 
+Components at least have a `render()` function.
+
 ```js
 import { element } from 'decca'
 
@@ -45,10 +51,20 @@ exports.render = function ({props, children, context, dispatch, path}) {
 }
 ```
 
-### Lifecycle
+The model has:
+
+* `children` - children passed onto component
+* `props` - properties passed onto component
+* `path` - unique ID of component instance
+* `context` - taken from *render()*
+* `dispatch` - taken from *createRenderer()*
+
+## Component lifecycle
+
+The following hooks are supported:
 
 ```js
-exports.onCreate = function (model) { ... }
-exports.onUpdate = function (model) { ... }
-exports.onRemove = function (model) { ... }
+exports.onCreate = (model) => { ... } // on first create
+exports.onUpdate = (model) => { ... } // on every render
+exports.onRemove = (model) => { ... } // after removal
 ```
