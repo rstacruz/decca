@@ -132,14 +132,12 @@
               {
                 "title": "Components",
                 "depth": 2,
-                "id": "components",
-                "headings": [
-                  {
-                    "title": "Lifecycle",
-                    "depth": 3,
-                    "id": "lifecycle"
-                  }
-                ]
+                "id": "components"
+              },
+              {
+                "title": "Component lifecycle",
+                "depth": 2,
+                "id": "component-lifecycle"
               }
             ]
           }
@@ -269,14 +267,12 @@
         {
           "title": "Components",
           "depth": 2,
-          "id": "components",
-          "headings": [
-            {
-              "title": "Lifecycle",
-              "depth": 3,
-              "id": "lifecycle"
-            }
-          ]
+          "id": "components"
+        },
+        {
+          "title": "Component lifecycle",
+          "depth": 2,
+          "id": "component-lifecycle"
         }
       ]
     }

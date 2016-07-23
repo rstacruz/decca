@@ -72,7 +72,7 @@ exports.render = function ({props, children, context, dispatch, path}) {
 <li><code>context</code> - taken from <em>render()</em></li>
 <li><code>dispatch</code> - taken from <em>createRenderer()</em></li>
 </ul>
-<h3 id="lifecycle">Lifecycle</h3>
+<h2 id="component-lifecycle">Component lifecycle</h2>
 <p>The following hooks are supported:</p>
 <pre><code class="lang-js">exports.onCreate = (model) =&gt; { ... } <span class="pl-c">// on first create</span>
 exports.onUpdate = (model) =&gt; { ... } <span class="pl-c">// on every render</span>
@@ -106,10 +106,8 @@ exports.onRemove = (model) =&gt; { ... } <span class="pl-c">// after removal</sp
                     <li class="heading-item -depth-2"><a href="#redux" class="hlink link-redux">Redux</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#components" class="hlink link-components">Components</a>
-                      <ul class="heading-list -depth-2">
-                        <li class="heading-item -depth-3"><a href="#lifecycle" class="hlink link-lifecycle">Lifecycle</a>
-                        </li>
-                      </ul>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#component-lifecycle" class="hlink link-component-lifecycle">Component lifecycle</a>
                     </li>
                   </ul>
                 </li>
