@@ -7,3 +7,4 @@
   * [JSX](jsx.md)
   * [Examples](examples.md)
   * [About Deku](about-deku.md)
+  * [Cheatsheet](cheatsheet.md)
