@@ -34,7 +34,8 @@
 }
 
 // Render the app tree
-const render = dom.createRenderer(document.body)
+// (`dispatch` is optional)
+const render = dom.createRenderer(document.body, dispatch)
 render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
 </code></pre>
 <h2 id="components">Components</h2>
