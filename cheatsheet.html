@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
+    <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
+    <script src="assets/script.js?t=2bcc4b59"></script>
+    <title>Cheatsheet</title>
+    <meta name="viewport" content="width=device-width">
+    <script>
+      if (false || window.location.hostname.indexOf("ricostacruz.com") === window.location.hostname.length - 15) {
+        (function(d,o,c,p,r,e,s){d['GoogleAnalyticsObject']=r;d[r]=d[r]||function(){(d[r].q=d[r].q||[]).push(arguments)},d[r].l=1*new Date();e=o.createElement(c),s=o.getElementsByTagName(c)[0];e.async=1;e.src=p;s.parentNode.insertBefore(e,s)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        ga('create',"UA-20473929-1",'auto')
+      }
+    </script>
+  </head>
+  <body class="-menu-visible">
+    <div class="doc-layout">
+      <div class="toggle menu-toggle js-menu-toggle"></div>
+      <div class="body page-cheatsheet">
+        <div class="header-nav">
+          <div class="right"><a href="https://github.com/rstacruz/decca" data-title="rstacruz/decca" class="iconlink">
+              <!-- span.title Open in GitHub--><span class="icon -github"></span></a>
+          </div>
+        </div>
+        <div class="markdown-body"><h1 id="cheatsheet">Cheatsheet</h1>
+<pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
+<span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
+
+<span class="pl-k">const</span> Message = {
+  render ({ props }) {
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+  }
+}
+
+// Render the app tree
+const render = dom.createRenderer(document.body)
+render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
+</code></pre>
+<h2 id="components">Components</h2>
+<pre><code class="lang-js">import { element } from &apos;decca&apos;
+
+exports.render = function ({props, children, context, dispatch, path}) {
+  /* no-jsx */
+  return element(&apos;div&apos;, {class: &apos;hello&apos;}, &apos;hello there&apos;)
+
+  /* jsx */
+  return &lt;div class=&apos;hello&apos;&gt;hello there&lt;/div&gt;
+}
+</code></pre>
+<h3 id="lifecycle">Lifecycle</h3>
+<pre><code class="lang-js">exports.onCreate = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
+exports.onUpdate = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
+exports.onRemove = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
+</code></pre>
+
+        </div>
+        <div class="footer-nav">
+          <div class="left"><a href="about-deku.html"><span class="title">About Deku</span></a></div>
+        </div>
+      </div>
+      <div class="menu toc-menu">
+        <li class="menu-item -level-0 -parent">
+          <ul class="submenu">
+            <li class="menu-item -level-1"><a href="index.html" class="link title  link-index">decca</a>
+            </li>
+            <li class="menu-item -level-1 -parent"><span class="title">Documentation</span>
+              <ul class="submenu">
+                <li class="menu-item -level-2"><a href="components.html" class="link title  link-components">Components</a>
+                </li>
+                <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API reference</a>
+                </li>
+                <li class="menu-item -level-2"><a href="jsx.html" class="link title  link-jsx">JSX</a>
+                </li>
+                <li class="menu-item -level-2"><a href="examples.html" class="link title  link-examples">Examples</a>
+                </li>
+                <li class="menu-item -level-2"><a href="about-deku.html" class="link title  link-about-deku">About Deku</a>
+                </li>
+                <li class="menu-item -level-2"><a href="cheatsheet.html" class="link title -active link-cheatsheet">Cheatsheet</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#components" class="hlink link-components">Components</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a href="#lifecycle" class="hlink link-lifecycle">Lifecycle</a>
+                        </li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </div>
+    </div>
+  </body>
+</html>

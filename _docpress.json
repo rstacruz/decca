@@ -117,6 +117,26 @@
                 "id": "differences-with-deku"
               }
             ]
+          },
+          {
+            "title": "Cheatsheet",
+            "source": "docs/cheatsheet.md",
+            "url": "cheatsheet.html",
+            "slug": "cheatsheet",
+            "headings": [
+              {
+                "title": "Components",
+                "depth": 2,
+                "id": "components",
+                "headings": [
+                  {
+                    "title": "Lifecycle",
+                    "depth": 3,
+                    "id": "lifecycle"
+                  }
+                ]
+              }
+            ]
           }
         ]
       }
@@ -230,6 +250,25 @@
           "id": "differences-with-deku"
         }
       ]
+    },
+    "cheatsheet.html": {
+      "source": "docs/cheatsheet.md",
+      "title": "Cheatsheet",
+      "slug": "cheatsheet",
+      "headings": [
+        {
+          "title": "Components",
+          "depth": 2,
+          "id": "components",
+          "headings": [
+            {
+              "title": "Lifecycle",
+              "depth": 3,
+              "id": "lifecycle"
+            }
+          ]
+        }
+      ]
     }
   },
   "sources": {
@@ -239,6 +278,7 @@
     "docs/jsx.md": "jsx.html",
     "docs/examples.md": "examples.html",
     "docs/about-deku.md": "about-deku.html",
+    "docs/cheatsheet.md": "cheatsheet.html",
     "docs/docpress.json": "docpress.json"
   }
 }
