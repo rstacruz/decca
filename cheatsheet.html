@@ -24,6 +24,7 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="cheatsheet">Cheatsheet</h1>
+<p>Here&#x2019;s a basic &#x201C;Hello World&#x201D; example.</p>
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
@@ -38,6 +39,7 @@ const render = dom.createRenderer(document.body)
 render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
 </code></pre>
 <h2 id="redux">Redux</h2>
+<p>Pass <code>store.dispatch</code> to <em>createRenderer()</em>, and <code>store.getState()</code> to <em>render()</em>.</p>
 <pre><code class="lang-js"><span class="pl-k">import</span> { createStore } <span class="pl-k">from</span> <span class="pl-s">&apos;redux&apos;</span>
 
 <span class="pl-k">const</span> store = createStore(<span class="pl-c">/*...*/</span>)
@@ -51,6 +53,7 @@ stoer.subscribe(update)
 update()
 </span></code></pre>
 <h2 id="components">Components</h2>
+<p>Components at least have a <code>render()</code> function.</p>
 <pre><code class="lang-js">import { element } from &apos;decca&apos;
 
 exports.render = function ({props, children, context, dispatch, path}) {
@@ -61,10 +64,19 @@ exports.render = function ({props, children, context, dispatch, path}) {
   return &lt;div class=&apos;hello&apos;&gt;hello there&lt;/div&gt;
 }
 </code></pre>
+<p>The model has:</p>
+<ul>
+<li><code>children</code> - children passed onto component</li>
+<li><code>props</code> - properties passed onto component</li>
+<li><code>path</code> - unique ID of component instance</li>
+<li><code>context</code> - taken from <em>render()</em></li>
+<li><code>dispatch</code> - taken from <em>createRenderer()</em></li>
+</ul>
 <h3 id="lifecycle">Lifecycle</h3>
-<pre><code class="lang-js">exports.onCreate = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
-exports.onUpdate = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
-exports.onRemove = <span class="hljs-function"><span class="pl-k">function</span> (<span class="hljs-params">model</span>) </span>{ ... }
+<p>The following hooks are supported:</p>
+<pre><code class="lang-js">exports.onCreate = (model) =&gt; { ... } <span class="pl-c">// on first create</span>
+exports.onUpdate = (model) =&gt; { ... } <span class="pl-c">// on every render</span>
+exports.onRemove = (model) =&gt; { ... } <span class="pl-c">// after removal</span>
 </code></pre>
 
         </div>
