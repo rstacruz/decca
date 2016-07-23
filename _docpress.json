@@ -125,6 +125,11 @@
             "slug": "cheatsheet",
             "headings": [
               {
+                "title": "Redux",
+                "depth": 2,
+                "id": "redux"
+              },
+              {
                 "title": "Components",
                 "depth": 2,
                 "id": "components",
@@ -256,6 +261,11 @@
       "title": "Cheatsheet",
       "slug": "cheatsheet",
       "headings": [
+        {
+          "title": "Redux",
+          "depth": 2,
+          "id": "redux"
+        },
         {
           "title": "Components",
           "depth": 2,

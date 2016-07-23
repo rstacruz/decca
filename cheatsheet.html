@@ -34,10 +34,20 @@
 }
 
 // Render the app tree
-// (`dispatch` is optional)
-const render = dom.createRenderer(document.body, dispatch)
+const render = dom.createRenderer(document.body)
 render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
 </code></pre>
+<h2 id="redux">Redux</h2>
+<pre><code class="lang-js"><span class="pl-c">// `dispatch` and `context` are optional</span>
+<span class="pl-k">const</span> render = dom.createRenderer(<span class="pl-c1">document</span>.body, store.dispatch)
+
+<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">update</span> (<span class="hljs-params"></span>) </span>{
+  render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>, store.getState())
+}
+
+stoer.subscribe(update)
+update()
+</span></code></pre>
 <h2 id="components">Components</h2>
 <pre><code class="lang-js">import { element } from &apos;decca&apos;
 
@@ -79,6 +89,8 @@ exports.onRemove = <span class="hljs-function"><span class="pl-k">function</span
                 </li>
                 <li class="menu-item -level-2"><a href="cheatsheet.html" class="link title -active link-cheatsheet">Cheatsheet</a>
                   <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#redux" class="hlink link-redux">Redux</a>
+                    </li>
                     <li class="heading-item -depth-2"><a href="#components" class="hlink link-components">Components</a>
                       <ul class="heading-list -depth-2">
                         <li class="heading-item -depth-3"><a href="#lifecycle" class="hlink link-lifecycle">Lifecycle</a>
