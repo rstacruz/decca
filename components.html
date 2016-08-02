@@ -29,12 +29,12 @@
 <span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
 <span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{ props }</span>) </span>{
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   }
 }
 
-module.exports = { render }
-</span></code></pre>
+<span class="pl-c1">module</span>.exports = { render }
+</code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
 <p>A component can have these functions:</p>
 <table class="no-head">
@@ -103,21 +103,21 @@ module.exports = { render }
 <span class="pl-k">const</span> App = {
   render () {
     <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="pl-s">{&apos;Press</span> <span class="hljs-attr">me</span>&apos;}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
-    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="pl-s">{</span>&apos;<span class="hljs-attr">Press</span> <span class="hljs-attr">me</span>&apos;}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
 }
 
-const Button = {
+<span class="pl-k">const</span> Button = {
   render ({ props }) {
-    return <span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span>
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   }
 }
 
-// Render the app tree
-render = dom.createRenderer(document.body)
-render(<span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)</span>
-</code></pre>
+<span class="pl-c">// Render the app tree</span>
+render = dom.createRenderer(<span class="pl-c1">document</span>.body)
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
+</span></code></pre>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
 <ul>

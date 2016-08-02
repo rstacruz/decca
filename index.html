@@ -41,14 +41,14 @@
 
 <span class="pl-k">const</span> Message = {
   render ({ props }) {
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
 }
 
-// Render the app tree
-const render = dom.createRenderer(document.body)
-render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
-</code></pre>
+<span class="pl-c">// Render the app tree</span>
+<span class="pl-k">const</span> render = dom.createRenderer(<span class="pl-c1">document</span>.body)
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)
+</span></code></pre>
 <h2 id="usage">Usage</h2>
 <p>See the <a href="api.html">API reference</a> and <a href="https://dekujs.github.io/deku">Deku</a>&#x2019;s documentation. Also see a <a href="about-deku.html">comparison with Deku</a>.</p>
 <h2 id="acknowledgements">Acknowledgements</h2>

@@ -30,14 +30,14 @@
 
 <span class="pl-k">const</span> Message = {
   render ({ props }) {
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
 }
 
-// Render the app tree
-const render = dom.createRenderer(document.body)
-render(<span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)</span>
-</code></pre>
+<span class="pl-c">// Render the app tree</span>
+<span class="pl-k">const</span> render = dom.createRenderer(<span class="pl-c1">document</span>.body)
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;Rico S.&apos;</span> /&gt;</span>)
+</span></code></pre>
 <h2 id="redux">Redux</h2>
 <p>Pass <code>store.dispatch</code> to <em>createRenderer()</em>, and <code>store.getState()</code> to <em>render()</em>.</p>
 <pre><code class="lang-js"><span class="pl-k">import</span> { createStore } <span class="pl-k">from</span> <span class="pl-s">&apos;redux&apos;</span>
