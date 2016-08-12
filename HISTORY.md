@@ -1,3 +1,10 @@
+## [v2.2.0]
+> Aug 12, 2016
+
+- Dumb (function-only) components are now supported.
+
+[v2.2.0]: https://github.com/rstacruz/decca/compare/v2.1.0...v2.2.0
+
 ## [v2.1.0]
 > Jun  1, 2016
 
@@ -53,4 +60,3 @@
 [#12]: https://github.com/rstacruz/decca/issues/12
 [#130]: https://github.com/rstacruz/decca/issues/130
 [@mikz]: https://github.com/mikz
-
