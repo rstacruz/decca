@@ -29,11 +29,17 @@ function buildPass (context, dispatch) {
 
     const { tag, props, children } = el
 
-    // Defer to Widget if it's a component
     if (typeof tag === 'object') {
+      // Defer to Widget if it's a component
       if (!tag.render) throw new Error('no render() in component')
       return new Widget(
         { component: tag, props, children },
+        { context, dispatch },
+        build)
+    } else if (typeof tag === 'function') {
+      // Dumb components
+      return new Widget(
+        { component: { render: tag }, props, children },
         { context, dispatch },
         build)
     }

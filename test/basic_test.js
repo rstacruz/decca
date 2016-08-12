@@ -168,3 +168,16 @@ test('class in component', (t) => {
   t.end()
 })
 
+test('dumb components', (t) => {
+  t.plan(2)
+
+  function App ({ props }) {
+    t.equal(props.class, 'app', 'has class')
+    return <div class={props.class}>hello</div>
+  }
+
+  const { div } = r(<App class='app' />)
+  t.equal(div.innerHTML, '<div class="app">hello</div>', 'renders')
+  t.end()
+})
+
