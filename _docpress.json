@@ -59,6 +59,11 @@
                 "id": "nesting-components"
               },
               {
+                "title": "Dumb components",
+                "depth": 2,
+                "id": "dumb-components"
+              },
+              {
                 "title": "Further references",
                 "depth": 2,
                 "id": "further-references"
@@ -197,6 +202,11 @@
           "title": "Nesting components",
           "depth": 2,
           "id": "nesting-components"
+        },
+        {
+          "title": "Dumb components",
+          "depth": 2,
+          "id": "dumb-components"
         },
         {
           "title": "Further references",

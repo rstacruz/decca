@@ -103,20 +103,29 @@
 <span class="pl-k">const</span> App = {
   render () {
     <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>
-      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="pl-s">{</span>&apos;<span class="hljs-attr">Press</span> <span class="hljs-attr">me</span>&apos;}&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">label</span>=<span class="pl-s">&apos;Press me&apos;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span>
     <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
   }
 }
 
 <span class="pl-k">const</span> Button = {
-  render ({ props }) {
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  render ({props}) {
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.label}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   }
 }
 
 <span class="pl-c">// Render the app tree</span>
 render = dom.createRenderer(<span class="pl-c1">document</span>.body)
 render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
+</span></code></pre>
+<h2 id="dumb-components">Dumb components</h2>
+<p>If you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>), you can simply use a function as a component. It will act like a component&#x2019;s <code>render()</code> function.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Message</span> (<span class="hljs-params">{props}</span>) </span>{
+  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
+}
+
+render = dom.createRenderer(<span class="pl-c1">document</span>.body)
+render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;John&apos;</span> /&gt;</span>)
 </span></code></pre>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
@@ -144,6 +153,8 @@ render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App<
                     <li class="heading-item -depth-2"><a href="#model" class="hlink link-model">Model</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#nesting-components" class="hlink link-nesting-components">Nesting components</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#dumb-components" class="hlink link-dumb-components">Dumb components</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#further-references" class="hlink link-further-references">Further references</a>
                     </li>
