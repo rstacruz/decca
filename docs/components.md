@@ -70,7 +70,7 @@ render(<App />)
 
 ## Dumb components
 
-If you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`), you can simply use a function as a component. It will act like a component's `render()` function.
+You can also define a component as a function. This is useful if you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`). It will act like a component's `render()` function. *(Version v2.2+)*
 
 ```js
 function Message ({props}) {
