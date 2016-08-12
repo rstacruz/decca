@@ -119,7 +119,7 @@ render = dom.createRenderer(<span class="pl-c1">document</span>.body)
 render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
 </span></code></pre>
 <h2 id="dumb-components">Dumb components</h2>
-<p>If you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>), you can simply use a function as a component. It will act like a component&#x2019;s <code>render()</code> function.</p>
+<p>You can also define a component as a function. This is useful if you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>). It will act like a component&#x2019;s <code>render()</code> function. <em>(Version v2.2+)</em></p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Message</span> (<span class="hljs-params">{props}</span>) </span>{
   <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 }
