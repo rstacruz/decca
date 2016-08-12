@@ -102,7 +102,24 @@
             "title": "JSX",
             "source": "docs/jsx.md",
             "url": "jsx.html",
-            "slug": "jsx"
+            "slug": "jsx",
+            "headings": [
+              {
+                "title": "Setting up Babel",
+                "depth": 2,
+                "id": "setting-up-babel"
+              },
+              {
+                "title": "How does it work?",
+                "depth": 2,
+                "id": "how-does-it-work"
+              },
+              {
+                "title": "References",
+                "depth": 2,
+                "id": "references"
+              }
+            ]
           },
           {
             "title": "Examples",
@@ -245,7 +262,24 @@
     "jsx.html": {
       "source": "docs/jsx.md",
       "title": "JSX",
-      "slug": "jsx"
+      "slug": "jsx",
+      "headings": [
+        {
+          "title": "Setting up Babel",
+          "depth": 2,
+          "id": "setting-up-babel"
+        },
+        {
+          "title": "How does it work?",
+          "depth": 2,
+          "id": "how-does-it-work"
+        },
+        {
+          "title": "References",
+          "depth": 2,
+          "id": "references"
+        }
+      ]
     },
     "examples.html": {
       "source": "docs/examples.md",

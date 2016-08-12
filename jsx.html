@@ -24,8 +24,55 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="jsx">JSX</h1>
-<p>The element function used to create virtual elements is compatible with <a href="https://facebook.github.io/jsx/">JSX</a> through <a href="https://babeljs.io/">Babel</a>. When using Babel you just need to set the <code>jsxPragma</code>. This allows you to automatically transform HTML in your code into element calls.</p>
-<p>See <a href="http://dekujs.github.io/deku/docs/basics/JSX.html">Deku&#x2019;s documentation</a> for more info.</p>
+<p>The <code>element</code> function used to create virtual elements is compatible with <a href="https://facebook.github.io/jsx/">JSX</a> through <a href="https://babeljs.io">Babel</a>. When using Babel you just need to set the <code>jsxPragma</code>. This allows you to automatically transform HTML in your code into <code>element</code> calls.</p>
+<h2 id="setting-up-babel">Setting up Babel</h2>
+<p>Be sure to install <a href="http://babeljs.io/docs/plugins/preset-es2015/">babel-preset-es2015</a> and <a href="https://babeljs.io/docs/plugins/transform-react-jsx/">babel-plugin-transform-react-jsx</a>.</p>
+<pre><code>npm install babel-preset-es2015
+npm install babel-plugin-transform-react-jsx
+</code></pre>
+<p>You will need to set the <code>pragma</code>. Here&#x2019;s an example <code>.babelrc</code> that sets the pragma:</p>
+<pre><code class="lang-json">{
+  <span class="hljs-attr">&quot;presets&quot;</span>: [<span class="pl-s">&quot;es2015&quot;</span>],
+  <span class="hljs-attr">&quot;plugins&quot;</span>: [
+    [<span class="pl-s">&quot;transform-react-jsx&quot;</span>, {<span class="hljs-attr">&quot;pragma&quot;</span>: <span class="pl-s">&quot;element&quot;</span>}]
+  ]
+}
+</code></pre>
+<p>Alternatively, you can specify it in each of your files with a <code>@jsx</code> pragma comment:</p>
+<pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
+
+<span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;deku&apos;</span>
+</code></pre>
+<p>From here, you can use <a href="https://www.npmjs.com/package/browserify">browserify</a> with <a href="https://www.npmjs.com/package/babelify">babelify</a> to build your final .js package.</p>
+<pre><code class="lang-sh">npm install --save browserify
+npm install --save babelify
+
+<span class="pl-c"># compile the entry point `index.js` to `dist/application.js`</span>
+browserify -t babelify index.js -o dist/application.js
+</code></pre>
+<p>Alternatively, you can also use <a href="https://www.npmjs.com/package/babel-cli">babel-cli</a> to compile your JS files.</p>
+<h2 id="how-does-it-work">How does it work?</h2>
+<p>JSX is just syntax sugar for creating object trees. You can use Deku perfectly fine without JSX, but if you&#x2019;re already using Babel you can use JSX without any extra work.</p>
+<p>Instead of writing each <code>element</code> call:</p>
+<pre><code class="lang-js">function render (model) {
+  return (
+    element(&apos;button&apos;, { class: &apos;Button&apos; }, [
+      element(&apos;span&apos;, { class: &apos;Button-text&apos; }, [&apos;Click Me!&apos;])
+    ])
+  )
+}
+</code></pre>
+<p>You can write HTML:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">model</span>) </span>{
+  <span class="pl-k">return</span> (
+    <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="pl-s">&apos;Button&apos;</span>&gt;</span>
+      <span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="pl-s">&apos;Button-text&apos;</span>&gt;</span>Click Me!<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span>
+    <span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  )
+}
+</code></pre>
+<h2 id="references">References</h2>
+<p><em>This page is taken from <a href="https://github.com/anthonyshort/deku/blob/master/docs/basics/JSX.md">Deku&#x2019;s documentation</a>.</em></p>
 
         </div>
         <div class="footer-nav">
@@ -45,6 +92,14 @@
                 <li class="menu-item -level-2"><a href="api.html" class="link title  link-api">API reference</a>
                 </li>
                 <li class="menu-item -level-2"><a href="jsx.html" class="link title -active link-jsx">JSX</a>
+                  <ul class="headings heading-list">
+                    <li class="heading-item -depth-2"><a href="#setting-up-babel" class="hlink link-setting-up-babel">Setting up Babel</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#how-does-it-work" class="hlink link-how-does-it-work">How does it work?</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#references" class="hlink link-references">References</a>
+                    </li>
+                  </ul>
                 </li>
                 <li class="menu-item -level-2"><a href="examples.html" class="link title  link-examples">Examples</a>
                 </li>
