@@ -52,20 +52,33 @@ import { dom, element } from 'decca'
 const App = {
   render () {
     return <div>
-      <Button label={'Press me'}></Button>
+      <Button label='Press me'></Button>
     </div>
   }
 }
 
 const Button = {
-  render ({ props }) {
-    return <button>{ props.label }</button>
+  render ({props}) {
+    return <button>{props.label}</button>
   }
 }
 
 // Render the app tree
 render = dom.createRenderer(document.body)
 render(<App />)
+```
+
+## Dumb components
+
+If you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`), you can simply use a function as a component. It will act like a component's `render()` function.
+
+```js
+function Message ({props}) {
+  return <div>Hello, {props.name}</div>
+}
+
+render = dom.createRenderer(document.body)
+render(<Message name='John' />)
 ```
 
 ## Further references
