@@ -1,7 +1,7 @@
 {
   "name": "decca",
   "description": "Render interfaces using pure functions and virtual DOM, kinda",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "babel": {
     "presets": [

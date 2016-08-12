@@ -1,3 +1,10 @@
+## [v2.2.1]
+> Aug 12, 2016
+
+- Make the npm package slimmer by excluding docs; no functional changes.
+
+[v2.2.1]: https://github.com/rstacruz/decca/compare/v2.2.0...v2.2.1
+
 ## [v2.2.0]
 > Aug 12, 2016
 
