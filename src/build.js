@@ -37,7 +37,7 @@ function buildPass (context, dispatch) {
         { context, dispatch },
         build)
     } else if (typeof tag === 'function') {
-      // Dumb components
+      // Pure components
       return new Widget(
         { component: { render: tag }, props, children },
         { context, dispatch },

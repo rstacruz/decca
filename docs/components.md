@@ -68,7 +68,7 @@ render = dom.createRenderer(document.body)
 render(<App />)
 ```
 
-## Dumb components
+## Pure components
 
 You can also define a component as a function. This is useful if you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`). It will act like a component's `render()` function. *(Version v2.2+)*
 

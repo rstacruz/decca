@@ -168,7 +168,7 @@ test('class in component', (t) => {
   t.end()
 })
 
-test('dumb components', (t) => {
+test('pure components', (t) => {
   t.plan(2)
 
   function App ({ props }) {
