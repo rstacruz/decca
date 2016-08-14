@@ -59,9 +59,9 @@
                 "id": "nesting-components"
               },
               {
-                "title": "Dumb components",
+                "title": "Pure components",
                 "depth": 2,
-                "id": "dumb-components"
+                "id": "pure-components"
               },
               {
                 "title": "Further references",
@@ -221,9 +221,9 @@
           "id": "nesting-components"
         },
         {
-          "title": "Dumb components",
+          "title": "Pure components",
           "depth": 2,
-          "id": "dumb-components"
+          "id": "pure-components"
         },
         {
           "title": "Further references",

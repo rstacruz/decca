@@ -118,7 +118,7 @@
 render = dom.createRenderer(<span class="pl-c1">document</span>.body)
 render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
 </span></code></pre>
-<h2 id="dumb-components">Dumb components</h2>
+<h2 id="pure-components">Pure components</h2>
 <p>You can also define a component as a function. This is useful if you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>). It will act like a component&#x2019;s <code>render()</code> function. <em>(Version v2.2+)</em></p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Message</span> (<span class="hljs-params">{props}</span>) </span>{
   <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
@@ -154,7 +154,7 @@ render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Mess
                     </li>
                     <li class="heading-item -depth-2"><a href="#nesting-components" class="hlink link-nesting-components">Nesting components</a>
                     </li>
-                    <li class="heading-item -depth-2"><a href="#dumb-components" class="hlink link-dumb-components">Dumb components</a>
+                    <li class="heading-item -depth-2"><a href="#pure-components" class="hlink link-pure-components">Pure components</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#further-references" class="hlink link-further-references">Further references</a>
                     </li>
