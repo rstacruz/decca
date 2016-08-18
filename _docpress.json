@@ -64,6 +64,11 @@
                 "id": "pure-components"
               },
               {
+                "title": "JSX",
+                "depth": 2,
+                "id": "jsx"
+              },
+              {
                 "title": "Further references",
                 "depth": 2,
                 "id": "further-references"
@@ -224,6 +229,11 @@
           "title": "Pure components",
           "depth": 2,
           "id": "pure-components"
+        },
+        {
+          "title": "JSX",
+          "depth": 2,
+          "id": "jsx"
         },
         {
           "title": "Further references",

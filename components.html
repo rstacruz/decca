@@ -29,14 +29,14 @@
 <span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
 <span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Button</span> (<span class="hljs-params">{props}</span>) </span>{
-  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="pl-s">&apos;btn&apos;</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="pl-s">&apos;btn&apos;</span>&gt;</span>{props.label}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
 }
 
 <span class="pl-c1">module</span>.exports = Button
 </code></pre>
 <p>Components can also be objects that implement a <code>render()</code> function. In this form, it can have additional <a href="#lifecycle-hooks">lifecycle hooks</a>.</p>
-<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{ props }</span>) </span>{
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{props}</span>) </span>{
+    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.label}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   }
 }
 
@@ -134,6 +134,8 @@ render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App<
 render = dom.createRenderer(<span class="pl-c1">document</span>.body)
 render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Message</span> <span class="hljs-attr">name</span>=<span class="pl-s">&apos;John&apos;</span> /&gt;</span>)
 </span></code></pre>
+<h2 id="jsx">JSX</h2>
+<p>Decca supports JSX syntax. See <a href="jsx.html">JSX</a> for details on how to set it up.</p>
 <h2 id="further-references">Further references</h2>
 <p>See Deku&#x2019;s documentation:</p>
 <ul>
@@ -162,6 +164,8 @@ render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">Mess
                     <li class="heading-item -depth-2"><a href="#nesting-components" class="hlink link-nesting-components">Nesting components</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#pure-components" class="hlink link-pure-components">Pure components</a>
+                    </li>
+                    <li class="heading-item -depth-2"><a href="#jsx" class="hlink link-jsx">JSX</a>
                     </li>
                     <li class="heading-item -depth-2"><a href="#further-references" class="hlink link-further-references">Further references</a>
                     </li>
