@@ -3,7 +3,7 @@
 Components are functions that return JSX objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)). Here's an example of a [pure component](#pure-component):
 
 ```js
-/** @jsx element */
+/* @jsx element */
 import { element } from 'decca'
 
 function Button ({props}) {

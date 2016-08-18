@@ -3,7 +3,7 @@
 Here's a basic "Hello World" example.
 
 ```js
-/** @jsx element */
+/* @jsx element */
 import { dom, element } from 'decca'
 
 const Message = {

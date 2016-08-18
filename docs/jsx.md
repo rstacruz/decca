@@ -28,7 +28,7 @@ You will need to set the `pragma`. Here's an example `.babelrc` that sets the pr
 Alternatively, you can specify it in each of your files with a `@jsx` pragma comment:
 
 ```js
-/** @jsx element */
+/* @jsx element */
 
 import { element } from 'deku'
 ```

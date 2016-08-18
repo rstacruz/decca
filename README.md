@@ -26,7 +26,7 @@ npm install --save --save-exact decca
 Components are mere functions or objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
 
 ```js
-/** @jsx element */
+/* @jsx element */
 import { dom, element } from 'decca'
 
 function Message ({ props }) {
