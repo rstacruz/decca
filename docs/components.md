@@ -1,11 +1,21 @@
 # Components
 
-Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function.  Here is a minimal example of a component:
+Components are functions that return JSX objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)). Here's an example of a [pure component](#pure-component):
 
 ```js
 /** @jsx element */
 import { element } from 'decca'
 
+function Button ({props}) {
+  return <button class='btn'>{ props.label }</button>
+}
+
+module.exports = Button
+```
+
+Components can also be objects that implement a `render()` function. In this form, it can have additional [lifecycle hooks](#lifecycle-hooks).
+
+```js
 function render ({ props }) {
     return <button>{ props.label }</button>
   }
@@ -16,7 +26,7 @@ module.exports = { render }
 
 ## Lifecycle hooks
 
-A component can have these functions:
+An object component can have these functions:
 
 | Function | Description
 |---|---
@@ -70,7 +80,7 @@ render(<App />)
 
 ## Pure components
 
-You can also define a component as a function. This is useful if you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`). It will act like a component's `render()` function. *(Version v2.2+)*
+You may define a component as a function. This is useful if you don't need any of the lifecycle hooks (`onCreate`, `onUpdate`, `onRemove`). It will act like a component's `render()` function. *(Version v2.2+)*
 
 ```js
 function Message ({props}) {
