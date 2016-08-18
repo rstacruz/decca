@@ -36,14 +36,12 @@
 <pre><code>npm install --save --save-exact decca
 </code></pre>
 <h2 id="components">Components</h2>
-<p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function. See <a href="components.html">components</a> documentation for more information.</p>
+<p>Components are mere functions or objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function. See <a href="components.html">components</a> documentation for more information.</p>
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { dom, element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-<span class="pl-k">const</span> Message = {
-  render ({ props }) {
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-  }
+<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Message</span> (<span class="hljs-params">{ props }</span>) </span>{
+  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello there, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 }
 
 <span class="pl-c">// Render the app tree</span>
