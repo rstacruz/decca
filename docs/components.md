@@ -22,7 +22,7 @@ function render ({props}) {
   return <button>{props.label}</button>
 }
 
-function onCreate({props}) {
+function onCreate ({props}) {
   ...
 }
 
