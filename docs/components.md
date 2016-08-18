@@ -7,7 +7,7 @@ Components are functions that return JSX objects (not [classes!](https://faceboo
 import { element } from 'decca'
 
 function Button ({props}) {
-  return <button class='btn'>{ props.label }</button>
+  return <button class='btn'>{props.label}</button>
 }
 
 module.exports = Button
@@ -16,8 +16,8 @@ module.exports = Button
 Components can also be objects that implement a `render()` function. In this form, it can have additional [lifecycle hooks](#lifecycle-hooks).
 
 ```js
-function render ({ props }) {
-    return <button>{ props.label }</button>
+function render ({props}) {
+    return <button>{props.label}</button>
   }
 }
 
@@ -90,6 +90,10 @@ function Message ({props}) {
 render = dom.createRenderer(document.body)
 render(<Message name='John' />)
 ```
+
+## JSX
+
+Decca supports JSX syntax. See [JSX](jsx.md) for details on how to set it up.
 
 ## Further references
 
