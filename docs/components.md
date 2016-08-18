@@ -13,18 +13,21 @@ function Button ({props}) {
 module.exports = Button
 ```
 
-Components can also be objects that implement a `render()` function. In this form, it can have additional [lifecycle hooks](#lifecycle-hooks).
+## Lifecycle hooks
+
+Components can also be objects that implement a `render()` function. In this form, it can have additional lifecycle hooks.
 
 ```js
 function render ({props}) {
-    return <button>{props.label}</button>
-  }
+  return <button>{props.label}</button>
 }
 
-module.exports = { render }
-```
+function onCreate({props}) {
+  ...
+}
 
-## Lifecycle hooks
+module.exports = { render, onCreate }
+```
 
 An object component can have these functions:
 
