@@ -23,16 +23,14 @@ npm install --save --save-exact decca
 
 ## Components
 
-Components are mere objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
+Components are mere functions or objects (not [classes!](https://facebook.github.io/react/docs/top-level-api.html#react.createclass)) that at least implement a `render()` function. See [components](docs/components.md) documentation for more information.
 
 ```js
 /** @jsx element */
 import { dom, element } from 'decca'
 
-const Message = {
-  render ({ props }) {
-    return <div>Hello there, {props.name}</div>
-  }
+function Message ({ props }) {
+  return <div>Hello there, {props.name}</div>
 }
 
 // Render the app tree
