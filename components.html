@@ -24,11 +24,18 @@
           </div>
         </div>
         <div class="markdown-body"><h1 id="components">Components</h1>
-<p>Components are mere objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>) that at least implement a <code>render()</code> function.  Here is a minimal example of a component:</p>
+<p>Components are functions that return JSX objects (not <a href="https://facebook.github.io/react/docs/top-level-api.html#react.createclass">classes!</a>). Here&#x2019;s an example of a <a href="#pure-component">pure component</a>:</p>
 <pre><code class="lang-js"><span class="pl-c">/** @jsx element */</span>
 <span class="pl-k">import</span> { element } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 
-<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{ props }</span>) </span>{
+<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Button</span> (<span class="hljs-params">{props}</span>) </span>{
+  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="pl-s">&apos;btn&apos;</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
+}
+
+<span class="pl-c1">module</span>.exports = Button
+</code></pre>
+<p>Components can also be objects that implement a <code>render()</code> function. In this form, it can have additional <a href="#lifecycle-hooks">lifecycle hooks</a>.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{ props }</span>) </span>{
     <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{ props.label }<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
   }
 }
@@ -36,7 +43,7 @@
 <span class="pl-c1">module</span>.exports = { render }
 </code></pre>
 <h2 id="lifecycle-hooks">Lifecycle hooks</h2>
-<p>A component can have these functions:</p>
+<p>An object component can have these functions:</p>
 <table class="no-head">
 <thead>
 <tr>
@@ -119,7 +126,7 @@ render = dom.createRenderer(<span class="pl-c1">document</span>.body)
 render(<span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">App</span> /&gt;</span>)
 </span></code></pre>
 <h2 id="pure-components">Pure components</h2>
-<p>You can also define a component as a function. This is useful if you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>). It will act like a component&#x2019;s <code>render()</code> function. <em>(Version v2.2+)</em></p>
+<p>You may define a component as a function. This is useful if you don&#x2019;t need any of the lifecycle hooks (<code>onCreate</code>, <code>onUpdate</code>, <code>onRemove</code>). It will act like a component&#x2019;s <code>render()</code> function. <em>(Version v2.2+)</em></p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">Message</span> (<span class="hljs-params">{props}</span>) </span>{
   <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span>Hello, {props.name}<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
 }
