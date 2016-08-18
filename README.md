@@ -8,7 +8,8 @@ Decca allows you to compose DOM structures with reuseable Components in a functi
 
 [![Status](https://travis-ci.org/rstacruz/decca.svg?branch=master)](https://travis-ci.org/rstacruz/decca "See test builds")
 
-**[Documentation →](http://ricostacruz.com/decca)**
+**[Documentation →](http://ricostacruz.com/decca)**<br>
+**[Playground →](http://codepen.io/rstacruz/pen/LkaKNp?editors=0010#0)**<br>
 
 <!--{p:style='display: none'}-->
 
@@ -38,6 +39,8 @@ const Message = {
 const render = dom.createRenderer(document.body)
 render(<Message name='Rico S.' />)
 ```
+
+> Try out Decca in **[codepen.io](http://codepen.io/rstacruz/pen/LkaKNp?editors=0010#0)**.
 
 ## Usage
 
