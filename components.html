@@ -34,15 +34,18 @@
 
 <span class="pl-c1">module</span>.exports = Button
 </code></pre>
-<p>Components can also be objects that implement a <code>render()</code> function. In this form, it can have additional <a href="#lifecycle-hooks">lifecycle hooks</a>.</p>
+<h2 id="lifecycle-hooks">Lifecycle hooks</h2>
+<p>Components can also be objects that implement a <code>render()</code> function. In this form, it can have additional lifecycle hooks.</p>
 <pre><code class="lang-js"><span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">render</span> (<span class="hljs-params">{props}</span>) </span>{
-    <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.label}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
-  }
+  <span class="pl-k">return</span> <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>{props.label}<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span></span>
 }
 
-<span class="pl-c1">module</span>.exports = { render }
+<span class="hljs-function"><span class="pl-k">function</span> <span class="pl-ent">onCreate</span>(<span class="hljs-params">{props}</span>) </span>{
+  ...
+}
+
+<span class="pl-c1">module</span>.exports = { render, onCreate }
 </code></pre>
-<h2 id="lifecycle-hooks">Lifecycle hooks</h2>
 <p>An object component can have these functions:</p>
 <table class="no-head">
 <thead>
