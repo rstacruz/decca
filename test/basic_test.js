@@ -14,6 +14,12 @@ test('class name', (t) => {
   t.end()
 })
 
+test('attributes', (t) => {
+  const { div } = r(<div attributes={{'aria-label': 'foo'}}>hola</div>)
+  t.equal(div.innerHTML, '<div aria-label="foo">hola</div>')
+  t.end()
+})
+
 test('interpolation', (t) => {
   const {div} = r(<div>hey {'John'}</div>)
   t.equal(div.innerHTML, '<div>hey John</div>')
