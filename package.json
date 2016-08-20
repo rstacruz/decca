@@ -26,7 +26,6 @@
     "virtual-dom": "2.1.1"
   },
   "devDependencies": {
-    "@rstacruz/tap-spec": "4.1.1",
     "babel-cli": "6.9.0",
     "babel-plugin-syntax-jsx": "6.8.0",
     "babel-plugin-transform-react-jsx": "6.8.0",
@@ -50,6 +49,7 @@
     "jsdom": "9.3.0",
     "jsdom-global": "2.0.0",
     "tap-dev-tool": "1.3.0",
+    "tap-diff": "0.1.1",
     "tape": "4.5.1",
     "tape-dom": "0.0.10",
     "tape-watch": "2.1.0",
@@ -78,9 +78,9 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
-    "test": "tape -r babel-register test/index.js | tap-spec",
+    "test": "tape-watch -1 -r babel-register test/index.js | tap-diff",
     "test:budo": "budo test/index.js --live --open -- -t babelify --debug",
-    "test:watch": "tape-watch -r babel-register test/index.js -o '|tap-spec --min --color'",
+    "test:watch": "tape-watch -r babel-register test/index.js -o '|tap-diff --color'",
     "watch": "babel -w src --out-dir lib",
     "lint": "eslint-check"
   }
