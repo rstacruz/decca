@@ -1,3 +1,10 @@
+## [v2.2.2]
+> Aug 29, 2016
+
+- [#195] - Allow pure components in string renderer. ([#196], [@borisirota])
+
+[v2.2.2]: https://github.com/rstacruz/decca/compare/v2.2.1...v2.2.2
+
 ## [v2.2.1]
 > Aug 12, 2016
 
@@ -67,3 +74,7 @@
 [#12]: https://github.com/rstacruz/decca/issues/12
 [#130]: https://github.com/rstacruz/decca/issues/130
 [@mikz]: https://github.com/mikz
+[#195]: https://github.com/rstacruz/decca/issues/195
+[#196]: https://github.com/rstacruz/decca/issues/196
+[@borisirota]: https://github.com/borisirota
+
