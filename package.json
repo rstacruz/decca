@@ -78,7 +78,7 @@
   "scripts": {
     "build": "babel src --out-dir lib",
     "prepublish": "npm run build",
-    "test": "tape-watch -1 -r babel-register test/index.js -o '| tap-diff --color'",
+    "test": "tape -r babel-register test/index.js | tap-diff --color",
     "test:budo": "budo test/index.js --live --open -- -t babelify --debug",
     "test:watch": "npm run test -- --watch",
     "watch": "babel -w src --out-dir lib",
