@@ -22,6 +22,13 @@ function render (el, context) {
       tag.render({ props: { ...props, children }, path: getId(), context }),
       context)
   }
+
+  if (typeof tag === 'function') {
+    // Pure components
+    return render(
+      tag({ props: { ...props, children }, path: getId(), context }),
+      context)
+  }
 }
 
 /*
