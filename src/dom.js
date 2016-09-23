@@ -1,11 +1,19 @@
+/**
+ * @module decca/dom
+ */
+
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
 import createElement from 'virtual-dom/create-element'
 import buildPass from './build'
 
-/*
- * Creates a renderer function. Returns a function `render(vnode, [context])`
- * where `vnode` is the output of `element()`.
+/**
+ * Creates a renderer function that will update the given `rootEl` DOM Node if
+ * called.
+ *
+ * @param {DOMNode} el The DOM element to mount to
+ * @param {function=} dispatch The dispatch function to the store
+ * @return {function} a renderer function; see [render](#render)
  */
 
 function createRenderer (rootEl, dispatch) {
@@ -43,4 +51,16 @@ function createRenderer (rootEl, dispatch) {
   }
 }
 
+/*
+ * Export
+ */
+
 module.exports = { createRenderer }
+
+/**
+ * A renderer function returned by [createRenderer()](#createrenderer).
+ *
+ * @callback render
+ * @param {Element} element Virtual element to render; given by [element()](#element)
+ * @param {*=} context The context to be passed onto the components as `context`
+ */

@@ -1,4 +1,16 @@
+/**
+ * @module decca/string
+ */
+
 import getId from './id'
+
+/**
+ * Renders an element into a string without using the DOM.
+ *
+ * @param {Element} el The Element to render
+ * @param {*=} context The context to be passed onto components
+ * @returns {string} the rendered HTML string
+ */
 
 function render (el, context) {
   if (typeof el === 'string') return el
