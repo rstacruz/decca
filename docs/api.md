@@ -1,63 +1,84 @@
 # API reference
 
-```js
-import { dom, element, string } from 'decca'
-```
 
-## dom.createRenderer
+## <a id='module:decca/dom'></a>decca/dom
 
-> `dom.createRenderer(domNode, [dispatch])`
 
-Returns a [render()] function that will update the given DOM Node.
 
-* `domNode` *(DOMNode)* — the DOM node to mount to.
-* `dispatch` *(any)* — if given, it will be passed onto the [components]'s functions as `dispatch`.
+### <a id='module:decca/dom~createRenderer'></a>createRenderer()
 
-## render
+<details>
+<summary><code>createRenderer(<b title='DOMNode'>el</b>, <b title='function'>dispatch</b><sub title="Optional">?</sub>)</code> → <em>function</em></summary>
 
-> `render(element, [context])`
+| Param | Type | Description |
+| --- | --- | --- |
+| `el` | DOMNode | The DOM element to mount to |
+| `dispatch` | function, _optional_ | The dispatch function to the store |
+</details>
 
-Renders an virtual element `element`, performing virtual DOM updates to ensure minimal DOM access. This function is the result of [dom.createRenderer()].
+Creates a renderer function that will update the given `rootEl` DOM Node if
+called. Returns a renderer function; see [render](#render).
 
-* `element` *(Element)* — the return value of [element()] to be rendered.
-* `context` *(any)* — if given, it will be passed onto all components in the tree as `context`.
+### <a id='module:decca/dom~render'></a>render
 
-See [components] for more information on components.
+<details>
+<summary><code>render(<b title='Element'>element</b>, <b title='*'>context</b><sub title="Optional">?</sub>)</code> → <em>void</em> (callback)</summary>
 
-## element
+| Param | Type | Description |
+| --- | --- | --- |
+| `element` | Element | Virtual element to render; given by [element()](#element) |
+| `context` | *, _optional_ | The context to be passed onto the components as `context` |
+</details>
 
-> `element(tag, [attrs], [...children])`
+A renderer function returned by [createRenderer()](#createrenderer).
 
-Returns a virtual element representing either a DOM node or a Component.
+## <a id='module:decca/element'></a>decca/element
 
-* `tag` *(String | Component)* — either be a tag name (such as `'div'`) or a [component].
-* `attrs` *(Object)* — attributes to pass onto the DOM node.
-* `children` *(Array)* — an array of strings, numbers, more arrays, or virtual elements.
 
-The attributes `attrs` is an Object. It's passed onto the DOM except in some exceptions:
 
-- If the attribute `key` is given, it'll be used as a key to optimize the virtual DOM rendering process.
-- If any of the attributes start with `on` (such as `onclick`), they will be treated as event handlers.
+### <a id='module:decca/element~element'></a>element()
 
-This is compatible with [JSX]. The result of this is typically consumed by [render()], or returned by a component's `render` function.
+<details>
+<summary><code>element(<b title='string'>tag</b>, <b title='object'>props</b>, ...<b title='Element | string'>children</b><sub title="Optional">?</sub>)</code> → <em><a href='element'>Element</a></em></summary>
 
-## string.render
+| Param | Type | Description |
+| --- | --- | --- |
+| `tag` | string | Tag name (eg, `'div'`) |
+| `props` | object | Properties |
+| `children` | Element | string, _optional_ | Children |
+</details>
 
-> `string.render(element, [context])`
+Returns a vnode (*Element*) to be consumed by [render()](#render).
+This is compatible with JSX. Returns An element.
 
-Renders the given virtual element `element` as a string. This works like [render()], only it outputs strings instead of performing operations in the DOM.
+### <a id='module:decca/element~Element'></a>Element
 
-* `element` *(Element)* — the return value of [element()] to be rendered.
-* `context` *(any)* — if given, it will be passed onto all components in the tree as `context`.
+<details>
+<summary><code>{ <b title='string'>tag</b>, <b title='object'>props</b>, <b title='(Element|string)[]'>children</b> }</code></summary>
 
-When components are rendered via `string.render`:
+| Param | Type | Description |
+| --- | --- | --- |
+| `tag` | string | Tag name (eg, `'div'`) |
+| `props` | object | Properties |
+| `children` | (Element|string)[] | Children |
+</details>
 
-- `dispatch` will not be available in components.
-- Lifecycle hooks in components, such as `onCreate` and `onUpdate` will not be called.
+A vnode (*Element*) to be consumed by [render()](#render).
+This is generated via [element()](#element).
 
-[render()]: #render
-[element()]: #element
-[dom.createRenderer()]: #dom.createrenderer
-[component]: components.md
-[components]: components.md
-[JSX]: jsx.md
+## <a id='module:decca/string'></a>decca/string
+
+
+
+### <a id='module:decca/string~render'></a>render()
+
+<details>
+<summary><code>render(<b title='Element'>el</b>, <b title='*'>context</b><sub title="Optional">?</sub>)</code> → <em>string</em></summary>
+
+| Param | Type | Description |
+| --- | --- | --- |
+| `el` | Element | The Element to render |
+| `context` | *, _optional_ | The context to be passed onto components |
+</details>
+
+Renders an element into a string without using the DOM. Returns the rendered HTML string.
