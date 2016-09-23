@@ -85,6 +85,6 @@
     "test:watch": "npm run test -- --watch",
     "watch": "babel -w src --out-dir lib",
     "lint": "eslint-check",
-    "update": "(echo '# API reference\n\n'; jsdoc-parse -s none -f src/*.js | jsdoc-render-md) > docs/api.md"
+    "update": "(cat support/api_header.md; jsdoc-parse -s none -f src/*.js | jsdoc-render-md) > docs/api.md"
   }
 }

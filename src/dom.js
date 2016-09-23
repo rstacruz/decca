@@ -13,7 +13,7 @@ import buildPass from './build'
  *
  * @param {DOMNode} el The DOM element to mount to
  * @param {function=} dispatch The dispatch function to the store
- * @return {function} a renderer function; see [render](#render)
+ * @return {render} a renderer function; see [render](#render)
  */
 
 function createRenderer (rootEl, dispatch) {
