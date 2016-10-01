@@ -2,9 +2,9 @@
  * @module decca/dom
  */
 
-import diff from 'virtual-dom/diff'
-import patch from 'virtual-dom/patch'
-import createElement from 'virtual-dom/create-element'
+const diff = require('virtual-dom/diff')
+const patch = require('virtual-dom/patch')
+const createElement = require('virtual-dom/create-element')
 import buildPass from './build'
 
 /**
@@ -16,7 +16,7 @@ import buildPass from './build'
  * @return {render} a renderer function; see [render](#render)
  */
 
-function createRenderer (rootEl, dispatch) {
+export function createRenderer (rootEl, dispatch) {
   var tree, rootNode // virtual-dom states
   return render
 
@@ -50,12 +50,6 @@ function createRenderer (rootEl, dispatch) {
     }
   }
 }
-
-/*
- * Export
- */
-
-module.exports = { createRenderer }
 
 /**
  * A renderer function returned by [createRenderer()](#createrenderer).

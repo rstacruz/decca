@@ -3,7 +3,8 @@
  */
 
 import getId from './id'
-import assign from 'object-assign'
+
+const assign = require('object-assign')
 
 /**
  * Renders an element into a string without using the DOM.
@@ -13,7 +14,7 @@ import assign from 'object-assign'
  * @returns {string} the rendered HTML string
  */
 
-function render (el, context) {
+export function render (el, context) {
   if (typeof el === 'string') return el
   if (typeof el === 'number') return '' + el
   if (Array.isArray(el)) return el.map((_el) => render(_el, context))
@@ -61,5 +62,3 @@ function toProps (props) {
 
   return result.length ? ' ' + result.join(' ') : ''
 }
-
-module.exports = { render }

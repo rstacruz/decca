@@ -1,8 +1,6 @@
-import h from 'virtual-dom/h'
+const h = require('virtual-dom/h')
 import fixProps from './fix_props'
 import Widget from './widget'
-
-module.exports = buildPass
 
 /*
  * A rendering pass.
@@ -14,7 +12,7 @@ module.exports = buildPass
  *     build(el)               // render a component/node
  */
 
-function buildPass (context, dispatch) {
+export default function buildPass (context, dispatch) {
   /*
    * Builds from a vnode (`element()` output) to a virtual hyperscript element.
    * The `context` and `dispatch` is passed down recursively.

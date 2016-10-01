@@ -1,5 +1,5 @@
 var id = 1
 
-module.exports = function getId () {
+export default function getId () {
   return 'c' + (id++)
 }

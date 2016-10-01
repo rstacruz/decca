@@ -16,7 +16,7 @@ function element (tag, props, ...children) {
   return { tag, props, children }
 }
 
-module.exports = element
+export default element
 
 /**
  * A vnode (*Element*) to be consumed by [render()](#render).

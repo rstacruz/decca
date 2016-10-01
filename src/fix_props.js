@@ -2,7 +2,7 @@
  * Fixes props for virtual-dom's consumption
  */
 
-import assign from 'object-assign'
+const assign = require('object-assign')
 
 // Taken from: https://github.com/wayfair/tungstenjs/blob/42535b17e4894e866abf5711be2266458bc4d508/src/template/template_to_vdom.js#L118-L140
 
@@ -42,7 +42,7 @@ function transformProperties (props) {
   return attrs
 }
 
-module.exports = function fixProps (props) {
+export default function fixProps (props) {
   if (props) {
     props = transformProperties(props)
 
@@ -56,10 +56,12 @@ module.exports = function fixProps (props) {
     // onClick => onclick
     Object.keys(props).forEach((key) => {
       let m = key.match(/^on([A-Z][a-z]+)$/)
-      if (m) props = assign({}, props, {
-        [key]: undefined,
-        [key.toLowerCase()]: props[key]
-      })
+      if (m) {
+        props = assign({}, props, {
+          [key]: undefined,
+          [key.toLowerCase()]: props[key]
+        })
+      }
     })
   }
 

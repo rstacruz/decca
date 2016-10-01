@@ -1,10 +1,11 @@
 'use strict'
 
 import getId from './id'
-import createElement from 'virtual-dom/create-element'
-import diff from 'virtual-dom/diff'
-import patch from 'virtual-dom/patch'
-import assign from 'object-assign'
+
+const createElement = require('virtual-dom/create-element')
+const diff = require('virtual-dom/diff')
+const patch = require('virtual-dom/patch')
+const assign = require('object-assign')
 
 /*
  * A widget that represents a component.
@@ -19,7 +20,7 @@ import assign from 'object-assign'
  *     widget.remove()
  */
 
-function Widget ({ component, props, children }, model, build) {
+export default function Widget ({ component, props, children }, model, build) {
   if (!props) props = {}
   this.component = component
   this.build = build
@@ -108,5 +109,3 @@ function trigger (widget, hook, id) {
   if (!widget.component[hook]) return
   return widget.component[hook](widget.model)
 }
-
-module.exports = Widget
