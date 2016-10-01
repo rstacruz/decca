@@ -3,6 +3,7 @@
  */
 
 import getId from './id'
+import assign from 'object-assign'
 
 /**
  * Renders an element into a string without using the DOM.
@@ -31,14 +32,14 @@ function render (el, context) {
   if (typeof tag === 'object') {
     if (!tag.render) throw new Error('component has no render()')
     return render(
-      tag.render({ props: { ...props, children }, path: getId(), context }),
+      tag.render({ props: assign({}, props, { children }), path: getId(), context }),
       context)
   }
 
   if (typeof tag === 'function') {
     // Pure components
     return render(
-      tag({ props: { ...props, children }, path: getId(), context }),
+      tag({ props: assign({}, props, { children }), path: getId(), context }),
       context)
   }
 }

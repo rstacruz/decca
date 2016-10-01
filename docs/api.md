@@ -11,7 +11,7 @@ import { dom, element, string } from 'decca'
 ### <a id='module:decca/dom~createRenderer'></a>createRenderer()
 
 <details>
-<summary><code>createRenderer(<b title='DOMNode'>el</b>, <b title='function'>dispatch</b><sub title="Optional">?</sub>)</code> → <em>function</em></summary>
+<summary><code>createRenderer(<b title='DOMNode'>el</b>, <b title='function'>dispatch</b><sub title="Optional">?</sub>)</code> → <em>render</em></summary>
 
 | Param | Type | Description |
 | --- | --- | --- |

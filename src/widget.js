@@ -4,6 +4,7 @@ import getId from './id'
 import createElement from 'virtual-dom/create-element'
 import diff from 'virtual-dom/diff'
 import patch from 'virtual-dom/patch'
+import assign from 'object-assign'
 
 /*
  * A widget that represents a component.
@@ -24,7 +25,7 @@ function Widget ({ component, props, children }, model, build) {
   this.build = build
 
   // The parameters to be passed onto the component's functions.
-  this.model = { props, children, ...model }
+  this.model = assign({}, { props, children }, model)
 }
 
 Widget.prototype.type = 'Widget'
