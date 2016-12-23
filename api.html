@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <link rel="stylesheet" href="assets/style.css?t=a44c9e9d">
     <link rel="stylesheet" href="http://ricostacruz.com/docpress-rsc/style.css">
-    <script src="assets/script.js?t=2bcc4b59"></script>
+    <script src="assets/script.js?t=820b7ffa"></script>
     <title>API reference</title>
     <meta name="viewport" content="width=device-width">
     <script>
@@ -26,55 +26,164 @@
         <div class="markdown-body"><h1 id="api-reference">API reference</h1>
 <pre><code class="lang-js"><span class="pl-k">import</span> { dom, element, string } <span class="pl-k">from</span> <span class="pl-s">&apos;decca&apos;</span>
 </code></pre>
-<h2 id="dom.createrenderer">dom.createRenderer</h2>
+<h2 id="deccadom"><a id="module:decca/dom"></a>decca/dom</h2>
+<h3 id="createrenderer()"><a id="module:decca/dom.createRenderer"></a>createRenderer()</h3>
+<details>
+<summary><code>createRenderer(<b title="DOMNode">el</b>, <b title="function">dispatch</b><sub title="Optional">?</sub>)</code></summary>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>el</code></td>
+<td>DOMNode</td>
+<td>The DOM element to mount to</td>
+</tr>
+<tr>
+<td><code>dispatch</code></td>
+<td>function, <em>optional</em></td>
+<td>The dispatch function to the store</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><code>dom.createRenderer(domNode, [dispatch])</code></p>
+<p>Returns <code>render</code></p>
 </blockquote>
-<p>Returns a <a href="#render">render()</a> function that will update the given DOM Node.</p>
-<ul>
-<li><code>domNode</code> <em>(DOMNode)</em> &#x2014; the DOM node to mount to.</li>
-<li><code>dispatch</code> <em>(any)</em> &#x2014; if given, it will be passed onto the <a href="components.html">components</a>&#x2019;s functions as <code>dispatch</code>.</li>
-</ul>
-<h2 id="render">render</h2>
+</details>
+<p>Creates a renderer function that will update the given <code>rootEl</code> DOM Node if
+called. Returns a renderer function; see <a href="#render">render</a>.</p>
+<h3 id="render"><a id="module:decca/dom~render"></a>render</h3>
+<details>
+<summary><code>render(<b title="Element">element</b>, <b title="*">context</b><sub title="Optional">?</sub>)</code></summary>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>element</code></td>
+<td>Element</td>
+<td>Virtual element to render; given by <a href="#element">element()</a></td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>*, <em>optional</em></td>
+<td>The context to be passed onto the components as <code>context</code></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><code>render(element, [context])</code></p>
+<p>Returns <code>void</code> <em>(callback)</em></p>
 </blockquote>
-<p>Renders an virtual element <code>element</code>, performing virtual DOM updates to ensure minimal DOM access. This function is the result of <a href="#dom.createrenderer">dom.createRenderer()</a>.</p>
-<ul>
-<li><code>element</code> <em>(Element)</em> &#x2014; the return value of <a href="#element">element()</a> to be rendered.</li>
-<li><code>context</code> <em>(any)</em> &#x2014; if given, it will be passed onto all components in the tree as <code>context</code>.</li>
-</ul>
-<p>See <a href="components.html">components</a> for more information on components.</p>
-<h2 id="element">element</h2>
+</details>
+<p>A renderer function returned by <a href="#createrenderer">createRenderer()</a>.</p>
+<h2 id="deccaelement"><a id="module:decca/element"></a>decca/element</h2>
+<h3 id="element()"><a id="module:decca/element~element"></a>element()</h3>
+<details>
+<summary><code>element(<b title="string">tag</b>, <b title="object">props</b>, ...<b title="Element | string">children</b><sub title="Optional">?</sub>)</code></summary>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag</code></td>
+<td>string</td>
+<td>Tag name (eg, <code>&apos;div&apos;</code>)</td>
+</tr>
+<tr>
+<td><code>props</code></td>
+<td>object</td>
+<td>Properties</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>Element</td>
+<td>string, <em>optional</em></td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><code>element(tag, [attrs], [...children])</code></p>
+<p>Returns <code><a href="#element">Element</a></code></p>
 </blockquote>
-<p>Returns a virtual element representing either a DOM node or a Component.</p>
-<ul>
-<li><code>tag</code> <em>(String | Component)</em> &#x2014; either be a tag name (such as <code>&apos;div&apos;</code>) or a <a href="components.html">component</a>.</li>
-<li><code>attrs</code> <em>(Object)</em> &#x2014; attributes to pass onto the DOM node.</li>
-<li><code>children</code> <em>(Array)</em> &#x2014; an array of strings, numbers, more arrays, or virtual elements.</li>
-</ul>
-<p>The attributes <code>attrs</code> is an Object. It&#x2019;s passed onto the DOM except in some exceptions:</p>
-<ul>
-<li>If the attribute <code>key</code> is given, it&#x2019;ll be used as a key to optimize the virtual DOM rendering process.</li>
-<li>If any of the attributes start with <code>on</code> (such as <code>onclick</code>), they will be treated as event handlers.</li>
-</ul>
-<p>This is compatible with <a href="jsx.html">JSX</a>. The result of this is typically consumed by <a href="#render">render()</a>, or returned by a component&#x2019;s <code>render</code> function.</p>
-<h2 id="string.render">string.render</h2>
+</details>
+<p>Returns a vnode (<em>Element</em>) to be consumed by <a href="#render">render()</a>.
+This is compatible with JSX. Returns An element.</p>
+<h3 id="element"><a id="module:decca/element~Element"></a>Element</h3>
+<details>
+<summary><code>{ <b title="string">tag</b>, <b title="object">props</b>, <b title="(Element|string)[]">children</b> }</code></summary>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>tag</code></td>
+<td>string</td>
+<td>Tag name (eg, <code>&apos;div&apos;</code>)</td>
+</tr>
+<tr>
+<td><code>props</code></td>
+<td>object</td>
+<td>Properties</td>
+</tr>
+<tr>
+<td><code>children</code></td>
+<td>(Element</td>
+<td>string)[]</td>
+</tr>
+</tbody>
+</table>
+</details>
+<p>A vnode (<em>Element</em>) to be consumed by <a href="#render">render()</a>.
+This is generated via <a href="#element">element()</a>.</p>
+<h2 id="deccastring"><a id="module:decca/string"></a>decca/string</h2>
+<h3 id="render()"><a id="module:decca/string.render"></a>render()</h3>
+<details>
+<summary><code>render(<b title="Element">el</b>, <b title="*">context</b><sub title="Optional">?</sub>)</code></summary>
+<table>
+<thead>
+<tr>
+<th>Param</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>el</code></td>
+<td>Element</td>
+<td>The Element to render</td>
+</tr>
+<tr>
+<td><code>context</code></td>
+<td>*, <em>optional</em></td>
+<td>The context to be passed onto components</td>
+</tr>
+</tbody>
+</table>
 <blockquote>
-<p><code>string.render(element, [context])</code></p>
+<p>Returns <code>string</code></p>
 </blockquote>
-<p>Renders the given virtual element <code>element</code> as a string. This works like <a href="#render">render()</a>, only it outputs strings instead of performing operations in the DOM.</p>
-<ul>
-<li><code>element</code> <em>(Element)</em> &#x2014; the return value of <a href="#element">element()</a> to be rendered.</li>
-<li><code>context</code> <em>(any)</em> &#x2014; if given, it will be passed onto all components in the tree as <code>context</code>.</li>
-</ul>
-<p>When components are rendered via <code>string.render</code>:</p>
-<ul>
-<li><code>dispatch</code> will not be available in components.</li>
-<li>Lifecycle hooks in components, such as <code>onCreate</code> and <code>onUpdate</code> will not be called.</li>
-</ul>
+</details>
+<p>Renders an element into a string without using the DOM. Returns the rendered HTML string.</p>
 
         </div>
         <div class="footer-nav">
@@ -93,13 +202,27 @@
                 </li>
                 <li class="menu-item -level-2"><a href="api.html" class="link title -active link-api">API reference</a>
                   <ul class="headings heading-list">
-                    <li class="heading-item -depth-2"><a href="#dom.createrenderer" class="hlink link-dom.createrenderer">dom.createRenderer</a>
+                    <li class="heading-item -depth-2"><a href="#lessa-id'module:deccadom'greaterlessagreaterdeccadom" class="hlink link-lessa-id'module:deccadom'greaterlessagreaterdeccadom">&lt;a id='module:decca/dom'&gt;&lt;/a&gt;decca/dom</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a href="#lessa-id'module:deccadom.createrenderer'greaterlessagreatercreaterenderer()" class="hlink link-lessa-id'module:deccadom.createrenderer'greaterlessagreatercreaterenderer()">&lt;a id='module:decca/dom.createRenderer'&gt;&lt;/a&gt;createRenderer()</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a href="#lessa-id'module:deccadom~render'greaterlessagreaterrender" class="hlink link-lessa-id'module:deccadom~render'greaterlessagreaterrender">&lt;a id='module:decca/dom~render'&gt;&lt;/a&gt;render</a>
+                        </li>
+                      </ul>
                     </li>
-                    <li class="heading-item -depth-2"><a href="#render" class="hlink link-render">render</a>
+                    <li class="heading-item -depth-2"><a href="#lessa-id'module:deccaelement'greaterlessagreaterdeccaelement" class="hlink link-lessa-id'module:deccaelement'greaterlessagreaterdeccaelement">&lt;a id='module:decca/element'&gt;&lt;/a&gt;decca/element</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a href="#lessa-id'module:deccaelement~element'greaterlessagreaterelement()" class="hlink link-lessa-id'module:deccaelement~element'greaterlessagreaterelement()">&lt;a id='module:decca/element~element'&gt;&lt;/a&gt;element()</a>
+                        </li>
+                        <li class="heading-item -depth-3"><a href="#lessa-id'module:deccaelement~element'greaterlessagreaterelement" class="hlink link-lessa-id'module:deccaelement~element'greaterlessagreaterelement">&lt;a id='module:decca/element~Element'&gt;&lt;/a&gt;Element</a>
+                        </li>
+                      </ul>
                     </li>
-                    <li class="heading-item -depth-2"><a href="#element" class="hlink link-element">element</a>
-                    </li>
-                    <li class="heading-item -depth-2"><a href="#string.render" class="hlink link-string.render">string.render</a>
+                    <li class="heading-item -depth-2"><a href="#lessa-id'module:deccastring'greaterlessagreaterdeccastring" class="hlink link-lessa-id'module:deccastring'greaterlessagreaterdeccastring">&lt;a id='module:decca/string'&gt;&lt;/a&gt;decca/string</a>
+                      <ul class="heading-list -depth-2">
+                        <li class="heading-item -depth-3"><a href="#lessa-id'module:deccastring.render'greaterlessagreaterrender()" class="hlink link-lessa-id'module:deccastring.render'greaterlessagreaterrender()">&lt;a id='module:decca/string.render'&gt;&lt;/a&gt;render()</a>
+                        </li>
+                      </ul>
                     </li>
                   </ul>
                 </li>

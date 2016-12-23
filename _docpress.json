@@ -82,24 +82,50 @@
             "slug": "api",
             "headings": [
               {
-                "title": "dom.createRenderer",
+                "title": "<a id='module:decca/dom'></a>decca/dom",
                 "depth": 2,
-                "id": "dom.createrenderer"
+                "id": "lessa-id'module:deccadom'greaterlessagreaterdeccadom",
+                "headings": [
+                  {
+                    "title": "<a id='module:decca/dom.createRenderer'></a>createRenderer()",
+                    "depth": 3,
+                    "id": "lessa-id'module:deccadom.createrenderer'greaterlessagreatercreaterenderer()"
+                  },
+                  {
+                    "title": "<a id='module:decca/dom~render'></a>render",
+                    "depth": 3,
+                    "id": "lessa-id'module:deccadom~render'greaterlessagreaterrender"
+                  }
+                ]
               },
               {
-                "title": "render",
+                "title": "<a id='module:decca/element'></a>decca/element",
                 "depth": 2,
-                "id": "render"
+                "id": "lessa-id'module:deccaelement'greaterlessagreaterdeccaelement",
+                "headings": [
+                  {
+                    "title": "<a id='module:decca/element~element'></a>element()",
+                    "depth": 3,
+                    "id": "lessa-id'module:deccaelement~element'greaterlessagreaterelement()"
+                  },
+                  {
+                    "title": "<a id='module:decca/element~Element'></a>Element",
+                    "depth": 3,
+                    "id": "lessa-id'module:deccaelement~element'greaterlessagreaterelement"
+                  }
+                ]
               },
               {
-                "title": "element",
+                "title": "<a id='module:decca/string'></a>decca/string",
                 "depth": 2,
-                "id": "element"
-              },
-              {
-                "title": "string.render",
-                "depth": 2,
-                "id": "string.render"
+                "id": "lessa-id'module:deccastring'greaterlessagreaterdeccastring",
+                "headings": [
+                  {
+                    "title": "<a id='module:decca/string.render'></a>render()",
+                    "depth": 3,
+                    "id": "lessa-id'module:deccastring.render'greaterlessagreaterrender()"
+                  }
+                ]
               }
             ]
           },
@@ -248,24 +274,50 @@
       "slug": "api",
       "headings": [
         {
-          "title": "dom.createRenderer",
+          "title": "<a id='module:decca/dom'></a>decca/dom",
           "depth": 2,
-          "id": "dom.createrenderer"
+          "id": "lessa-id'module:deccadom'greaterlessagreaterdeccadom",
+          "headings": [
+            {
+              "title": "<a id='module:decca/dom.createRenderer'></a>createRenderer()",
+              "depth": 3,
+              "id": "lessa-id'module:deccadom.createrenderer'greaterlessagreatercreaterenderer()"
+            },
+            {
+              "title": "<a id='module:decca/dom~render'></a>render",
+              "depth": 3,
+              "id": "lessa-id'module:deccadom~render'greaterlessagreaterrender"
+            }
+          ]
         },
         {
-          "title": "render",
+          "title": "<a id='module:decca/element'></a>decca/element",
           "depth": 2,
-          "id": "render"
+          "id": "lessa-id'module:deccaelement'greaterlessagreaterdeccaelement",
+          "headings": [
+            {
+              "title": "<a id='module:decca/element~element'></a>element()",
+              "depth": 3,
+              "id": "lessa-id'module:deccaelement~element'greaterlessagreaterelement()"
+            },
+            {
+              "title": "<a id='module:decca/element~Element'></a>Element",
+              "depth": 3,
+              "id": "lessa-id'module:deccaelement~element'greaterlessagreaterelement"
+            }
+          ]
         },
         {
-          "title": "element",
+          "title": "<a id='module:decca/string'></a>decca/string",
           "depth": 2,
-          "id": "element"
-        },
-        {
-          "title": "string.render",
-          "depth": 2,
-          "id": "string.render"
+          "id": "lessa-id'module:deccastring'greaterlessagreaterdeccastring",
+          "headings": [
+            {
+              "title": "<a id='module:decca/string.render'></a>render()",
+              "depth": 3,
+              "id": "lessa-id'module:deccastring.render'greaterlessagreaterrender()"
+            }
+          ]
         }
       ]
     },
