@@ -21,7 +21,7 @@
     "url": "https://github.com/rstacruz/decca/issues"
   },
   "dependencies": {
-    "object-assign": "4.1.0",
+    "object-assign": "4.1.1",
     "simpler-debounce": "1.0.0",
     "virtual-dom": "2.1.1"
   },
