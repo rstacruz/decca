@@ -53,7 +53,7 @@
     "tap-diff": "0.1.1",
     "tape": "4.5.1",
     "tape-dom": "0.0.10",
-    "tape-watch": "2.1.0",
+    "tape-watch": "2.3.0",
     "watchify": "3.7.0"
   },
   "directories": {
